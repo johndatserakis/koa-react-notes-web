@@ -41,7 +41,7 @@ class App extends React.Component {
                 <PageWrapper>
                     <Nav />
                         <MainWrapper>
-                            <Switch>
+                            <Switch basename={process.env.PUBLIC_URL}>
                                 <Route exact path='/' component={Home}/>
 
                                 <Route path='/user/login' component={Login}/>
