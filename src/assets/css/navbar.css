@@ -1,0 +1,12 @@
+.fa-sticky-note {
+    color: yellow;
+}
+
+.navbar-section {
+    background-color: #488ED8;
+}
+
+.navbar-section .container-nav {
+    padding-left: 0;
+    padding-right: 90;
+}
