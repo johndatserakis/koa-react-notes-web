@@ -21,11 +21,10 @@ const PageWrapper = styled.div`
     display: flex;
     flex-direction: column;
 `;
+
 const MainWrapper = styled.div`
     flex: 1 0 auto;
 `;
-
-const baseUrl = process.env.PUBLIC_URL;
 
 class App extends React.Component {
     constructor(props){
@@ -43,12 +42,12 @@ class App extends React.Component {
                     <Nav />
                         <MainWrapper>
                             <Switch>
-                                <Route exact path={baseUrl + "/"} component={Home}/>
+                                <Route exact path='/' component={Home}/>
 
-                                <Route path={baseUrl + "/user/login"} component={Login}/>
-                                <Route path={baseUrl + "/user/signup"} component={Signup}/>
-                                <Route path={baseUrl + "/user/forgot"} component={Forgot}/>
-                                <Route path={baseUrl + "/user/reset"} component={Reset}/>
+                                <Route path='/user/login' component={Login}/>
+                                <Route path='/user/signup' component={Signup}/>
+                                <Route path='/user/forgot' component={Forgot}/>
+                                <Route path='/user/reset' component={Reset}/>
                             </Switch>
                         </MainWrapper>
                     <Footer />
