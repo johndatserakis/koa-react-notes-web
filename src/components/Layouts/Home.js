@@ -1,11 +1,12 @@
 import React from 'react';
+import { Container, Flex, Box } from 'theme/Grid'
 
 class Home extends React.Component {
     render() {
         return (
-            <div className="container py-4">
-                <div className="row">
-                    <div className="col-lg-12">
+            <Container>
+                <Flex>
+                    <Box width={1} py={4}>
                         <h1><strong>Home</strong></h1>
                         <p>Note: Not yet fully functional. Please stand by. Vist <a href="https://koa-vue-notes-web.innermonkdesign.com/">https://koa-vue-notes-web.innermonkdesign.com/</a> for a working Vue version.</p>
                         <p>Here will be a check to see if you are currently logged in and your user info.</p>
@@ -26,9 +27,9 @@ class Home extends React.Component {
                             <a href="https://github.com/johndatserakis/koa-vue-notes-api/stargazers" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/github/stars/johndatserakis/koa-vue-notes-api.svg" alt="" /></a>
                             <a href="https://github.com/johndatserakis/koa-vue-notes-api/network" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/github/forks/johndatserakis/koa-vue-notes-api.svg" alt="" /></a>
                         </p>
-                    </div>
-                </div>
-            </div>
+                    </Box>
+                </Flex>
+            </Container>
         );
     }
 }

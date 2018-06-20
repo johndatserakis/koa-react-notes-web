@@ -37,21 +37,26 @@ injectGlobal`
 
 // Button
 const Button = styled.button`
-    font-size: 1rem;
+    font-size: 1.1rem;
     border-radius: 4px;
     padding: 0.25rem 1rem;
     margin: 0;
     border: 1px solid ${props => props ? props.theme[props.styleType] : props.theme.blue};
     background: ${props => props ? props.theme[props.styleType] : props.theme.blue};
     color: ${props => props.theme.white};
+    text-transform: uppercase;
 
+    &:hover {
+        background: ${props => props ? darken(0.10, props.theme[props.styleType]) :darken(0.10, props.theme[props.blue])};
+        cursor: pointer;
+    }
 
-
-    // &:hover {
-    //     background: ${props => darken(0.10, props.theme.blue)};
-    // }
+    &:active, &:focus {
+        background: ${props => props ? darken(0.15, props.theme[props.styleType]) :darken(0.15, props.theme[props.blue])};
+    }
 `
 
+// Input
 const Input = styled.input`
     display: block;
     width: 100%;

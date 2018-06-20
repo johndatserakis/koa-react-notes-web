@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button, Input, UserActionPanel } from 'theme/global'
+import { Container, Flex, Box } from 'theme/Grid'
 
 class Login extends React.Component {
     constructor(props) {
@@ -30,10 +31,9 @@ class Login extends React.Component {
 
     render() {
         return (
-            <div className="container py-4">
-                <div className="row justify-content-center">
-                    <div className="col-lg-5">
-
+            <Container>
+                <Flex>
+                    <Box width={[1, 1/2]} mx="auto" pt={4}>
                         <UserActionPanel>
                             <h1>Login</h1>
 
@@ -47,10 +47,9 @@ class Login extends React.Component {
                                 <Button styleType="green" className="mt-2 w-100" type="submit" value="Submit">Login</Button>
                             </form>
                         </UserActionPanel>
-
-                    </div>
-                </div>
-            </div>
+                    </Box>
+                </Flex>
+            </Container>
         );
     }
 }
