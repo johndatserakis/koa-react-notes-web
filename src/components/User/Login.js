@@ -1,6 +1,15 @@
 import React from 'react';
 import { Button, Input, UserActionPanel } from 'theme/global'
 import { Container, Flex, Box } from 'theme/Grid'
+import { toast } from 'react-toastify'
+import { connect } from 'react-redux';
+import { updateUser, userActionLogin } from 'store/actions/userActions';
+const mapActionsToProps = {updateUser, userActionLogin};
+const mapStateToProps = (state, props) => {
+    return {
+        user: state.user
+    }
+}
 
 class Login extends React.Component {
     constructor(props) {
@@ -26,7 +35,14 @@ class Login extends React.Component {
 
     handleSubmit(event) {
         event.preventDefault()
-        console.log(this.state)
+        try {
+            this.props.userActionLogin({
+                username: this.state.username,
+                password: this.state.password
+            })
+        } catch (error) {
+            toast("Wow so easy !");
+        }
     }
 
     render() {
@@ -54,4 +70,4 @@ class Login extends React.Component {
     }
 }
 
-export default Login;
+export default connect(mapStateToProps, mapActionsToProps)(Login);

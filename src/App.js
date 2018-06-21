@@ -16,6 +16,10 @@ import Signup from './components/User/Signup'
 import Forgot from './components/User/Forgot'
 import Reset from './components/User/Reset'
 
+// Toast
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const PageWrapper = styled.div`
     height: 100%;
     display: flex;
@@ -51,10 +55,11 @@ class App extends React.Component {
                             </Switch>
                         </MainWrapper>
                     <Footer />
+                    <ToastContainer />
                 </PageWrapper>
             </ThemeProvider>
         );
     }
 }
 
-export default App;
+export default App
