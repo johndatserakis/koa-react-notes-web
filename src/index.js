@@ -10,7 +10,7 @@ import store from 'store'
 
 ReactDOM.render((
     <Provider store={store}>
-        <Router history={history} basename={process.env.PUBLIC_URL}>
+        <Router history={history}>
             <App />
         </Router>
     </Provider>
