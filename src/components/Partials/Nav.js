@@ -1,5 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
+import { connect } from 'react-redux';
+import { userLogout } from 'store/actions/userActions';
+
 import 'assets/css/navbar.css'
 import {
     Collapse,
@@ -8,6 +11,13 @@ import {
     Nav,
     NavItem,
     NavLink } from 'reactstrap';
+
+const mapActionsToProps = { userLogout };
+const mapStateToProps = (state, props) => {
+    return {
+        user: state.user.user
+    }
+}
 
 class FullNav extends React.Component {
     constructor(props) {
@@ -23,6 +33,15 @@ class FullNav extends React.Component {
             isOpen: !this.state.isOpen
         });
     }
+    async logoutClicked(e) {
+        e.preventDefault()
+        try {
+            await this.props.userLogout()
+            this.props.history.push('/')
+        } catch (error) {
+            console.log(error)
+        }
+    }
     render() {
         return (
             <div className="navbar-section">
@@ -34,17 +53,30 @@ class FullNav extends React.Component {
                 <NavbarToggler onClick={this.toggle} />
                     <Collapse isOpen={this.state.isOpen} navbar>
 
-                        <Nav className="mr-auto" navbar>
-                            <NavItem>
-                                <Link to="/user/signup" className="nav-link">Signup</Link>
-                            </NavItem>
-                            <NavItem>
-                                <Link to="/user/login" className="nav-link">Login</Link>
-                            </NavItem>
-                            <NavItem>
-                                <Link to="/user/forgot" className="nav-link">Forgot</Link>
-                            </NavItem>
-                        </Nav>
+                        {this.props.user &&
+                            <Nav className="mr-auto" navbar>
+                                <NavItem>
+                                    <Link to="/dashboard" className="nav-link">Dashboard</Link>
+                                </NavItem>
+                                <NavItem>
+                                    <a href="# " onClick={this.logoutClicked.bind(this)} className="nav-link">Logout</a>
+                                </NavItem>
+                            </Nav>
+                        }
+
+                        {!this.props.user &&
+                            <Nav  className="mr-auto" navbar>
+                                <NavItem>
+                                    <Link to="/user/signup" className="nav-link">Signup</Link>
+                                </NavItem>
+                                <NavItem>
+                                    <Link to="/user/login" className="nav-link">Login</Link>
+                                </NavItem>
+                                <NavItem>
+                                    <Link to="/user/forgot" className="nav-link">Forgot</Link>
+                                </NavItem>
+                            </Nav>
+                        }
 
                         <Nav className="ml-auto" navbar>
                             <NavItem>
@@ -65,4 +97,4 @@ class FullNav extends React.Component {
     }
 }
 
-export default FullNav
+export default withRouter(connect(mapStateToProps, mapActionsToProps)(FullNav));

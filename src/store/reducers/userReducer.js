@@ -1,7 +1,20 @@
-const userReducer = (state = '', { type, payload }) => {
-    switch (type) {
-        case 'updateUser':
-            return payload
+const userReducer = (state = {}, action) => {
+    switch (action.type) {
+        case 'user:setUser':
+            return {
+                ...state,
+                user: action.payload
+            }
+        case 'user:setAccessToken':
+            return {
+                ...state,
+                accessToken: action.payload
+            }
+        case 'user:setRefreshToken':
+            return {
+                ...state,
+                refreshToken: action.payload
+            }
         default:
             return state
     }

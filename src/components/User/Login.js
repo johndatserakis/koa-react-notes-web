@@ -3,8 +3,8 @@ import { Button, Input, UserActionPanel } from 'theme/global'
 import { Container, Flex, Box } from 'theme/Grid'
 import { toast } from 'react-toastify'
 import { connect } from 'react-redux';
-import { updateUser, userActionLogin } from 'store/actions/userActions';
-const mapActionsToProps = {updateUser, userActionLogin};
+import { userActionLogin } from 'store/actions/userActions';
+const mapActionsToProps = { userActionLogin };
 const mapStateToProps = (state, props) => {
     return {
         user: state.user
@@ -15,8 +15,8 @@ class Login extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            username: '',
-            password: ''
+            username: 'demousername',
+            password: 'demopassword'
         }
 
         this.handleInputChange = this.handleInputChange.bind(this)
@@ -33,15 +33,17 @@ class Login extends React.Component {
         });
     }
 
-    handleSubmit(event) {
+    async handleSubmit(event) {
         event.preventDefault()
         try {
-            this.props.userActionLogin({
+            await this.props.userActionLogin({
                 username: this.state.username,
                 password: this.state.password
             })
+            toast.success('Logged in.');
+            this.props.history.push('/dashboard')
         } catch (error) {
-            toast("Wow so easy !");
+            toast.error('Hmm, those details don\'t seem right.');
         }
     }
 

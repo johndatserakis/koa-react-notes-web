@@ -51,7 +51,7 @@ const Button = styled.button`
         cursor: pointer;
     }
 
-    &:active, &:focus {
+    &:active {
         background: ${props => props ? darken(0.15, props.theme[props.styleType]) :darken(0.15, props.theme[props.blue])};
     }
 `
