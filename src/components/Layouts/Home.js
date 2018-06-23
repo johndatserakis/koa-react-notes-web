@@ -19,7 +19,7 @@ class Home extends React.Component {
                         <p>Here will be a check to see if you are currently logged in and your user info.</p>
 
                         {this.props.user
-                            ? <p>{this.props.user.username}</p>
+                            ? <p>Username: {this.props.user.username}</p>
                             : <p>Hmm, doesn't look like you're logged in...</p>
 
                         }

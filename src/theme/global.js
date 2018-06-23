@@ -33,6 +33,15 @@ injectGlobal`
     #root {
         height: 100%;
     }
+
+    input:not(:placeholder-shown):valid {
+        border: 1px solid green;
+    }
+
+    input:not(:placeholder-shown):invalid {
+        border: 1px solid #E15358;
+        background: #e4c8c9;
+    }
 `
 
 // Button

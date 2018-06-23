@@ -51,16 +51,30 @@ class Login extends React.Component {
         return (
             <Container>
                 <Flex>
-                    <Box width={[1, 1/2]} mx="auto" pt={4}>
+                    <Box width={[1, 1/2]} mx="auto" py={4}>
                         <UserActionPanel>
                             <h1>Login</h1>
 
                             <form onSubmit={this.handleSubmit}>
                                 <label>Username</label>
-                                <Input type="text" name="username" value={this.state.username} onChange={this.handleInputChange} />
+                                <Input
+                                    type="text"
+                                    name="username"
+                                    placeholder=" "
+                                    value={this.state.username}
+                                    onChange={this.handleInputChange}
+                                    required
+                                />
 
                                 <label>Password</label>
-                                <Input type="password" name="password" value={this.state.password} onChange={this.handleInputChange} />
+                                <Input
+                                    type="password"
+                                    name="password"
+                                    placeholder=" "
+                                    value={this.state.password}
+                                    onChange={this.handleInputChange}
+                                    required
+                                />
 
                                 <Button styleType="green" className="mt-2 w-100" type="submit" value="Submit">Login</Button>
                             </form>

@@ -73,7 +73,41 @@ export const userActionLogin = (data) => {
             await dispatch(setUserAndTokens(result.data))
             return Promise.resolve()
         } catch (error) {
-            throw new Error(error)
+            throw new Error(error.response.data.message)
+        }
+    }
+}
+
+export const userActionSignup = (data) => {
+    return async dispatch => {
+        try {
+            await axios.post('user/signup', data)
+            return Promise.resolve()
+        } catch (error) {
+            throw new Error(error.response.data.message)
+        }
+    }
+}
+
+export const userActionForgot = (data) => {
+    return async dispatch => {
+        try {
+            await axios.post('user/forgot', data)
+            return Promise.resolve()
+        } catch (error) {
+            throw new Error(error.response.data.message)
+        }
+    }
+}
+
+export const userActionReset = (data) => {
+    return async dispatch => {
+        try {
+            await axios.post('user/resetPassword', data)
+            return Promise.resolve()
+        } catch (error) {
+            console.log(error)
+            throw new Error(error.response.data.message)
         }
     }
 }

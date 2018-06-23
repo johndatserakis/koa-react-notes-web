@@ -10,6 +10,7 @@
     "grid-styled": "^4.1.1",
     "jwt-decode": "^2.2.0",
     "polished": "^1.9.2",
+    "query-string": "^6.1.0",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-redux": "^5.0.7",
