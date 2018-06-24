@@ -10,7 +10,7 @@ const allReducers = combineReducers({
 
 const allStoreEnhancers = compose(
     applyMiddleware(thunk),
-    window.devToolsExtension && window.devToolsExtension()
+    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 );
 
 const store = createStore(allReducers, {}, allStoreEnhancers)
