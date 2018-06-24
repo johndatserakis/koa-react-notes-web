@@ -10,3 +10,7 @@
     padding-left: 0;
     padding-right: 90;
 }
+
+.navbar-dark .navbar-nav .nav-link {
+    color: #fff;
+}

@@ -5,8 +5,8 @@ import { toast } from 'react-toastify'
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom'
 import qs from 'query-string'
-import { saveNote, getNote } from 'store/actions/notesActions';
-const mapActionsToProps = { saveNote, getNote };
+import { saveNote, getNote, deleteNote } from 'store/actions/notesActions';
+const mapActionsToProps = { saveNote, getNote, deleteNote };
 const mapStateToProps = (state, props) => {
     return {
         user: state.user
@@ -24,9 +24,6 @@ class EditNote extends React.Component {
 
         this.handleInputChange = this.handleInputChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
-
-        console.log(this.props.location.search)
-        console.log(qs.parse(this.props.location.search).id)
 
         if (!qs.parse(this.props.location.search).id) {
             this.props.history.push('/dashboard')
@@ -71,6 +68,17 @@ class EditNote extends React.Component {
         }
     }
 
+    async deleteButtonClicked(e) {
+        e.preventDefault()
+        try {
+            await this.props.deleteNote(this.state.noteId)
+            this.props.history.push('/dashboard')
+            toast.success('Note deleted.');
+        } catch (error) {
+            toast.error('Hmm, there was an issue connection to the server. Please try again.');
+        }
+    }
+
     render() {
         return (
             <Container>
@@ -99,8 +107,13 @@ class EditNote extends React.Component {
                                 required
                             ></TextArea>
 
-                            <Button styleType="green" className="mt-2 w-100" type="submit" value="Submit">Save</Button>
+                            <Button styleType="green" className="mt-2 w-100" type="submit" value="Submit"><i className="fa fa-save fa-fw"></i> Save</Button>
                         </form>
+
+                        <Button styleType="red" className="mt-4" onClick={this.deleteButtonClicked.bind(this)}>
+                            <i className="fa fa-trash fa-fw"></i>
+                            Delete Note
+                        </Button>
 
                     </Box>
                 </Flex>

@@ -9,7 +9,8 @@ export const themeMain = {
     darkGrey: '#bbb',
     blue: '#488ED8',
     yellow: 'yellow',
-    green: '#52C989'
+    green: '#52C989',
+    red: 'red'
 }
 
 // For gloabl css

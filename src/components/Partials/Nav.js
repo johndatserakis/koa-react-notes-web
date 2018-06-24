@@ -80,7 +80,10 @@ class FullNav extends React.Component {
 
                         <Nav className="ml-auto" navbar>
                             <NavItem>
-                                <NavLink href="https://github.com/johndatserakis/koa-vue-notes-web">Web Code Code On GitHub</NavLink>
+                                <NavLink href="https://koa-vue-notes-web.innermonkdesign.com/">Visit the Vue Version!</NavLink>
+                            </NavItem>
+                            <NavItem>
+                                <NavLink href="https://github.com/johndatserakis/koa-react-notes-web">Web Code Code On GitHub</NavLink>
                             </NavItem>
                             <NavItem>
                                 <NavLink href="https://github.com/johndatserakis/koa-vue-notes-api">API Code On GitHub</NavLink>

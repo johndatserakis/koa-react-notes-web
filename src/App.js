@@ -2,6 +2,7 @@ import React from 'react';
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux';
 import { setUserAndTokens } from 'store/actions/userActions';
+import { getNotes } from 'store/actions/notesActions';
 
 import styled, { ThemeProvider } from 'styled-components';
 import { themeMain } from 'theme/global'
@@ -38,7 +39,8 @@ const MainWrapper = styled.div`
     flex: 1 0 auto;
 `;
 
-const mapActionsToProps = { setUserAndTokens };
+// Store actions and props
+const mapActionsToProps = { setUserAndTokens, getNotes };
 const mapStateToProps = (state, props) => {
     return {
         user: state.user.user
@@ -55,7 +57,14 @@ class App extends React.Component {
     }
 
     async componentWillMount() {
+        // Check and set the user
         await this.checkUserStatus()
+
+        // Here we'll want to any data that's needed if
+        // the user is logged in.
+        if (this.props.user) {
+            await this.loadProgramData()
+        }
         this.setState({loading: false})
     }
 
@@ -66,6 +75,15 @@ class App extends React.Component {
             await this.props.setUserAndTokens({accessToken: accessToken, refreshToken: refreshToken})
         }
         return Promise.resolve()
+    }
+
+    async loadProgramData() {
+        await this.props.getNotes({
+            sort: '',
+            order: 'desc',
+            page: 0,
+            limit: 10000 // turning off paging for now
+        })
     }
 
     render() {
