@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, Input, UserActionPanel } from 'theme/global'
 import { Container, Flex, Box } from 'theme/Grid'
-import qs from 'qs'
+import qs from 'query-string'
 import { toast } from 'react-toastify'
 import { connect } from 'react-redux';
 import { userActionReset } from 'store/actions/userActions';

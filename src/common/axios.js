@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-var instance = axios.create({
+let instance = axios.create({
     baseURL: process.env.REACT_APP_API_URL + '/api/v1',
 })
 

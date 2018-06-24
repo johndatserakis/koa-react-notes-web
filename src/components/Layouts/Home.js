@@ -15,7 +15,6 @@ class Home extends React.Component {
                 <Flex>
                     <Box width={1} py={4}>
                         <h1><strong>Home</strong></h1>
-                        <p>Note: Not yet fully functional. Please stand by. Vist <a href="https://koa-vue-notes-web.innermonkdesign.com/">https://koa-vue-notes-web.innermonkdesign.com/</a> for a working Vue version.</p>
                         <p>Here will be a check to see if you are currently logged in and your user info.</p>
 
                         {this.props.user
@@ -25,6 +24,8 @@ class Home extends React.Component {
                         }
 
                         <p><i className="fa fa-info-circle fa-fw"></i> This is a simple SPA built using Koa (2.5.1) as the backend and React (2.5.16) as the frontend. If you don't want to create an account you can just use demousername and demopassword to login to the app.</p>
+
+                        <p>This site has a sister! Visit it here - <a href="https://koa-vue-notes-web.innermonkdesign.com/" target="_blank" rel="noopener noreferrer">https://koa-vue-notes-web.innermonkdesign.com/</a>. It's the exact same app - but written in Vue!</p>
 
                         <p>
                             <a href="https://github.com/johndatserakis/koa-react-notes-web" target="_blank" rel="noopener noreferrer"><img src="https://img.shields.io/badge/frontend--social.svg?style=social" alt="" /></a>

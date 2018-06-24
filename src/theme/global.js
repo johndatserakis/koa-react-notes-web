@@ -2,10 +2,11 @@ import styled, { injectGlobal } from 'styled-components'
 import { darken } from 'polished';
 
 // Set main theme variables
-const themeMain = {
+export const themeMain = {
     white: '#FFFFFF',
     black: '#333333',
     grey: '#eeeeee',
+    darkGrey: '#bbb',
     blue: '#488ED8',
     yellow: 'yellow',
     green: '#52C989'
@@ -45,7 +46,7 @@ injectGlobal`
 `
 
 // Button
-const Button = styled.button`
+export const Button = styled.button`
     font-size: 1.1rem;
     border-radius: 4px;
     padding: 0.25rem 1rem;
@@ -56,17 +57,17 @@ const Button = styled.button`
     text-transform: uppercase;
 
     &:hover {
-        background: ${props => props ? darken(0.10, props.theme[props.styleType]) :darken(0.10, props.theme[props.blue])};
+        background: ${props => props ? darken(0.10, props.theme[props.styleType]) : darken(0.10, props.theme[props.blue])};
         cursor: pointer;
     }
 
     &:active {
-        background: ${props => props ? darken(0.15, props.theme[props.styleType]) :darken(0.15, props.theme[props.blue])};
+        background: ${props => props ? darken(0.15, props.theme[props.styleType]) : darken(0.15, props.theme[props.blue])};
     }
 `
 
 // Input
-const Input = styled.input`
+export const Input = styled.input`
     display: block;
     width: 100%;
     padding: .375rem .75rem;
@@ -75,18 +76,31 @@ const Input = styled.input`
     color: ${props => props.theme.black};
     background-color: ${props => props.theme.white};
     background-clip: padding-box;
-    border: 1px solid ${props => props.theme.grey};
+    border: 1px solid ${props => props.theme.darkGrey};
+    border-radius: 4px;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    margin-bottom: 15px;
+`;
+
+export const TextArea = styled.textarea`
+    display: block;
+    width: 100%;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: ${props => props.theme.black};
+    background-color: ${props => props.theme.white};
+    background-clip: padding-box;
+    border: 1px solid ${props => props.theme.darkGrey};
     border-radius: 4px;
     transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
     margin-bottom: 15px;
 `;
 
 // User
-const UserActionPanel = styled.div`
+export const UserActionPanel = styled.div`
     background: ${props => props.theme.blue};
     color: ${props => props.theme.white};
     padding: 30px 20px;
     border-radius: 4px;
 `;
-
-export { themeMain, Button, Input, UserActionPanel }

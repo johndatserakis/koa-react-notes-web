@@ -21,6 +21,8 @@ import Reset from './components/User/Reset'
 
 // Program
 import Dashboard from './components/Program/Dashboard'
+import CreateNote from './components/Program/CreateNote'
+import EditNote from './components/Program/EditNote'
 
 // Toast
 import { ToastContainer } from 'react-toastify';
@@ -44,20 +46,33 @@ const mapStateToProps = (state, props) => {
 }
 
 class App extends React.Component {
-    componentWillMount() {
-        this.checkUserStatus()
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            loading: true
+        }
+    }
+
+    async componentWillMount() {
+        await this.checkUserStatus()
+        this.setState({loading: false})
     }
 
     async checkUserStatus() {
         let accessToken = localStorage.getItem('accessToken') ? localStorage.getItem('accessToken') : null
         let refreshToken = localStorage.getItem('refreshToken') ? localStorage.getItem('refreshToken') : null
-
         if (accessToken) {
             await this.props.setUserAndTokens({accessToken: accessToken, refreshToken: refreshToken})
         }
+        return Promise.resolve()
     }
 
     render() {
+        if (this.state.loading) {
+            return ''
+        }
+
         return (
             <ThemeProvider theme={themeMain}>
                 <PageWrapper>
@@ -74,13 +89,19 @@ class App extends React.Component {
                                 <Route path="/dashboard" render={() => (
                                     (this.props.user) ? <Dashboard /> : <Redirect to="/" />
                                 )}/>
+                                <Route path="/createNote" render={() => (
+                                    (this.props.user) ? <CreateNote /> : <Redirect to="/" />
+                                )}/>
+                                <Route path="/editNote" render={() => (
+                                    (this.props.user) ? <EditNote /> : <Redirect to="/" />
+                                )}/>
                             </Switch>
                         </MainWrapper>
                     <Footer />
                     <ToastContainer hideProgressBar={true} autoClose={2500} />
                 </PageWrapper>
             </ThemeProvider>
-        );
+        )
     }
 }
 

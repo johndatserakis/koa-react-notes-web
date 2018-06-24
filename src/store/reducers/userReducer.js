@@ -1,4 +1,4 @@
-const userReducer = (state = {}, action) => {
+const userReducer = (state = {user: null, accessToken: null, refreshToken: null}, action) => {
     switch (action.type) {
         case 'user:setUser':
             return {
