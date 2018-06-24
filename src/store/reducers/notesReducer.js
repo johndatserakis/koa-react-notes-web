@@ -1,5 +1,4 @@
 const notesReducer = (state = {notes: []}, action) => {
-    console.log(action)
     switch (action.type) {
         case 'notes:addNotes':
             return {

@@ -15,12 +15,12 @@ class Signup extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            firstName: 'John',
-            lastName: 'Datserakis',
-            username: 'demousername',
-            email: 'johndatserakis@gmail.com',
-            password: 'demopassword',
-            passwordConfirm: 'demopassword'
+            firstName: '',
+            lastName: '',
+            username: '',
+            email: '',
+            password: '',
+            passwordConfirm: ''
         }
 
         this.passwordConfirmElement = React.createRef()
