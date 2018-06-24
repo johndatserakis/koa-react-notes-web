@@ -1,4 +1,5 @@
-import { applyMiddleware, compose, combineReducers, createStore } from 'redux'
+import { applyMiddleware, combineReducers, createStore } from 'redux'
+    import { composeWithDevTools } from 'redux-devtools-extension/logOnlyInProduction';
 import thunk from 'redux-thunk';
 import userReducer from 'store/reducers/userReducer'
 import notesReducer from 'store/reducers/notesReducer'
@@ -8,11 +9,12 @@ const allReducers = combineReducers({
     notes: notesReducer
 })
 
-const allStoreEnhancers = compose(
-    applyMiddleware(thunk),
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-);
+const compose = composeWithDevTools({})
 
-const store = createStore(allReducers, {}, allStoreEnhancers)
+const middleware = compose(
+    applyMiddleware(thunk)
+)
+
+const store = createStore(allReducers, {}, middleware)
 
 export default store
