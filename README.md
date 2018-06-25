@@ -46,8 +46,7 @@ When cloning the project you'll want to take each `.env` file and remove `.examp
 
 ### router
 
-React-router is definitely nice - it's just a little tricky to get used to at first. The history prop I pass to `Router` in `index.js` is from a custom export. To navigate to another page, use `this.props.history.push('/dashboard')` - and if you're not in a direct decedent of the initial router switch statement setup, you'll need to use the `withRouter` Higher Order Component export that `react-router` offers. Note - actual routes are declared in `App.js`.
-
+React-router is definitely nice - it's just a little tricky to get used to at first. The history prop I pass to `Router` in `index.js` is from a custom export. To navigate to another page, use `this.props.history.push('/dashboard')` - and if you're not in a direct decedent of the initial router switch statement setup, you'll need to use the `withRouter` Higher Order Component export that `react-router` offers. Note - actual routes are declared in `App.js`. Also note that I'm using `HashRouter` here - as GitHub pages doesn't support an `.htaccess` or `index.html` redirect. If you're deploying your apps more where you have control of the server, use `Router` instead of `HashRouter` and you won't have the hash in the url.
 
 ### redux
 
