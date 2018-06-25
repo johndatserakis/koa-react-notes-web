@@ -4,7 +4,8 @@ import { Container, Flex, Box } from 'theme/Grid'
 import { toast } from 'react-toastify'
 import { connect } from 'react-redux';
 import { userActionLogin } from 'store/actions/userActions';
-const mapActionsToProps = { userActionLogin };
+import { getNotes } from 'store/actions/notesActions';
+const mapActionsToProps = { userActionLogin, getNotes };
 const mapStateToProps = (state, props) => {
     return {
         user: state.user
@@ -41,6 +42,16 @@ class Login extends React.Component {
                 password: this.state.password
             })
             toast.success('Logged in.');
+
+            // Ok, here we have to load any program data because the
+            // user wasn't loggen in at first
+            await this.props.getNotes({
+                sort: '',
+                order: 'desc',
+                page: 0,
+                limit: 10000 // turning off paging for now
+            })
+
             this.props.history.push('/dashboard')
         } catch (error) {
             toast.error('Hmm, those details don\'t seem right.');

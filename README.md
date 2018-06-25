@@ -70,7 +70,7 @@ I've utilized the great Axios `axios.interceptors.response` utility to capture t
 
 Here's where a chunk of the app takes place. The routes are declared in the render function. You'll also notice a few routes only allow entry if the user is logged in. That can be useful if you're trying to protect some routes - like we are here with `Dashboard`, `CreateNote`, and `EditNote`.
 
-A little bit of setup has to happen when the app loads from a refresh - first we have to check to see if our user is logged in through localStorage. If they are, we'll populate our redux store accordingly. Then, if they're logged in, we'll load any program data that's needed. In this case - that's their notes. All of this is done in `componentWillMount` - and when that's done we set the state variable `loading` to false - so that actual app loads.
+A little bit of setup has to happen when the app loads from a refresh - first we have to check to see if our user is logged in through localStorage. If they are, we'll populate our redux store accordingly. Then, if they're logged in, we'll load any program data that's needed. In this case - that's their notes. All of this is done in `componentWillMount` - and when that's done we set the state variable `loading` to false - so that actual app loads. Note - this program data loading is also done in the user login call.
 
 ### theme/global.js
 
