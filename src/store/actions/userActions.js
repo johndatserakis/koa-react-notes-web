@@ -167,7 +167,7 @@ axios.interceptors.response.use(undefined, async (error) => {
             error.config.__isRetryRequest = true
             return axios(error.config)
         } catch (error) {
-            // console.log('1')
+            console.log('1')
             logoutOfProgram()
             return Promise.reject(error)
         }
