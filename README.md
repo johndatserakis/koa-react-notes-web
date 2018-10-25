@@ -42,7 +42,7 @@ This project changes that up a bit - and is the same `koa-vue-notes-web` app, bu
 
 ### .env Files
 
-When cloning the project you'll want to take each `.env` file and remove `.example` from it. This is where I set a few environmental variables for the project's use. Some highlights are `NODE_PATH=src` in the `.env` file - that let's you easily import files from anywhere in your app using `src` as the root. Another important one is `REACT_APP_API_URL` - that's where I set the base url for `axios` - it's different in development and production.
+When cloning the project you'll want to take each `.env` file and remove `.example` from it. This is where I set a few environmental variables for the project's use. Some highlights are `NODE_PATH=src` in the `.env` file - that let's you easily import files from anywhere in your app using `src` as the root. Another important one is `REACT_APP_API_URL` - that's where I set the base url for `axios` - it's different in development and production. Make sure to do this or the app won't work/build.
 
 ### router
 
