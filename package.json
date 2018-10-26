@@ -26,7 +26,7 @@
   },
   "scripts": {
     "watch": "react-scripts start",
-    "build": "rm -rf ./docs && react-scripts build && mv build docs",
+    "build": "rm -rf ./dist && react-scripts build && mv build dist",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   }
