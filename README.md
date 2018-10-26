@@ -8,7 +8,7 @@
 
 # Koa-React-Notes-Web
 
-This is a simple SPA built using [Koa](http://koajs.com/) (2.5.1) as the backend and [React](https://reactjs.org/) (16.4.1) as the frontend. Click [here](https://github.com/johndatserakis/koa-vue-notes-api) to see the backend Koa code. Click [here](https://koa-vue-notes-web.innermonkdesign.com/) to view the app live. Also, you can check out [koa-vue-notes-web](https://github.com/johndatserakis/koa-vue-notes-web) for the Vue implementation of this exact project! You can also check out the [koa-vue-notes-project](https://github.com/johndatserakis/koa-vue-notes-project) repo if you like to have both your frontend and backend living within the same folder (that one's using the Vue version).
+This is a simple SPA built using [Koa](http://koajs.com/) (2.5.1) as the backend and [React](https://reactjs.org/) (16.4.1) as the frontend. Click [here](https://github.com/johndatserakis/koa-vue-notes-api) to see the backend Koa code. Click [here](https://koa-vue-notes-web.innermonkdesign.com/) to view the app live. Also, you can check out [koa-vue-notes-web](https://koa-react-notes-web.innermonkdesign.com) for the Vue implementation of this exact project! You can also check out the [koa-vue-notes-project](https://github.com/johndatserakis/koa-vue-notes-project) repo if you like to have both your frontend and backend living within the same folder (that one's using the Vue version).
 
 ### Features
 - React 16.4.1 (Initialized by create-react-app)
@@ -36,7 +36,7 @@ npm run build
 
 ### General Information
 
-For information on this project you can check out [koa-vue-notes-api](https://github.com/johndatserakis/koa-vue-notes-api) or [koa-vue-notes-web](https://github.com/johndatserakis/koa-vue-notes-web). The project's general concept is to create a simple notes in using modern technologies. Initially, Koa-Vue-Notes was an app that used Koa on the backend and Vue on the frontend.
+For information on this project you can check out [koa-vue-notes-api](https://github.com/johndatserakis/koa-vue-notes-api) or [koa-vue-notes-web](https://koa-react-notes-web.innermonkdesign.com). The project's general concept is to create a simple notes in using modern technologies. Initially, Koa-Vue-Notes was an app that used Koa on the backend and Vue on the frontend.
 
 This project changes that up a bit - and is the same `koa-vue-notes-web` app, but written in React. This is perfect for someone who wants to take a good look at both frameworks a little bit more in depth than the usually tutoral blog posts.
 
@@ -46,7 +46,7 @@ When cloning the project you'll want to take each `.env` file and remove `.examp
 
 ### router
 
-React-router is definitely nice - it's just a little tricky to get used to at first. The history prop I pass to `Router` in `index.js` is from a custom export. To navigate to another page, use `this.props.history.push('/dashboard')` - and if you're not in a direct decedent of the initial router switch statement setup, you'll need to use the `withRouter` Higher Order Component export that `react-router` offers. Note - actual routes are declared in `App.js`. Also note that I'm using `HashRouter` here - as GitHub pages doesn't support an `.htaccess` or `index.html` redirect. If you're deploying your apps more where you have control of the server, use `Router` instead of `HashRouter` and you won't have the hash in the url.
+React-router is definitely nice - it's just a little tricky to get used to at first. To navigate to another page, use `this.props.history.push('/dashboard')` - and if you're not in a direct decedent of the initial router switch statement setup, you'll need to use the `withRouter` Higher Order Component export that `react-router` offers. Note - actual routes are declared in `App.js`.
 
 ### redux
 
