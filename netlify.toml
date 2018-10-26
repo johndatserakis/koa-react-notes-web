@@ -2,7 +2,7 @@
 [build]
    base    = ""
    publish = "dist/"
-   command = "sed -i s/API_URL_PLACEHOLDER/$API_URL/g netlify.toml && NODE_PATH=src REACT_APP_API_URL="" npm run build"
+   command = "sed -i s/API_URL_PLACEHOLDER/$API_URL/g netlify.toml && NODE_PATH=src REACT_APP_API_URL='' npm run build"
 
 # Redirects
 [[redirects]]
