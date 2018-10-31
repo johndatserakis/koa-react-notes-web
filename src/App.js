@@ -78,17 +78,12 @@ class App extends React.Component {
     }
 
     async loadProgramData() {
-        try {
-            await this.props.getNotes({
-                sort: '',
-                order: 'desc',
-                page: 0,
-                limit: 10000 // turning off paging for now
-            })
-        } catch (error) {
-            console.log('here in error')
-            // Dont' handle error here
-        }
+        await this.props.getNotes({
+            sort: '',
+            order: 'desc',
+            page: 0,
+            limit: 10000 // turning off paging for now
+        })
     }
 
     render() {

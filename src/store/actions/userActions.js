@@ -111,7 +111,6 @@ export const userActionReset = (data) => {
             await axios.post('user/resetPassword', data)
             return Promise.resolve()
         } catch (error) {
-            console.log(error)
             throw new Error(error.response.data.message)
         }
     }
@@ -165,9 +164,11 @@ axios.interceptors.response.use(undefined, async (error) => {
             await store.dispatch(setUserAndTokens({accessToken: response.data.accessToken, refreshToken: response.data.refreshToken}))
             error.config.headers['Authorization'] = 'Bearer ' + store.getState().user.accessToken
             error.config.__isRetryRequest = true
+            // error.config.baseURL needs to be zeroed out to prevent tripping over
+            // the baseURL we set in our main axios instance
+            error.config.baseURL = ''
             return axios(error.config)
         } catch (error) {
-            console.log('1')
             logoutOfProgram()
             return Promise.reject(error)
         }
@@ -175,14 +176,12 @@ axios.interceptors.response.use(undefined, async (error) => {
 
     // This is for a user that isn't logged in correctly
     if (error.response.status === 401 && error.response.data.message === 'AUTHENTICATION_ERROR') {
-        // console.log('2')
         logoutOfProgram()
         return Promise.reject(error)
     }
 
     // This is for a user that isn't logged in correctly
     if (error.response.status === 401 && error.response.data.message === 'INVALID_REFRESH_TOKEN') {
-        // console.log('3')
         logoutOfProgram()
         return Promise.reject(error)
     }
