@@ -20,10 +20,9 @@ class Home extends React.Component {
                         {this.props.user
                             ? <p>Username: {this.props.user.username}</p>
                             : <p>Hmm, doesn't look like you're logged in...</p>
-
                         }
 
-                        <p><i className="fa fa-info-circle fa-fw"></i> This is a simple SPA built using Koa (2.5.1) as the backend and React (2.5.16) as the frontend. If you don't want to create an account you can just use demousername and demopassword to login to the app.</p>
+                        <p><i className="fa fa-info-circle fa-fw"></i> This is a simple SPA built using Koa (2.5.1) as the backend and React (16.8.3) as the frontend. If you don't want to create an account you can just use demousername and demopassword to login to the app.</p>
 
                         <p>This site has a sister! Visit it here - <a href="https://koa-vue-notes-web.innermonkdesign.com/" target="_blank" rel="noopener noreferrer">https://koa-vue-notes-web.innermonkdesign.com/</a>. It's the exact same app - but written in Vue!</p>
 

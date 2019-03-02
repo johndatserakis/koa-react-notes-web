@@ -147,7 +147,7 @@ class Signup extends React.Component {
                                     required
                                     pattern="\S{8,}"
                                     title="Must be at least 8 characters with no spaces."
-                                    innerRef={this.passwordElement}
+                                    ref={this.passwordElement}
                                 />
 
                                 <label>Confirm Password</label>
@@ -158,7 +158,7 @@ class Signup extends React.Component {
                                     value={this.state.passwordConfirm}
                                     onChange={this.handleInputChange}
                                     onKeyUp={this.handleInputOnKeyup}
-                                    innerRef={this.passwordConfirmElement}
+                                    ref={this.passwordConfirmElement}
                                     title="Passwords must match."
                                 />
 

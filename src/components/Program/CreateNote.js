@@ -77,7 +77,9 @@ class CreateNote extends React.Component {
                                 required
                             ></TextArea>
 
-                            <Button styleType="green" className="mt-2 w-100" type="submit" value="Submit"><i className="fa fa-save fa-fw"></i> Save</Button>
+                            <Button styleType="green" className="mt-2 w-100" type="submit" value="Submit"><i className="fa fa-save fa-fw"></i>
+                                Save
+                            </Button>
                         </form>
 
                     </Box>

@@ -8,17 +8,17 @@
 
 # Koa-React-Notes-Web
 
-This is a simple SPA built using [Koa](http://koajs.com/) (2.5.1) as the backend and [React](https://reactjs.org/) (16.4.1) as the frontend. Click [here](https://github.com/johndatserakis/koa-vue-notes-api) to see the backend Koa code. Click [here](https://koa-vue-notes-web.innermonkdesign.com/) to view the app live. Also, you can check out [koa-vue-notes-web](https://koa-vue-notes-web.innermonkdesign.com) for the Vue implementation of this exact project! You can also check out the [koa-vue-notes-project](https://github.com/johndatserakis/koa-vue-notes-project) repo if you like to have both your frontend and backend living within the same folder (that one's using the Vue version).
+This is a simple SPA built using [Koa](http://koajs.com/) (2.5.1) as the backend and [React](https://reactjs.org/) (16.8.3) as the frontend. Click [here](https://github.com/johndatserakis/koa-vue-notes-api) to see the backend Koa code. Click [here](https://koa-vue-notes-web.innermonkdesign.com/) to view the app live. Also, you can check out [koa-vue-notes-web](https://koa-vue-notes-web.innermonkdesign.com) for the Vue implementation of this exact project! You can also check out the [koa-vue-notes-project](https://github.com/johndatserakis/koa-vue-notes-project) repo if you like to have both your frontend and backend living within the same folder (that one's using the Vue version).
 
 ### Features
-- React 16.4.1 (Initialized by create-react-app)
-- Redux 4.0.0
+- React 16.8.3 (Initialized by create-react-app)
+- Redux 4.0.1
 - React-Router 4.3.1
 - Redux-Thunks
 - Styled-Components
 - Axios
 - ReactStrap
-- Bootstrap 4.1.1
+- Bootstrap 4.3.1
 - And more...
 
 ### Installing / Getting started
@@ -76,10 +76,6 @@ A little bit of setup has to happen when the app loads from a refresh - first we
 In `global.js` is where you'll find the main styles for the app. All the style is done here actually - except for a few lines of css imported into the Nav.
 
 Here you can get a good look at the styled-components usage for the program. Honestly, my favorite thing about the React ecosystem has been styled-components I think. What an interesting and clean way to style you components. I like it so much I opted to use `grid-styled` for my grid instead of Bootstrap like I usually do. I do still have Bootstrap installed though - along with ReactStrap - mainly for the navbar. It's a nice one, and is super easy to setup and use - check it out in `Nav.js`.
-
-### TODO
-
-- Add tests
 
 ### Hit Me Up
 

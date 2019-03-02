@@ -89,7 +89,7 @@ class FullNav extends React.Component {
                                 <NavLink href="https://github.com/johndatserakis/koa-vue-notes-api">API Code</NavLink>
                             </NavItem>
                             <NavItem>
-                                <NavLink href="https://github.com/reactstrap/reactstrap"><i className="fa fa-info-circle"></i></NavLink>
+                                <NavLink href="https://github.com/johndatserakis/"><i className="fa fa-info-circle"></i></NavLink>
                             </NavItem>
                         </Nav>
 

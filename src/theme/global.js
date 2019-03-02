@@ -1,4 +1,4 @@
-import styled, { injectGlobal } from 'styled-components'
+import styled, { createGlobalStyle } from 'styled-components'
 import { darken } from 'polished';
 
 // Set main theme variables
@@ -14,9 +14,9 @@ export const themeMain = {
 }
 
 // For gloabl css
-injectGlobal`
-    @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700');
-    @import url('https://cdn.jsdelivr.net/fontawesome/4.7.0/css/font-awesome.min.css');
+export const GlobalStyle = createGlobalStyle`
+    // @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700');
+    // @import url('https://cdn.jsdelivr.net/fontawesome/4.7.0/css/font-awesome.min.css');
 
     html {
         position: relative;
@@ -83,6 +83,7 @@ export const Input = styled.input`
     margin-bottom: 15px;
 `;
 
+// TextArea
 export const TextArea = styled.textarea`
     display: block;
     width: 100%;

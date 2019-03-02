@@ -5,7 +5,7 @@ import { setUserAndTokens } from 'store/actions/userActions';
 import { getNotes } from 'store/actions/notesActions';
 
 import styled, { ThemeProvider } from 'styled-components';
-import { themeMain } from 'theme/global'
+import { themeMain, GlobalStyle } from 'theme/global'
 
 // Partials
 import Nav from './components/Partials/Nav'
@@ -52,7 +52,7 @@ class App extends React.Component {
         super(props)
 
         this.state = {
-            loading: true
+            isLoadingUserInfo: true
         }
     }
 
@@ -65,7 +65,7 @@ class App extends React.Component {
         if (this.props.user) {
             await this.loadProgramData()
         }
-        this.setState({loading: false})
+        this.setState({isLoadingUserInfo: false})
     }
 
     async checkUserStatus() {
@@ -87,13 +87,14 @@ class App extends React.Component {
     }
 
     render() {
-        if (this.state.loading) {
+        if (this.state.isLoadingUserInfo) {
             return ''
         }
 
         return (
             <ThemeProvider theme={themeMain}>
                 <PageWrapper>
+                    <GlobalStyle />
                     <Nav />
                         <MainWrapper>
                             <Switch>
