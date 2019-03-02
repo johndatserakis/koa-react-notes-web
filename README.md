@@ -32,6 +32,8 @@ npm run watch
 
 # build for production
 npm run build
+
+# run tests
 ```
 
 ### General Information
