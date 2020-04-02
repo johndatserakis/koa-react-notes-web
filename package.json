@@ -3,25 +3,38 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@craco/craco": "^5.6.4",
+    "@reduxjs/toolkit": "^1.0.4",
     "@testing-library/jest-dom": "^5.1.1",
     "@testing-library/react": "^10.0.1",
     "@testing-library/user-event": "^10.0.0",
+    "@types/classnames": "^2.2.9",
     "@types/jest": "^25.1.4",
     "@types/node": "^13.9.3",
+    "@types/parse-link-header": "^1.0.0",
     "@types/react": "^16.9.0",
     "@types/react-dom": "^16.9.0",
+    "@types/react-paginate": "^6.2.1",
     "@types/react-redux": "^7.1.7",
     "@types/react-router-dom": "^5.1.3",
     "@types/styled-components": "^5.0.1",
+    "@types/webpack-env": "^1.14.0",
     "antd": "^4.0.4",
     "axios": "^0.19.2",
     "bootstrap": "^4.3.1",
+    "classnames": "^2.2.6",
+    "craco-antd": "^1.14.1",
     "grid-styled": "^5.0.2",
     "jwt-decode": "^2.2.0",
+    "node-sass": "^4.13.1",
+    "parse-link-header": "^1.0.1",
     "polished": "^3.0.2",
     "query-string": "^6.2.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-grid-system": "^6.3.0",
+    "react-markdown": "^4.1.0",
+    "react-paginate": "^6.3.0",
     "react-redux": "^7.2.0",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.1",
@@ -36,9 +49,9 @@
     "typescript": "~3.8.3"
   },
   "scripts": {
-    "watch": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test"
+    "watch": "craco start",
+    "build": "craco build",
+    "test": "craco test"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -47,7 +60,8 @@
     "production": [
       ">0.2%",
       "not dead",
-      "not op_mini all"
+      "not op_mini all",
+      "ie 10"
     ],
     "development": [
       "last 1 chrome version",

@@ -1,20 +1,11 @@
-import { applyMiddleware, combineReducers, createStore } from 'redux'
-import { composeWithDevTools } from 'redux-devtools-extension/logOnlyInProduction';
-import thunk from 'redux-thunk';
-import userReducer from 'store/reducers/userReducer'
-import notesReducer from 'store/reducers/notesReducer'
+import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
+import counterReducer from './counterSlice';
 
-const allReducers = combineReducers({
-  user: userReducer,
-  notes: notesReducer
-})
+export const store = configureStore({
+  reducer: {
+    counter: counterReducer,
+  },
+});
 
-const compose = composeWithDevTools({})
-
-const middleware = compose(
-  applyMiddleware(thunk)
-)
-
-const store = createStore(allReducers, {}, middleware)
-
-export default store
+export type RootState = ReturnType<typeof store.getState>;
+export type AppThunk = ThunkAction<void, RootState, unknown, Action<string>>;
