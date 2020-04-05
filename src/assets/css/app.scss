@@ -1,3 +1,12 @@
-body {
-  background: white;
-}
+// Sanitize
+@import "~sanitize.css";
+@import "~sanitize.css/forms.css";
+@import "~sanitize.css/typography.css";
+
+// Variables
+@import "components/variables.scss";
+
+// Components
+@import "components/main.scss";
+@import "components/vendor.scss";
+@import "components/program.scss";

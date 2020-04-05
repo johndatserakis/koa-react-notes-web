@@ -6,7 +6,7 @@ import {
   incrementByAmount,
   incrementAsync,
   selectCount,
-} from 'store/counterSlice';
+} from '@/store/counterSlice';
 import styles from './Counter.module.css';
 
 export const Counter = () => {

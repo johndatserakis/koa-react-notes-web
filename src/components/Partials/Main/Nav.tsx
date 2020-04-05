@@ -102,19 +102,21 @@
 
 // export default withRouter(connect(mapStateToProps, mapActionsToProps)(FullNav));
 
-import React, { Fragment } from "react";
+import React from "react";
+import { Menu, Layout } from "antd";
 
-import { Menu } from 'antd';
+const { Item } = Menu;
+const { Header } = Layout;
 
 export const Nav = () => {
   return (
-    <Fragment>
+    <Header>
       <div className="logo" />
-      <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']}>
-        <Menu.Item key="1">nav 1</Menu.Item>
-        <Menu.Item key="2">nav 2</Menu.Item>
-        <Menu.Item key="3">nav 3</Menu.Item>
+      <Menu theme="dark" mode="horizontal" defaultSelectedKeys={["2"]}>
+        <Item key="1">nav 1</Item>
+        <Item key="2">nav 2</Item>
+        <Item key="3">nav 3</Item>
       </Menu>
-    </Fragment>
+    </Header>
   )
 }
