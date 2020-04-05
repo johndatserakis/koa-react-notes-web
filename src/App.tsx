@@ -14,7 +14,8 @@ import { Footer } from "@/components/Partials/Main/Footer";
 import { Home } from "@/components/Layouts/Pages/Home";
 
 // // User
-// import Login from './components/User/Login'
+import { Layout } from "antd";
+import { Login } from "./components/User/Login";
 // import Signup from './components/User/Signup'
 // import Forgot from './components/User/Forgot'
 // import Reset from './components/User/Reset'
@@ -24,8 +25,6 @@ import { Home } from "@/components/Layouts/Pages/Home";
 // import CreateNote from './components/Program/CreateNote'
 // import EditNote from './components/Program/EditNote'
 
-
-import { Layout } from "antd";
 
 const { Content } = Layout;
 
@@ -37,7 +36,8 @@ export const App = () => (
       <Content style={{ padding: "50px" }}>
         <Switch>
           <Route exact path="/" component={Home} />
-          {/* <Route path='/user/login' component={Login} />
+          <Route path="/user/login" component={Login} />
+          {/*  />
             <Route path='/user/signup' component={Signup} />
             <Route path='/user/forgot' component={Forgot} />
             <Route path='/user/reset' component={Reset} />

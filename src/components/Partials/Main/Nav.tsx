@@ -1,120 +1,38 @@
-// import React from 'react';
-// import { Link, withRouter } from 'react-router-dom'
-// import { connect } from 'react-redux';
-// import { userLogout } from 'store/actions/userActions';
-
-// import 'assets/css/navbar.css'
-// import {
-//     Collapse,
-//     Navbar,
-//     NavbarToggler,
-//     Nav,
-//     NavItem,
-//     NavLink } from 'reactstrap';
-
-// const mapActionsToProps = { userLogout };
-// const mapStateToProps = (state, props) => {
-//     return {
-//         user: state.user.user
-//     }
-// }
-
-// class FullNav extends React.Component {
-//     constructor(props) {
-//         super(props);
-
-//         this.toggle = this.toggle.bind(this);
-//         this.state = {
-//             isOpen: false
-//         };
-//     }
-//     toggle() {
-//         this.setState({
-//             isOpen: !this.state.isOpen
-//         });
-//     }
-//     async logoutClicked(e) {
-//         e.preventDefault()
-//         try {
-//             await this.props.userLogout()
-//             this.props.history.push('/')
-//         } catch (error) {
-//             console.log(error)
-//         }
-//     }
-//     render() {
-//         return (
-//             <div className="navbar-section">
-//                 <Navbar dark expand="md">
-//                 <Link to="/" className="navbar-brand">
-//                     <i className="fa fa-sticky-note fa-fw"></i> Koa-React-Notes
-//                 </Link>
-
-//                 <NavbarToggler onClick={this.toggle} />
-//                     <Collapse isOpen={this.state.isOpen} navbar>
-
-//                         {this.props.user &&
-//                             <Nav className="mr-auto" navbar>
-//                                 <NavItem>
-//                                     <Link to="/dashboard" className="nav-link">Dashboard</Link>
-//                                 </NavItem>
-//                                 <NavItem>
-//                                     <a href="# " onClick={this.logoutClicked.bind(this)} className="nav-link">Logout</a>
-//                                 </NavItem>
-//                             </Nav>
-//                         }
-
-//                         {!this.props.user &&
-//                             <Nav  className="mr-auto" navbar>
-//                                 <NavItem>
-//                                     <Link to="/user/signup" className="nav-link">Signup</Link>
-//                                 </NavItem>
-//                                 <NavItem>
-//                                     <Link to="/user/login" className="nav-link">Login</Link>
-//                                 </NavItem>
-//                                 <NavItem>
-//                                     <Link to="/user/forgot" className="nav-link">Forgot</Link>
-//                                 </NavItem>
-//                             </Nav>
-//                         }
-
-//                         <Nav className="ml-auto" navbar>
-//                             <NavItem>
-//                                 <NavLink href="https://koa-vue-notes-web.innermonkdesign.com/">Visit the Vue Version!</NavLink>
-//                             </NavItem>
-//                             <NavItem>
-//                                 <NavLink href="https://github.com/johndatserakis/koa-react-notes-web">Web Code</NavLink>
-//                             </NavItem>
-//                             <NavItem>
-//                                 <NavLink href="https://github.com/johndatserakis/koa-vue-notes-api">API Code</NavLink>
-//                             </NavItem>
-//                             <NavItem>
-//                                 <NavLink href="https://github.com/johndatserakis/"><i className="fa fa-info-circle"></i></NavLink>
-//                             </NavItem>
-//                         </Nav>
-
-//                     </Collapse>
-//                 </Navbar>
-//             </div>
-//         );
-//     }
-// }
-
-// export default withRouter(connect(mapStateToProps, mapActionsToProps)(FullNav));
-
 import React from "react";
-import { Menu, Layout } from "antd";
-
-const { Item } = Menu;
-const { Header } = Layout;
+import { Nav as BoostrapNav, Navbar } from "react-bootstrap";
+import { LinkContainer } from "react-router-bootstrap";
+import logo from "@/assets/images/main/lockup-color.png";
 
 export const Nav = () => (
-  <Header>
-    <div className="logo" />
-    <Menu theme="dark" mode="horizontal" defaultSelectedKeys={["2"]}>
-      <Item key="1">nav 1</Item>
-      <Item key="2">nav 2</Item>
-      <Item key="3">nav 3</Item>
-    </Menu>
-  </Header>
+  <Navbar bg="light" expand="lg">
+    <Navbar.Brand href="#home">
+      <img
+        src={logo}
+        width="151"
+        height="21"
+        className="d-inline-block align-middle"
+        alt="React Bootstrap logo"
+      />
+    </Navbar.Brand>
+    <Navbar.Toggle aria-controls="basic-navbar-nav" />
+    <Navbar.Collapse id="basic-navbar-nav">
+      <BoostrapNav className="mr-auto">
+        {/* <BoostrapNav.Link href="#login">Login</BoostrapNav.Link> */}
+        <LinkContainer to="/user/login">
+          <BoostrapNav.Link>Login</BoostrapNav.Link>
+        </LinkContainer>
+        <LinkContainer to="/user/signup">
+          <BoostrapNav.Link>Signup</BoostrapNav.Link>
+        </LinkContainer>
+
+        {/* <NavDropdown title="Dropdown" id="basic-nav-dropdown">
+          <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
+          <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
+          <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+          <NavDropdown.Divider />
+          <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
+        </NavDropdown> */}
+      </BoostrapNav>
+    </Navbar.Collapse>
+  </Navbar>
 );

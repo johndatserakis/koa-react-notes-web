@@ -1,5 +1,5 @@
 import React from "react";
-import { Counter } from "@/components/Partials/Components/counter/Counter";
+// import { Counter } from "@/components/Partials/Components/counter/Counter";
 // import { connect } from 'react-redux';
 
 // const mapStateToProps = (state, props) => {
@@ -10,7 +10,7 @@ import { Counter } from "@/components/Partials/Components/counter/Counter";
 
 export const Home = () => (
   <div>
-    <Counter />
+    {/* <Counter /> */}
 
     <h1><strong>Home</strong></h1>
     <p>Here will be a check to see if you are currently logged in and your user info.</p>

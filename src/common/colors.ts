@@ -1,3 +1,5 @@
+// Keep updated with @/assets/components/_variables.scss
+
 export const black: string = "#000000";
 export const white: string = "#ffffff";
 
