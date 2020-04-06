@@ -20,6 +20,7 @@
     "@types/react-router-bootstrap": "^0.24.5",
     "@types/react-router-dom": "^5.1.3",
     "@types/styled-components": "^5.0.1",
+    "@types/uuid": "^7.0.2",
     "@types/webpack-env": "^1.14.0",
     "@types/yup": "^0.26.34",
     "antd": "^4.0.4",
@@ -55,6 +56,7 @@
     "styled-components": "^5.0.1",
     "typesafe-actions": "^5.1.0",
     "typescript": "~3.8.3",
+    "uuid": "^7.0.3",
     "yup": "^0.28.3"
   },
   "scripts": {

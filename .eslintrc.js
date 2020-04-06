@@ -23,7 +23,15 @@ module.exports = {
       }
     ],
     "no-param-reassign": 0,
-    "react/jsx-one-expression-per-line": "off"
+    "react/jsx-one-expression-per-line": "off",
+    "operator-linebreak": ["error", "after", { "overrides": { "??": "ignore", ":": "ignore" } }],
+    "jsx-a11y/label-has-associated-control": [ 2, {
+      "labelComponents": ["label"],
+      "labelAttributes": ["htmlFor"],
+      "controlComponents": ["Text"]
+    }],
+    "react/jsx-props-no-spreading": "off",
+    "react/destructuring-assignment": "off",
   },
   settings: {
     "import/resolver": {

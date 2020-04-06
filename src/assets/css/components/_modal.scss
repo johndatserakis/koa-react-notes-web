@@ -1,0 +1,47 @@
+.modal-content {
+  background: $white;
+
+  .btn,
+  button {
+    box-shadow: none;
+  }
+}
+
+.modal-header {
+  background: $white;
+  border-bottom: 1px solid rgba($black, 0.1);
+  padding: 0.75rem 1rem;
+
+  // So we can have the close button on the left
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  align-items: center;
+
+  .close {
+    margin-left: -1rem;
+    margin-right: -56px;
+  }
+
+  .modal-title {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .btn,
+  button {
+    &:hover {
+      box-shadow: none;
+    }
+  }
+}
+
+.modal-body {
+  background: $gray-300;
+}
+
+.modal-footer {
+  border-top: 0;
+}
+
+.main-modal {
+}

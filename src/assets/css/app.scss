@@ -3,13 +3,24 @@
 @import "~sanitize.css/forms.css";
 @import "~sanitize.css/typography.css";
 
+// Variables - Has to be early
+@import "components/variables.scss";
+
 // Bootstrap
 @import "~bootstrap/scss/bootstrap.scss";
 
-// Variables
-@import "components/variables.scss";
-
 // Components
+@import "components/bootstrap_addition.scss";
+@import "components/pattern_backgrounds.scss";
+@import "components/modal.scss";
+@import "components/fonts.scss";
+@import "components/entry.scss";
+@import "components/buttons.scss";
+@import "components/hr.scss";
+@import "components/animations.scss";
+@import "components/blockquote.scss";
+@import "components/scrollbox.scss";
+@import "components/user.scss";
 @import "components/main.scss";
 @import "components/vendor.scss";
 @import "components/program.scss";

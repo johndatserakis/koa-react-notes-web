@@ -1,0 +1,59 @@
+.btn,
+button {
+  // text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 500;
+  // box-shadow: $box-shadow;
+  text-shadow: 0 1px 4px rgba($black, 0.15);
+  letter-spacing: 1px;
+  line-height: $line-height;
+
+  &:hover {
+    cursor: pointer;
+    // box-shadow: $heavy-box-shadow;
+  }
+
+  &:focus {
+    outline: 1px dotted !important;
+    outline: 5px auto -webkit-focus-ring-color !important;
+  }
+}
+
+// Just .btn
+.btn {
+  border-radius: $border-radius;
+}
+
+// Adjust global dropdown
+.dropdown-menu li a {
+  font-size: 18px;
+  color: $font-color;
+}
+
+// Adjust global list-group buttons
+.list-group {
+  .btn,
+  button {
+    font-weight: normal;
+    text-shadow: none;
+    box-shadow: none;
+
+    &:hover {
+      box-shadow: none;
+    }
+  }
+}
+
+.btn-link {
+  text-shadow: none;
+  color: lighten($black, 30%);
+  box-shadow: none;
+
+  &:hover,
+  &:active,
+  &:focus {
+    box-shadow: none;
+    color: lighten($black, 15%);
+    text-decoration: none;
+  }
+}

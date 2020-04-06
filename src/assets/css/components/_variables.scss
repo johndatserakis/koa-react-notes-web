@@ -1,105 +1,193 @@
 // Colors
 
-$black: "#000000";
-$white: "#ffffff";
+$blue: #135edb;
+$indigo: #3F00FF;
+$purple: #800080;
+$pink: #ffc0cb;
+$red: #fb1505;
+$orange: #FF7F00;
+$yellow: #fdff00;
+$green: #16ca43;
 
-$blue: "#135edb";
-$indigo: "#3F00FF";
-$purple: "#800080";
-$pink: "#ffc0cb";
-$red: "#fb1505";
-$orange: "#FF7F00";
-$yellow: "‎#FFFF00";
-$green: "#16ca43";
+$gray-100: #f8f9fa;
+$gray-200: #e9ecef;
+$gray-300: #dee2e6;
+$gray-400: #ced4da;
+$gray-500: #adb5bd;
+$gray-600: #6c757d;
+$gray-700: #495057;
+$gray-800: #343a40;
+$gray-900: #212529;
 
-$gray100: "#f8f9fa";
-$gray200: "#e9ecef";
-$gray300: "#dee2e6";
-$gray400: "#ced4da";
-$gray500: "#adb5bd";
-$gray600: "#6c757d";
-$gray700: "#495057";
-$gray800: "#343a40";
-$gray900: "#212529";
+$black: #000000;
+$white: #ffffff;
+$off-white: darken($white, 1%);
+$muted: $gray-400;
 
 // Palettes built with https://noeldelgado.github.io/shadowlord
 
-$blue100: "#e3ecfb";
-$blue200: "#afc8f3";
-$blue300: "#7ba5eb";
-$blue400: "#4781e3";
-$blue500: "#135edb"; // blue
-$blue600: "#0f49ab";
-$blue700: "#0b357b";
-$blue800: "#06204a";
-$blue900: "#020b1a";
+$blue-100: #e3ecfb;
+$blue-200: #afc8f3;
+$blue-300: #7ba5eb;
+$blue-400: #4781e3;
+$blue-500: #135edb; // blue
+$blue-600: #0f49ab;
+$blue-700: #0b357b;
+$blue-800: #06204a;
+$blue-900: #020b1a;
 
-$indigo100: "#e8e0ff";
-$indigo200: "#bea8ff";
-$indigo300: "#9370ff";
-$indigo400: "#6938ff";
-$indigo500: "#3F00FF"; // indigo
-$indigo600: "#3100c7";
-$indigo700: "#23008f";
-$indigo800: "#150057";
-$indigo900: "#08001f";
+$indigo-100: #e8e0ff;
+$indigo-200: #bea8ff;
+$indigo-300: #9370ff;
+$indigo-400: #6938ff;
+$indigo-500: #3F00FF; // indigo
+$indigo-600: #3100c7;
+$indigo-700: #23008f;
+$indigo-800: #150057;
+$indigo-900: #08001f;
 
-$purple100: "#f0e0f0";
-$purple200: "#d4a8d4";
-$purple300: "#b870b8";
-$purple400: "#9c389c";
-$purple500: "#800080"; // purple
-$purple600: "#640064";
-$purple700: "#480048";
-$purple800: "#2c002c";
-$purple900: "#0f000f";
+$purple-100: #f0e0f0;
+$purple-200: #d4a8d4;
+$purple-300: #b870b8;
+$purple-400: #9c389c;
+$purple-500: #800080; // purple
+$purple-600: #640064;
+$purple-700: #480048;
+$purple-800: #2c002c;
+$purple-900: #0f000f;
 
-$pink100: "#fff7f9";
-$pink200: "#ffeaed";
-$pink300: "#ffdce2";
-$pink400: "#ffced6";
-$pink500: "#ffc0cb"; // pink
-$pink600: "#c7969e";
-$pink700: "#8f6c72";
-$pink800: "#574145";
-$pink900: "#1f1718";
+$pink-100: #fff7f9;
+$pink-200: #ffeaed;
+$pink-300: #ffdce2;
+$pink-400: #ffced6;
+$pink-500: #ffc0cb; // pink
+$pink-600: #c7969e;
+$pink-700: #8f6c72;
+$pink-800: #574145;
+$pink-900: #1f1718;
 
-$red100: "#ffe3e1";
-$red200: "#feafaa";
-$red300: "#fd7c73";
-$red400: "#fc483c";
-$red500: "#fb1505"; // red
-$red600: "#c41004";
-$red700: "#8d0c03";
-$red800: "#550702";
-$red900: "#1e0301";
+$red-100: #ffe3e1;
+$red-200: #feafaa;
+$red-300: #fd7c73;
+$red-400: #fc483c;
+$red-500: #fb1505; // red
+$red-600: #c41004;
+$red-700: #8d0c03;
+$red-800: #550702;
+$red-900: #1e0301;
 
-$orange100: "#fff0e0";
-$orange200: "#ffd3a8";
-$orange300: "#ffb770";
-$orange400: "#ff9b38";
-$orange500: "#FF7F00"; // orange
-$orange600: "#c76300";
-$orange700: "#8f4700";
-$orange800: "#572b00";
-$orange900: "#1f0f00";
+$orange-100: #fff0e0;
+$orange-200: #ffd3a8;
+$orange-300: #ffb770;
+$orange-400: #ff9b38;
+$orange-500: #FF7F00; // orange
+$orange-600: #c76300;
+$orange-700: #8f4700;
+$orange-800: #572b00;
+$orange-900: #1f0f00;
 
-$yellow100: "#ffffe0";
-$yellow200: "#ffffa8";
-$yellow300: "#ffff70";
-$yellow400: "#ffff38";
-$yellow500: "#FFFF00"; // yellow
-$yellow600: "#c7c700";
-$yellow700: "#8f8f00";
-$yellow800: "#575700";
-$yellow900: "#1f1f00";
+$yellow-100: #ffffe0;
+$yellow-200: #ffffa8;
+$yellow-300: #ffff70;
+$yellow-400: #ffff38;
+$yellow-500: #FFFF00; // yellow
+$yellow-600: #c7c700;
+$yellow-700: #8f8f00;
+$yellow-800: #575700;
+$yellow-900: #1f1f00;
 
-$green100: "#e3f9e8";
-$green200: "#b0edbf";
-$green300: "#7de196";
-$green400: "#49d66c";
-$green500: "#16ca43"; // green
-$green600: "#119e34";
-$green700: "#0c7126";
-$green800: "#074517";
-$green900: "#031808";
+$green-100: #e3f9e8;
+$green-200: #b0edbf;
+$green-300: #7de196;
+$green-400: #49d66c;
+$green-500: #16ca43; // green
+$green-600: #119e34;
+$green-700: #0c7126;
+$green-800: #074517;
+$green-900: #031808;
+
+// Color specs
+$font-color: $muted;
+$font-color-header: $black;
+
+// Animations
+$transition: all 0.2s ease-in;
+
+// Shadow
+$box-shadow-300: rgba(17, 51, 83, 0.1) 0px 2px 4px 0px;
+$box-shadow-400: rgba(17, 51, 83, 0.14) 0px 2px 4px 0px;
+$box-shadow-500: rgba(17, 51, 83, 0.18) 0px 2px 4px 0px;
+$box-shadow-600: rgba(17, 51, 83, 0.22) 0px 2px 4px 0px;
+$box-shadow-700: rgba(17, 51, 83, 0.26) 0px 4px 6px 0px;
+
+// Text shadow
+$text-shadow: 0 1px 4px rgba($black, 0.15);
+
+// Icon shadow
+$icon-shadow: drop-shadow(0 0 1px rgba($gray-500, 0.5));
+
+// Inset shadow
+$inset-shadow: inset 0 2px 4px rgba($black, 0.1);
+
+// Container box-shadow
+$container-box-shadow: 0 2px 3px 0 rgba($black, 0.4);
+
+// Borders
+$border: 1px solid $gray-400;
+
+// Gradient
+$gradient-primary: linear-gradient(90deg, $green, darken($green, 10%));
+$gradient-grey: linear-gradient(90deg, $gray-200, darken($gray-200, 10%));
+
+// Overriding the Bootstrap theme and base colors
+$theme-colors: (
+  primary: $blue,
+  secondary: $gray-400,
+  success: $green,
+  info: $blue-300,
+  warning: $yellow,
+  danger: $red,
+  light: $white,
+  dark: $black
+);
+$colors: (
+  blue: $blue,
+  indigo: $indigo,
+  purple: $purple,
+  pink: $pink,
+  red: $red,
+  orange: $orange,
+  yellow: $yellow,
+  green: $green,
+  // teal: $teal,
+  // cyan: $cyan,
+  white: $white,
+  gray: $gray-400,
+  gray-dark: $gray-700
+);
+
+// Navbar colors
+$navbar-light-color: $font-color;
+$navbar-dark-color: $white;
+
+// Fonts
+$font-family-base: "SourceSansPro", "Helvetica Neue", Arial, sans-serif !default;
+
+// font sizing
+$font-size: 18px;
+$line-height: 1.6;
+
+// Rule border
+$rule-border: 1px solid rgba($gray-400, 0.9);
+
+// Radius
+$border-radius: 4px;
+
+// Set the container width a little bit higher on larger screens
+// https://stackoverflow.com/a/53367733/8014660
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1240px
+) !default;

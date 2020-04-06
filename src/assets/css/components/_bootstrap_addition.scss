@@ -1,0 +1,536 @@
+//For additional heading display
+$display5-weight: 300 !default;
+$display5-size: 2.5rem !default;
+.display-5 {
+  font-size: $display5-size;
+  font-weight: $display5-weight;
+  line-height: $display-line-height;
+}
+
+// input-group button margin-bottom
+.input-group {
+  .btn {
+    margin-bottom: 0;
+  }
+}
+
+//Button mixin - have to hold this here because bootstrap has
+//changed the way to set the button text color of your choice.
+//It's been changed to automatically detect button text color
+// by contrast - but it is actually getting in the way
+// https://github.com/twbs/bootstrap/blame/v4-dev/scss/mixins/_buttons.scss.
+@mixin button-variant-custom(
+  $color,
+  $background,
+  $border,
+  $hover-color: darken($color, 5%),
+  $hover-background: darken($background, 5%),
+  $hover-border: darken($border, 5%),
+  $active-color: $hover-color,
+  $active-background: darken($background, 10%),
+  $active-border: darken($border, 10%)
+) {
+  color: $color;
+  background-color: $background;
+  border-color: $border;
+  @include box-shadow($btn-box-shadow);
+
+  &:hover {
+    color: $hover-color;
+    background-color: $hover-background;
+    border-color: $hover-border;
+  }
+
+  &:focus,
+  &.focus {
+    // Avoid using mixin so we can pass custom focus shadow properly
+    @if $enable-shadows {
+      box-shadow: $btn-box-shadow, 0 0 0 3px rgba($border, 0.5);
+    } @else {
+      box-shadow: 0 0 0 3px rgba($border, 0.5);
+    }
+  }
+
+  // Disabled comes first so active can properly restyle
+  &.disabled,
+  &:disabled {
+    background-color: $background;
+    border-color: $border;
+  }
+
+  &:active,
+  &.active,
+  .show > &.dropdown-toggle {
+    color: $active-color;
+    background-color: $active-background;
+    background-image: none; // Remove the gradient for the pressed/active state
+    border-color: $active-border;
+    @include box-shadow($btn-active-box-shadow);
+  }
+}
+
+// Buttons
+.btn-white {
+  @include button-variant-custom($font-color, $white, $white);
+}
+
+.btn-grey {
+  @include button-variant-custom($font-color, $gray-500, darken($gray-500, 5%));
+}
+
+.btn-white-black-text {
+  @include button-variant-custom(lighten($black, 14%), $white, $white);
+}
+
+.btn-white-blue-text {
+  @include button-variant-custom($blue, $white, $white);
+}
+
+.btn-white-text {
+  @include button-variant-custom($white, transparent, transparent, rgba(0, 0, 0, 0.1));
+}
+
+.btn-red {
+  @include button-variant-custom($white, $red, $red);
+}
+
+.btn-dark-red {
+  @include button-variant-custom($white, darken($red, 20%), darken($red, 20%));
+}
+
+.btn-orange {
+  @include button-variant-custom($white, $orange, $orange);
+}
+
+.btn-dark-orange {
+  @include button-variant-custom($white, darken($orange, 20%), darken($orange, 20%));
+}
+
+.btn-purple {
+  @include button-variant-custom($white, $purple, $purple);
+}
+
+.btn-yellow {
+  @include button-variant-custom($black, $yellow, $yellow);
+}
+
+.btn-green {
+  @include button-variant-custom($white, $green, $green);
+}
+
+.btn-dark-green {
+  @include button-variant-custom($white, darken($green, 20%), darken($green, 20%));
+}
+
+.btn-blue {
+  @include button-variant-custom($white, $blue, $blue);
+}
+
+.btn-dark-blue {
+  @include button-variant-custom($white, darken($blue, 20%), darken($blue, 20%));
+}
+
+.btn-custom-navbar-dropdown-white {
+  @include button-variant-custom($white, transparent, transparent);
+}
+
+// Button outlines - btn-outline
+.btn-outline-blue {
+  @include button-variant-custom(
+    $blue,
+    rgba($blue, 0.1),
+    rgba($blue, 0.4),
+    $blue,
+    rgba($blue, 0.1),
+    $blue,
+    $blue,
+    rgba($blue, 0.2),
+    $blue-700
+  );
+}
+
+.btn-outline-red {
+  @include button-variant-custom(
+    $red,
+    rgba($red, 0.1),
+    rgba($red, 0.4),
+    $red,
+    rgba($red, 0.1),
+    $red,
+    $red,
+    rgba($red, 0.2),
+    $red-700
+  );
+}
+
+.btn-outline-green {
+  @include button-variant-custom(
+    $green,
+    rgba($green, 0.1),
+    rgba($green, 0.4),
+    $green,
+    rgba($green, 0.1),
+    $green,
+    $green,
+    rgba($green, 0.2),
+    $green-700
+  );
+}
+
+.btn-outline-orange {
+  @include button-variant-custom(
+    $orange,
+    rgba($orange, 0.1),
+    rgba($orange, 0.4),
+    $orange,
+    rgba($orange, 0.1),
+    $orange,
+    $orange,
+    rgba($orange, 0.2),
+    $orange-700
+  );
+}
+
+.btn-outline-yellow {
+  @include button-variant-custom(
+    $yellow,
+    rgba($yellow, 0.1),
+    rgba($yellow, 0.4),
+    $yellow,
+    rgba($yellow, 0.1),
+    $yellow,
+    $yellow,
+    rgba($yellow, 0.2),
+    $yellow-700
+  );
+}
+
+.btn-outline-grey {
+  @include button-variant-custom(
+    rgba($black, 0.8),
+    rgba($black, 0.06),
+    rgba($black, 0.4),
+    rgba($black, 0.8),
+    rgba($black, 0.06),
+    rgba($black, 0.8),
+    rgba($black, 0.8),
+    rgba($black, 0.1),
+    $black
+  );
+}
+
+// Badges
+.badge {
+  font-family: $font-family-base;
+  border-radius: $border-radius;
+  font-size: 80%;
+  padding: 6px 6px;
+  font-weight: normal;
+  letter-spacing: 0.75px;
+
+  @media (min-width: 992px) {
+    font-size: 90%;
+    padding: 6px 12px;
+  }
+}
+
+.badge-block {
+  text-align: left;
+  display: block;
+  white-space: normal;
+  line-height: 1.6;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+
+.badge-blue {
+  @include badge-variant(rgba($blue, 0.1));
+  border: 1px solid rgba($blue, 0.4);
+  color: $blue !important;
+}
+
+.badge-red {
+  @include badge-variant(rgba($red, 0.1));
+  border: 1px solid rgba($red, 0.4);
+  color: $red !important;
+}
+
+.badge-green {
+  @include badge-variant(rgba($green, 0.1));
+  border: 1px solid rgba($green, 0.4);
+  color: $green !important;
+}
+
+.badge-orange {
+  @include badge-variant(rgba($orange, 0.1));
+  border: 1px solid rgba($orange, 0.4);
+  color: $orange !important;
+}
+
+.badge-light-grey {
+  @include badge-variant(rgba($gray-300, 0.5));
+  border: 1px solid $gray-700;
+  color: lighten($black, 25%);
+}
+
+.badge-grey {
+  @include badge-variant(rgba($gray-500, 0.5));
+  border: 1px solid $gray-700;
+  color: lighten($black, 25%);
+}
+
+.badge-yellow {
+  @include badge-variant(rgba($yellow, 0.3));
+  border: 1px solid darken($yellow, 16%);
+  color: $muted !important;
+}
+
+// Because badges can be a tags
+a {
+  &.badge {
+    &.badge-blue {
+      &:hover {
+        border-color: $blue;
+      }
+    }
+
+    &.badge-red {
+      &:hover {
+        border-color: $red;
+      }
+    }
+
+    &.badge-green {
+      &:hover {
+        border-color: $green;
+      }
+    }
+
+    &.badge-orange {
+      &:hover {
+        border-color: $orange;
+      }
+    }
+
+    &.badge-light-grey {
+      &:hover {
+        border-color: $gray-300;
+      }
+    }
+
+    &.badge-grey {
+      &:hover {
+        border-color: $gray-500;
+      }
+    }
+
+    &.badge-yellow {
+      &:hover {
+        border-color: $yellow;
+      }
+    }
+  }
+}
+
+//Font size
+.text-large {
+  font-size: 1.2rem;
+  font-weight: $font-weight-normal;
+}
+
+.text-extra-large {
+  font-size: 1.4rem;
+  font-weight: $font-weight-normal;
+}
+
+// Text
+.text-black {
+  color: $black !important;
+}
+
+.text-white {
+  color: $white !important;
+}
+
+// Button size
+.btn-xs {
+  @include button-size(5px, 5px, 0.8rem, 1, 4px);
+}
+
+// Add responsive sizing helpers
+// https://github.com/twbs/bootstrap/issues/21943
+@media (min-width: 576px) {
+  .w-sm-25 {
+    width: 25% !important;
+  }
+  .w-sm-50 {
+    width: 50% !important;
+  }
+  .w-sm-75 {
+    width: 75% !important;
+  }
+  .w-sm-100 {
+    width: 100% !important;
+  }
+  .w-sm-auto {
+    width: auto !important;
+  }
+  .h-sm-25 {
+    height: 25% !important;
+  }
+  .h-sm-50 {
+    height: 50% !important;
+  }
+  .h-sm-75 {
+    height: 75% !important;
+  }
+  .h-sm-100 {
+    height: 100% !important;
+  }
+  .h-sm-auto {
+    height: auto !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .w-md-25 {
+    width: 25% !important;
+  }
+  .w-md-50 {
+    width: 50% !important;
+  }
+  .w-md-75 {
+    width: 75% !important;
+  }
+  .w-md-100 {
+    width: 100% !important;
+  }
+  .w-md-auto {
+    width: auto !important;
+  }
+  .h-md-25 {
+    height: 25% !important;
+  }
+  .h-md-50 {
+    height: 50% !important;
+  }
+  .h-md-75 {
+    height: 75% !important;
+  }
+  .h-md-100 {
+    height: 100% !important;
+  }
+  .h-md-auto {
+    height: auto !important;
+  }
+}
+
+@media (min-width: 992px) {
+  .w-lg-25 {
+    width: 25% !important;
+  }
+  .w-lg-50 {
+    width: 50% !important;
+  }
+  .w-lg-75 {
+    width: 75% !important;
+  }
+  .w-lg-100 {
+    width: 100% !important;
+  }
+  .w-lg-auto {
+    width: auto !important;
+  }
+  .h-lg-25 {
+    height: 25% !important;
+  }
+  .h-lg-50 {
+    height: 50% !important;
+  }
+  .h-lg-75 {
+    height: 75% !important;
+  }
+  .h-lg-100 {
+    height: 100% !important;
+  }
+  .h-lg-auto {
+    height: auto !important;
+  }
+}
+
+@media (min-width: 1200px) {
+  .w-xl-25 {
+    width: 25% !important;
+  }
+  .w-xl-50 {
+    width: 50% !important;
+  }
+  .w-xl-75 {
+    width: 75% !important;
+  }
+  .w-xl-100 {
+    width: 100% !important;
+  }
+  .w-xl-auto {
+    width: auto !important;
+  }
+  .h-xl-25 {
+    height: 25% !important;
+  }
+  .h-xl-50 {
+    height: 50% !important;
+  }
+  .h-xl-75 {
+    height: 75% !important;
+  }
+  .h-xl-100 {
+    height: 100% !important;
+  }
+  .h-xl-auto {
+    height: auto !important;
+  }
+}
+
+// Text helpers
+.text-blue {
+  color: $blue !important;
+}
+
+.text-red {
+  color: $red !important;
+}
+
+.text-green {
+  color: $green !important;
+}
+
+.text-orange {
+  color: $orange !important;
+}
+
+.text-purple {
+  color: $purple !important;
+}
+
+.text-yellow {
+  color: $yellow !important;
+}
+
+.text-white {
+  color: $white !important;
+}
+
+.text-black {
+  color: $black !important;
+}
+
+.text-grey {
+  color: $gray-500 !important;
+}
+
+.list-group-item-off-white {
+  background: $off-white;
+}
