@@ -1,9 +1,5 @@
 import React from "react";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "@/assets/css/app.scss";
 
 // Partials
@@ -14,7 +10,7 @@ import { Footer } from "@/components/Partials/Main/Footer";
 import { Home } from "@/components/Layouts/Pages/Home";
 
 // // User
-import { Layout } from "antd";
+// import { Layout } from "antd";
 import { Login } from "./components/User/Login";
 // import Signup from './components/User/Signup'
 // import Forgot from './components/User/Forgot'
@@ -25,15 +21,13 @@ import { Login } from "./components/User/Login";
 // import CreateNote from './components/Program/CreateNote'
 // import EditNote from './components/Program/EditNote'
 
-
-const { Content } = Layout;
-
+// const { Content } = Layout;
 
 export const App = () => (
   <Router>
-    <Layout style={{ height: "100vh" }}>
+    <div className="page-wrapper">
       <Nav />
-      <Content style={{ padding: "50px" }}>
+      <div className="main-content-wrapper" role="main" aria-label="Main">
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/user/login" component={Login} />
@@ -54,8 +48,8 @@ export const App = () => (
               // (this.props.user) ? <EditNote /> : <Redirect to="/" />
             )} /> */}
         </Switch>
-      </Content>
+      </div>
       <Footer />
-    </Layout>
+    </div>
   </Router>
 );

@@ -5,15 +5,17 @@ import logo from "@/assets/images/main/lockup-color.png";
 
 export const Nav = () => (
   <Navbar bg="light" expand="lg">
-    <Navbar.Brand href="#home">
-      <img
-        src={logo}
-        width="151"
-        height="21"
-        className="d-inline-block align-middle"
-        alt="React Bootstrap logo"
-      />
-    </Navbar.Brand>
+    <LinkContainer to="/">
+      <Navbar.Brand>
+        <img
+          src={logo}
+          width="151"
+          height="21"
+          className="d-inline-block align-middle"
+          alt="React Bootstrap logo"
+        />
+      </Navbar.Brand>
+    </LinkContainer>
     <Navbar.Toggle aria-controls="basic-navbar-nav" />
     <Navbar.Collapse id="basic-navbar-nav">
       <BoostrapNav className="mr-auto">

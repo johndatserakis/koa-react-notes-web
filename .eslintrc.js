@@ -1,5 +1,10 @@
 module.exports = {
-  "extends": ["react-app", "airbnb"],
+  "extends": [
+    "react-app",
+    "airbnb",
+    "prettier/@typescript-eslint",
+    "plugin:prettier/recommended",
+    ],
   "rules": {
     "indent": ["error", 2],
     "prefer-const": ["error"],
@@ -32,6 +37,7 @@ module.exports = {
     }],
     "react/jsx-props-no-spreading": "off",
     "react/destructuring-assignment": "off",
+    "react/jsx-curly-newline": "off",
   },
   settings: {
     "import/resolver": {

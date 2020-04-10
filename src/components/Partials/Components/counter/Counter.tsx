@@ -45,7 +45,9 @@ export const Counter = () => {
         <button
           type="button"
           className={styles.button}
-          onClick={() => dispatch(incrementByAmount(Number(incrementAmount) || 0))}
+          onClick={() =>
+            dispatch(incrementByAmount(Number(incrementAmount) || 0))
+          }
         >
           Add Amount
         </button>

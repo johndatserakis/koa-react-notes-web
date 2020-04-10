@@ -1,7 +1,5 @@
 import React, { FunctionComponent, useState } from "react";
-import {
-  useField,
-} from "formik";
+import { useField } from "formik";
 import { v4 as uuidv4 } from "uuid";
 
 interface SubmitButtonProps {
@@ -21,8 +19,11 @@ export const SubmitButton = (props: SubmitButtonProps) => {
       className="btn btn-green btn-block"
       disabled={props.loading}
     >
-      {props.loading ? <span>{props.loadingText}</span>
-        : <span>{props.text}</span>}
+      {props.loading ? (
+        <span>{props.loadingText}</span>
+      ) : (
+        <span>{props.text}</span>
+      )}
     </button>
   );
 };
@@ -35,7 +36,9 @@ interface CustomInputProps {
 }
 
 // eslint-disable-next-line react/prop-types
-export const TextInput: FunctionComponent<CustomInputProps> = (props: CustomInputProps) => {
+export const TextInput: FunctionComponent<CustomInputProps> = (
+  props: CustomInputProps,
+) => {
   const [field, { error, touched }] = useField({
     name: props.name,
     type: props.type,
@@ -63,9 +66,7 @@ export const TextInput: FunctionComponent<CustomInputProps> = (props: CustomInpu
           {...props}
         />
         {touched && error ? (
-          <div className="input-wrapper__error-message">
-            {error}
-          </div>
+          <div className="input-wrapper__error-message">{error}</div>
         ) : null}
       </div>
     </>
