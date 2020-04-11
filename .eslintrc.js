@@ -38,6 +38,7 @@ module.exports = {
     "react/jsx-props-no-spreading": "off",
     "react/destructuring-assignment": "off",
     "react/jsx-curly-newline": "off",
+    "consistent-return": 0,
   },
   settings: {
     "import/resolver": {

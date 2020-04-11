@@ -9,6 +9,7 @@ import { AppThunk, RootState } from "@/store";
 import jwtDecode from "jwt-decode";
 import axios from "@/common/axios";
 import { AxiosResponse } from "axios";
+import * as Yup from "yup";
 // import { setAxiosAuthorizationHeader } from "@/common/utilities";
 
 export interface UserTokens {
@@ -87,7 +88,7 @@ export const slice: Slice = createSlice({
       state,
       action: PayloadAction<UserTokens["refreshToken"]>,
     ) => {
-      state.userTokens.accessToken = action.payload;
+      state.userTokens.refreshToken = action.payload;
     },
   },
 });
@@ -98,6 +99,18 @@ interface UserLoginPostData {
   username: string;
   password: string;
 }
+
+export interface UserLoginPost {
+  username: string;
+  password: string;
+}
+
+export const UserLoginValidation = Yup.object({
+  username: Yup.string().required("Required"),
+  password: Yup.string()
+    .required("Required")
+    .min(8, "Password must be at least 6 characters"),
+});
 
 interface JwtDecodeData {
   data: UserShort;
@@ -127,13 +140,11 @@ export const userLogin = (data: UserLoginPostData): AppThunk => async (
   dispatch: ThunkDispatch<any, any, any>,
 ) => {
   try {
-    setTimeout(async () => {
-      const result: AxiosResponse = await axios.post<UserTokens>(
-        "user/authenticate",
-        data,
-      );
-      await dispatch(setUserAndUserTokens(result.data));
-    }, 5000);
+    const result: AxiosResponse = await axios.post<UserTokens>(
+      "user/authenticate",
+      data,
+    );
+    await dispatch(setUserAndUserTokens(result.data));
     return Promise.resolve();
   } catch (error) {
     return Promise.reject(error.response ? error.response : error);

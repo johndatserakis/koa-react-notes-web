@@ -1,44 +1,37 @@
 import React, { useState } from "react";
 import { Formik, Form, FormikHelpers } from "formik";
-import * as Yup from "yup";
+
 import {
   TextInput,
   SubmitButton,
 } from "@/components/Partials/Forms/Inputs/Inputs";
 // import { useDispatch } from "react-redux";
+import { useReduxDispatch } from "@/store";
 import { useToasts } from "react-toast-notifications";
-import { userLogin } from "@/store/userSlice";
+import {
+  userLogin,
+  UserLoginPost,
+  UserLoginValidation,
+} from "@/store/userSlice";
 
-interface LoginForm {
-  username: string;
-  password: string;
-}
-
-const defaultValues: LoginForm = {
-  username: "123123123",
-  password: "123123123",
+const defaultValues: UserLoginPost = {
+  username: "demousername",
+  password: "demopassword",
 };
-
-const validationSchema = Yup.object({
-  username: Yup.string().required("Required"),
-  password: Yup.string()
-    .required("Required")
-    .min(8, "Password must be at least 6 characters"),
-});
 
 export const LoginForm = () => {
   const [isLoading, setIsLoading] = useState(false);
-  // const dispatch = useDispatch();
+  const dispatch = useReduxDispatch();
   const { addToast } = useToasts();
 
   const handleSubmit = async (
-    values: LoginForm,
-    actions: FormikHelpers<LoginForm>,
+    values: UserLoginPost,
+    actions: FormikHelpers<UserLoginPost>,
   ) => {
     try {
       setIsLoading(true);
-      const value = await userLogin(values);
-      console.log(value);
+      const result = await dispatch(userLogin(values));
+      console.log(result);
       actions.resetForm();
 
       // If this worked correctly, then we need to push to the dashboard and get notes.
@@ -52,6 +45,7 @@ export const LoginForm = () => {
         autoDismiss: true,
       });
     } finally {
+      console.log("here in finally");
       setIsLoading(false);
     }
   };
@@ -61,7 +55,7 @@ export const LoginForm = () => {
       <Formik
         initialValues={defaultValues}
         onSubmit={handleSubmit}
-        validationSchema={validationSchema}
+        validationSchema={UserLoginValidation}
       >
         <Form>
           <div className="row justify-content-center">
