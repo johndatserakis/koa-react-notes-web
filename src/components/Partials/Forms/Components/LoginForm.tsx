@@ -1,18 +1,14 @@
 import React, { useState } from "react";
 import { Formik, Form, FormikHelpers } from "formik";
-
 import {
   TextInput,
   SubmitButton,
 } from "@/components/Partials/Forms/Inputs/Inputs";
-// import { useDispatch } from "react-redux";
-import { useReduxDispatch } from "@/store";
 import { useToasts } from "react-toast-notifications";
-import {
-  userLogin,
-  UserLoginPost,
-  UserLoginValidation,
-} from "@/store/userSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { login } from "@/store/user/actions";
+import { UserLoginPost, UserLoginValidation } from "@/store/user/api";
+import { UserThunkDispatch, UserShort } from "@/store/user/types";
 
 const defaultValues: UserLoginPost = {
   username: "demousername",
@@ -20,9 +16,11 @@ const defaultValues: UserLoginPost = {
 };
 
 export const LoginForm = () => {
+  const user = useSelector((state: { user: UserShort }) => state.user);
   const [isLoading, setIsLoading] = useState(false);
-  const dispatch = useReduxDispatch();
   const { addToast } = useToasts();
+
+  const dispatch = useDispatch<UserThunkDispatch>();
 
   const handleSubmit = async (
     values: UserLoginPost,
@@ -30,7 +28,7 @@ export const LoginForm = () => {
   ) => {
     try {
       setIsLoading(true);
-      const result = await dispatch(userLogin(values));
+      const result = await dispatch(login(values));
       console.log(result);
       actions.resetForm();
 
@@ -45,13 +43,13 @@ export const LoginForm = () => {
         autoDismiss: true,
       });
     } finally {
-      console.log("here in finally");
       setIsLoading(false);
     }
   };
 
   return (
     <section className="pt-3">
+      {JSON.stringify(user)}
       <Formik
         initialValues={defaultValues}
         onSubmit={handleSubmit}

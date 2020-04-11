@@ -1,24 +1,30 @@
-import {
-  configureStore,
-  ThunkAction,
-  Action,
-  ThunkDispatch,
-} from "@reduxjs/toolkit";
-import { useDispatch } from "react-redux";
-import { reducer as counterReducer } from "./counterSlice";
-import { reducer as userReducer } from "./userSlice";
+import { createStore, combineReducers, applyMiddleware, Action } from "redux";
+import thunkMiddleware, { ThunkAction, ThunkDispatch } from "redux-thunk";
+import { composeWithDevTools } from "redux-devtools-extension";
+import { userReducer } from "@/store/user/reducers";
 
-export const store = configureStore({
-  reducer: {
-    counter: counterReducer,
-    user: userReducer,
-  },
+export const rootReducer = combineReducers({
+  user: userReducer,
 });
 
-export type RootState = ReturnType<typeof store.getState>;
-export type AppThunk = ThunkAction<void, RootState, unknown, Action<string>>;
+export type AppState = ReturnType<typeof rootReducer>;
 
-export type ReduxDispatch = ThunkDispatch<RootState, any, Action>;
-export function useReduxDispatch(): ReduxDispatch {
-  return useDispatch<ReduxDispatch>();
-}
+export const configureStore = () => {
+  const middlewares = [thunkMiddleware];
+  const middleWareEnhancer = applyMiddleware(...middlewares);
+
+  const store = createStore(
+    rootReducer,
+    composeWithDevTools(middleWareEnhancer),
+  );
+
+  return store;
+};
+
+export type RootState = typeof rootReducer;
+
+// Async thunk helpers
+// https://github.com/reduxjs/redux-thunk/issues/213#issuecomment-603392173
+
+export type ThunkResult<R> = ThunkAction<R, RootState, undefined, any>;
+export type GeneralThunkDispatch = ThunkDispatch<RootState, undefined, Action>;

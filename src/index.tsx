@@ -3,16 +3,10 @@ import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import { ToastProvider } from "react-toast-notifications";
 import { App } from "./App";
-import { store } from "./store";
-
-// const AppToast = ({ appearance, children }) => (
-//   <div style={{ background: appearance === 'error' ? 'red' : 'green' }}>
-//     {children}
-//   </div>
-// );
+import { configureStore } from "./store";
 
 ReactDOM.render(
-  <Provider store={store}>
+  <Provider store={configureStore()}>
     <ToastProvider>
       <App />
     </ToastProvider>

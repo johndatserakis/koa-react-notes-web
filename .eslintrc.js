@@ -39,6 +39,7 @@ module.exports = {
     "react/destructuring-assignment": "off",
     "react/jsx-curly-newline": "off",
     "consistent-return": 0,
+    "indent": "off",
   },
   settings: {
     "import/resolver": {
