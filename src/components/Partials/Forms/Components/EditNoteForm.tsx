@@ -40,6 +40,7 @@ export const EditNoteForm = (props: EditNoteFormProps) => {
     actions: FormikHelpers<NoteCreatePost>,
   ) => {
     try {
+      // eslint-disable-next-line no-console
       console.log(values, actions);
 
       // setIsLoading(true);

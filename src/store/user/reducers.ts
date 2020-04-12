@@ -1,11 +1,4 @@
-import {
-  UserState,
-  SET_USER,
-  SET_ACCESS_TOKEN,
-  SET_REFRESH_TOKEN,
-  UserActionTypes,
-  CLEAR_USER,
-} from "./types";
+import { UserState, SET_USER, UserActionTypes, CLEAR_USER } from "./types";
 
 const initialState: UserState = {
   user: {
@@ -13,10 +6,6 @@ const initialState: UserState = {
     token: "",
     username: "",
     email: "",
-  },
-  userTokens: {
-    accessToken: "",
-    refreshToken: "",
   },
 };
 
@@ -29,22 +18,6 @@ export const userReducer = (
       return {
         ...state,
         user: action.payload,
-      };
-    case SET_ACCESS_TOKEN:
-      return {
-        ...state,
-        userTokens: {
-          ...state.userTokens,
-          accessToken: action.payload,
-        },
-      };
-    case SET_REFRESH_TOKEN:
-      return {
-        ...state,
-        userTokens: {
-          ...state.userTokens,
-          refreshToken: action.payload,
-        },
       };
     case CLEAR_USER:
       return initialState;

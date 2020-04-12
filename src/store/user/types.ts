@@ -15,13 +15,9 @@ export interface UserShort {
 
 export type UserState = {
   user: UserShort;
-  userTokens: UserTokens;
 };
 
-export const SET_USER_AND_TOKENS = "SET_USER_AND_TOKENS";
 export const SET_USER = "SET_USER";
-export const SET_ACCESS_TOKEN = "SET_ACCESS_TOKEN";
-export const SET_REFRESH_TOKEN = "SET_REFRESH_TOKEN";
 export const CLEAR_USER = "CLEAR_USER";
 
 interface SetUserAction {
@@ -29,25 +25,11 @@ interface SetUserAction {
   payload: UserShort;
 }
 
-interface SetAccessTokenAction {
-  type: typeof SET_ACCESS_TOKEN;
-  payload: UserTokens["accessToken"];
-}
-
-interface SetRefreshTokenAction {
-  type: typeof SET_REFRESH_TOKEN;
-  payload: UserTokens["refreshToken"];
-}
-
 interface ClearUser {
   type: typeof CLEAR_USER;
 }
 
-export type UserActionTypes =
-  | SetUserAction
-  | SetAccessTokenAction
-  | SetRefreshTokenAction
-  | ClearUser;
+export type UserActionTypes = SetUserAction | ClearUser;
 
 export interface JwtDecodeData {
   data: UserShort;

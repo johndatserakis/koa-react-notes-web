@@ -1,22 +1,28 @@
 import React from "react";
-import { Nav as BoostrapNav, Navbar } from "react-bootstrap";
+import { Nav as BoostrapNav, Navbar, NavDropdown } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import logo from "@/assets/images/main/lockup.png";
 import { logout } from "@/store/user/actions";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { UserThunkDispatch } from "@/store/user/types";
 import { useHistory } from "react-router-dom";
+import { RootState, GeneralThunkDispatch } from "@/store";
+import { clearNotes } from "@/store/note/actions";
 
 export const Nav = () => {
-  const dispatch = useDispatch<UserThunkDispatch>();
+  const dispatchUser = useDispatch<UserThunkDispatch>();
+  const dispatchNote = useDispatch<GeneralThunkDispatch>();
   const history = useHistory();
+  const user = useSelector((state: RootState) => state.user.user);
+  const isLoggedIn = !!user.id;
 
   const navLogout = async () => {
-    await dispatch(logout());
+    await dispatchUser(logout());
+    await dispatchNote(clearNotes());
     history.push("/");
   };
 
-  return (
+  return !isLoggedIn ? (
     <Navbar bg="light" expand="lg">
       <LinkContainer to="/">
         <Navbar.Brand>
@@ -39,26 +45,45 @@ export const Nav = () => {
           <LinkContainer to="/user/signup">
             <BoostrapNav.Link>Signup</BoostrapNav.Link>
           </LinkContainer>
-
-          <LinkContainer to="/dashboard">
-            <BoostrapNav.Link>Dashboard</BoostrapNav.Link>
-          </LinkContainer>
-
-          <BoostrapNav.Link
-            onClick={() => {
-              navLogout();
-            }}
-          >
-            Logout
-          </BoostrapNav.Link>
-
-          {/* <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-          <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-          <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-          <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-          <NavDropdown.Divider />
-          <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
-        </NavDropdown> */}
+        </BoostrapNav>
+      </Navbar.Collapse>
+    </Navbar>
+  ) : (
+    <Navbar bg="light" expand="lg">
+      <LinkContainer to="/dashboard">
+        <Navbar.Brand>
+          <img
+            src={logo}
+            width="151"
+            height="21"
+            className="d-inline-block align-middle"
+            alt="React Bootstrap logo"
+            style={{ marginBottom: "2px" }}
+          />
+        </Navbar.Brand>
+      </LinkContainer>
+      <Navbar.Toggle aria-controls="basic-navbar-nav" />
+      <Navbar.Collapse id="basic-navbar-nav">
+        <BoostrapNav className="ml-auto">
+          <NavDropdown title={user.email} id="basic-nav-dropdown">
+            <LinkContainer to="/dashboard" exact>
+              <NavDropdown.Item>Dashboard</NavDropdown.Item>
+            </LinkContainer>
+            <LinkContainer to="/create-note" exact>
+              <NavDropdown.Item>Create Note</NavDropdown.Item>
+            </LinkContainer>
+            <NavDropdown.Divider />
+            <LinkContainer to="/" exact>
+              <NavDropdown.Item>App Homepage</NavDropdown.Item>
+            </LinkContainer>
+            <NavDropdown.Item
+              onClick={() => {
+                navLogout();
+              }}
+            >
+              Logout
+            </NavDropdown.Item>
+          </NavDropdown>
         </BoostrapNav>
       </Navbar.Collapse>
     </Navbar>

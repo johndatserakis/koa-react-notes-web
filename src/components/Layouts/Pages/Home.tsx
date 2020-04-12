@@ -1,14 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "@/store";
-// import { Counter } from "@/components/Partials/Components/counter/Counter";
-// import { connect } from 'react-redux';
-
-// const mapStateToProps = (state, props) => {
-//   return {
-//     user: state.user.user
-//   }
-// }
 
 export const Home = () => {
   const user = useSelector((state: RootState) => state.user.user);
@@ -51,6 +43,7 @@ export const Home = () => {
               . It's the exact same app - but written in Vue!
             </p>
 
+            {/* React */}
             <p>
               <a
                 href="https://github.com/johndatserakis/koa-react-notes-web"
@@ -58,7 +51,7 @@ export const Home = () => {
                 rel="noopener noreferrer"
               >
                 <img
-                  src="https://img.shields.io/badge/frontend--social.svg?style=social"
+                  src="https://img.shields.io/badge/react_frontend--social.svg?style=social"
                   alt="Koa-React-Notes-Web Github"
                 />
               </a>{" "}
@@ -104,6 +97,61 @@ export const Home = () => {
               </a>{" "}
             </p>
 
+            {/* Vue */}
+            <p>
+              <a
+                href="https://github.com/johndatserakis/koa-vue-notes-web"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img
+                  src="https://img.shields.io/badge/vue_frontend--social.svg?style=social"
+                  alt="Koa-Vue-Notes-Web Github"
+                />
+              </a>{" "}
+              <a
+                href="https://twitter.com/intent/tweet?text=Check+out+this+project+on+GitHub:+https://github.com/johndatserakis/koa-vue-notes-web&url=%5Bobject%20Object%5D"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img
+                  src="https://img.shields.io/twitter/url/https/github.com/johndatserakis/koa-vue-notes-web.svg?style=social"
+                  alt="Koa-Vue-Notes"
+                />
+              </a>{" "}
+              <a
+                href="https://raw.githubusercontent.com/johndatserakis/koa-vue-notes-web/master/LICENSE"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img
+                  src="https://img.shields.io/badge/license-MIT-blue.svg"
+                  alt="Koa-Vue-Notes"
+                />
+              </a>{" "}
+              <a
+                href="https://github.com/johndatserakis/koa-vue-notes-web/stargazers"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img
+                  src="https://img.shields.io/github/stars/johndatserakis/koa-vue-notes-web.svg"
+                  alt="Koa-Vue-Notes"
+                />
+              </a>{" "}
+              <a
+                href="https://github.com/johndatserakis/koa-vue-notes-web/network"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img
+                  src="https://img.shields.io/github/forks/johndatserakis/koa-vue-notes-web.svg"
+                  alt="Koa-Vue-Notes"
+                />
+              </a>{" "}
+            </p>
+
+            {/* Koa */}
             <p>
               <a
                 href="https://github.com/johndatserakis/koa-vue-notes-api"
@@ -111,7 +159,7 @@ export const Home = () => {
                 rel="noopener noreferrer"
               >
                 <img
-                  src="https://img.shields.io/badge/Backend--social.svg?style=social"
+                  src="https://img.shields.io/badge/koa_backend--social.svg?style=social"
                   alt="Koa-React-Notes"
                 />
               </a>{" "}

@@ -59,13 +59,9 @@ export const clearNotes = () => {
 
 export const getNotes = (
   data: NotesQuery,
-): ThunkResult<Promise<Note[]>> => async (
-  dispatch: GeneralThunkDispatch,
-  getState,
-) => {
+): ThunkResult<Promise<Note[]>> => async (dispatch: GeneralThunkDispatch) => {
   try {
-    const { user } = getState();
-    setAuthorizationHeader(axios, user.userTokens.accessToken);
+    setAuthorizationHeader(axios);
     const result: AxiosResponse<Note[]> = await axios.get("notes", {
       params: data,
     });
@@ -76,14 +72,11 @@ export const getNotes = (
   }
 };
 
-export const getNote = (data: number): ThunkResult<Promise<Note>> => async (
-  dispatch: GeneralThunkDispatch,
-  getState,
-) => {
+export const getNote = (
+  data: number,
+): ThunkResult<Promise<Note>> => async () => {
   try {
-    const { user } = getState();
-    setAuthorizationHeader(axios, user.userTokens.accessToken);
-    console.log("getNote", user);
+    setAuthorizationHeader(axios);
     const result: AxiosResponse<Note> = await axios.get(`notes/${data}`);
     return result.data;
   } catch (error) {
@@ -93,18 +86,14 @@ export const getNote = (data: number): ThunkResult<Promise<Note>> => async (
 
 export const createNote = (
   data: NoteCreatePost,
-): ThunkResult<Promise<Note>> => async (
-  dispatch: GeneralThunkDispatch,
-  getState,
-) => {
+): ThunkResult<Promise<Note>> => async (dispatch: GeneralThunkDispatch) => {
   try {
     // The commented out block is what I usually do, but when I set up this
     // api, I am basically returning the created id. What I like to do now
     // is return the posted object back to the client so they can use it.
     // We're going to emulate that below.
 
-    // const { user } = getState();
-    // setAuthorizationHeader(axios, user.userTokens.accessToken);
+    // setAuthorizationHeader(axios);
     // const result: AxiosResponse<Note> = await axios.post("notes", data);
     // dispatch(addNoteToStack(result.data));
     // return result.data;
@@ -114,8 +103,7 @@ export const createNote = (
       message: string;
       id: number[];
     }
-    const { user } = getState();
-    setAuthorizationHeader(axios, user.userTokens.accessToken);
+    setAuthorizationHeader(axios);
     const result: AxiosResponse<PostApiResponse> = await axios.post(
       "notes",
       data,

@@ -15,9 +15,10 @@ const instance = axios.create(defaultOptions);
 // eslint-disable-next-line import/no-default-export
 export default instance;
 
-export const setAuthorizationHeader = (
-  a: AxiosInstance,
-  accessToken: string,
-) => {
-  a.defaults.headers.common.Authorization = `Bearer ${accessToken}`;
+// Here's our authorization header helper. It'll read the localStorage and
+// use a potentially available accessToken to refresh our user
+export const setAuthorizationHeader = (a: AxiosInstance) => {
+  a.defaults.headers.common.Authorization = `Bearer ${
+    localStorage.getItem("accessToken") || ""
+  }`;
 };
