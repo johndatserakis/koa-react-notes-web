@@ -90,3 +90,9 @@ Copywrite 2018 John Datserakis
 [MIT](http://opensource.org/licenses/MIT)
 
 https://github.com/unzico/cra3-ts-antd-sass
+
+
+
+
+
+You need to use the UserThunkDispatch when you're calling dispatches that call async actions.

@@ -19,12 +19,15 @@ export const Nav = () => (
     <Navbar.Toggle aria-controls="basic-navbar-nav" />
     <Navbar.Collapse id="basic-navbar-nav">
       <BoostrapNav className="mr-auto">
-        {/* <BoostrapNav.Link href="#login">Login</BoostrapNav.Link> */}
         <LinkContainer to="/user/login">
           <BoostrapNav.Link>Login</BoostrapNav.Link>
         </LinkContainer>
         <LinkContainer to="/user/signup">
           <BoostrapNav.Link>Signup</BoostrapNav.Link>
+        </LinkContainer>
+
+        <LinkContainer to="/dashboard">
+          <BoostrapNav.Link>Dashboard</BoostrapNav.Link>
         </LinkContainer>
 
         {/* <NavDropdown title="Dropdown" id="basic-nav-dropdown">

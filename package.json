@@ -14,6 +14,7 @@
     "@types/node": "^13.9.3",
     "@types/parse-link-header": "^1.0.0",
     "@types/react": "^16.9.0",
+    "@types/react-bootstrap": "^1.0.0",
     "@types/react-dom": "^16.9.0",
     "@types/react-paginate": "^6.2.1",
     "@types/react-redux": "^7.1.7",
@@ -63,10 +64,9 @@
   },
   "scripts": {
     "watch": "craco start",
-    "build": "craco build",
+    "build": "rm -rf ./dist && craco build && mv build dist",
     "test": "craco test",
-    "lint": "eslint --ext js,ts,tsx src",
-    "lint2": "tsc --noEmit && eslint '*/**/*.{js,ts,tsx}' --quiet --fix"
+    "lint": "tsc --noEmit && eslint '*/**/*.{js,ts,tsx}' --quiet --fix"
   },
   "eslintConfig": {
     "extends": "react-app"

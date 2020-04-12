@@ -1,9 +1,7 @@
-// In a `try/catch`` errors you'll need to
-// `return Promise.reject(error.response)` in the `catch` portion
-// to allow the error to show through
-// https://github.com/axios/axios/issues/960#issuecomment-320659373
+// Because we want to customize the baseURL for axios, we export an instance
+// here and use *it* as axios throughout our app.
 
-import axios from "axios";
+import axios, { AxiosInstance } from "axios";
 
 // If using the local external option when serving the frontend,
 // you need to provide the base url the external serving provides.
@@ -16,3 +14,10 @@ const instance = axios.create(defaultOptions);
 
 // eslint-disable-next-line import/no-default-export
 export default instance;
+
+export const setAuthorizationHeader = (
+  a: AxiosInstance,
+  accessToken: string,
+) => {
+  a.defaults.headers.common.Authorization = `Bearer ${accessToken}`;
+};

@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/static/css/main.aeedbfef.chunk.css",
+    "main.js": "/static/js/main.ae6ef90d.chunk.js",
+    "main.js.map": "/static/js/main.ae6ef90d.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.1eece3db.js",
+    "runtime-main.js.map": "/static/js/runtime-main.1eece3db.js.map",
+    "static/css/2.04cf3b72.chunk.css": "/static/css/2.04cf3b72.chunk.css",
+    "static/js/2.3a50ec96.chunk.js": "/static/js/2.3a50ec96.chunk.js",
+    "static/js/2.3a50ec96.chunk.js.map": "/static/js/2.3a50ec96.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.bc40962c11b989c4ff99e159ae8be3a4.js": "/precache-manifest.bc40962c11b989c4ff99e159ae8be3a4.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/2.04cf3b72.chunk.css.map": "/static/css/2.04cf3b72.chunk.css.map",
+    "static/css/main.aeedbfef.chunk.css.map": "/static/css/main.aeedbfef.chunk.css.map",
+    "static/js/2.3a50ec96.chunk.js.LICENSE.txt": "/static/js/2.3a50ec96.chunk.js.LICENSE.txt",
+    "static/media/app.scss": "/static/media/Quicksand-SemiBold.0ced4a3b.ttf",
+    "static/media/lockup-color.png": "/static/media/lockup-color.0eb5265c.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.1eece3db.js",
+    "static/css/2.04cf3b72.chunk.css",
+    "static/js/2.3a50ec96.chunk.js",
+    "static/css/main.aeedbfef.chunk.css",
+    "static/js/main.ae6ef90d.chunk.js"
+  ]
+}

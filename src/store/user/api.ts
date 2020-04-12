@@ -5,7 +5,7 @@ export interface UserLoginPost {
   password: string;
 }
 
-export const UserLoginValidation = Yup.object({
+export const UserLoginPostValidation = Yup.object({
   username: Yup.string().required("Required"),
   password: Yup.string()
     .required("Required")

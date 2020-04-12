@@ -40,6 +40,7 @@ module.exports = {
     "react/jsx-curly-newline": "off",
     "consistent-return": 0,
     "indent": "off",
+    "operator-linebreak": "off",
   },
   settings: {
     "import/resolver": {

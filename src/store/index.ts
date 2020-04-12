@@ -2,9 +2,11 @@ import { createStore, combineReducers, applyMiddleware, Action } from "redux";
 import thunkMiddleware, { ThunkAction, ThunkDispatch } from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 import { userReducer } from "@/store/user/reducers";
+import { noteReducer } from "./note/reducers";
 
 export const rootReducer = combineReducers({
   user: userReducer,
+  note: noteReducer,
 });
 
 export type AppState = ReturnType<typeof rootReducer>;
@@ -21,7 +23,7 @@ export const configureStore = () => {
   return store;
 };
 
-export type RootState = typeof rootReducer;
+export type RootState = ReturnType<typeof rootReducer>;
 
 // Async thunk helpers
 // https://github.com/reduxjs/redux-thunk/issues/213#issuecomment-603392173

@@ -7,7 +7,7 @@ import { configureStore } from "./store";
 
 ReactDOM.render(
   <Provider store={configureStore()}>
-    <ToastProvider>
+    <ToastProvider autoDismiss autoDismissTimeout={4000} placement="top-right">
       <App />
     </ToastProvider>
   </Provider>,

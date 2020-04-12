@@ -1,7 +1,8 @@
 import jwtDecode from "jwt-decode";
-import axios from "@/common/axios";
+import axios, { setAuthorizationHeader } from "@/common/axios";
 import { AxiosResponse } from "axios";
 import { ThunkResult, GeneralThunkDispatch } from "@/store";
+import { parseAxiosError } from "@/common/api";
 import { UserLoginPost } from "./api";
 import {
   UserShort,
@@ -20,17 +21,17 @@ export const setUser = (user: UserShort) => {
   };
 };
 
-export const setAccessToken = (accessToken: UserTokens["accessToken"]) => {
+export const setAccessToken = (accessToken: string) => {
   return {
     type: SET_ACCESS_TOKEN,
-    payload: { accessToken },
+    payload: accessToken,
   };
 };
 
-export const setRefreshToken = (refreshToken: UserTokens["refreshToken"]) => {
+export const setRefreshToken = (refreshToken: string) => {
   return {
     type: SET_REFRESH_TOKEN,
-    payload: { refreshToken },
+    payload: refreshToken,
   };
 };
 
@@ -38,7 +39,7 @@ export const setUserAndTokens = (
   data: UserTokens,
 ): ThunkResult<Promise<void>> => async (
   dispatch: GeneralThunkDispatch,
-  getState,
+  getState, // eslint-disable-line no-unused-vars
 ) => {
   try {
     const decoded: JwtDecodeData = jwtDecode(data.accessToken);
@@ -51,8 +52,7 @@ export const setUserAndTokens = (
 
     return Promise.resolve();
   } catch (error) {
-    // throw new Error(error);
-    return Promise.reject();
+    return Promise.reject(parseAxiosError(error));
   }
 };
 
@@ -60,7 +60,7 @@ export const login = (
   data: UserLoginPost,
 ): ThunkResult<Promise<UserTokens>> => async (
   dispatch: UserThunkDispatch,
-  getState,
+  getState, // eslint-disable-line no-unused-vars
 ) => {
   try {
     const result: AxiosResponse<UserTokens> = await axios.post(
@@ -68,14 +68,30 @@ export const login = (
       data,
     );
     await dispatch(setUserAndTokens(result.data));
-    // return Promise.resolve(result.data);
     return result.data;
   } catch (error) {
-    // Read here
-    // https://github.com/axios/axios#handling-errors
-    // throw new Error(error.response.data.message);
-    return Promise.reject(
-      error.response ? error.response : error.data.error.message,
+    return Promise.reject(parseAxiosError(error));
+  }
+};
+
+//
+
+export const getNewUserTokens = (): ThunkResult<Promise<UserTokens>> => async (
+  dispatch: UserThunkDispatch,
+  getState,
+) => {
+  try {
+    const { user } = getState();
+    setAuthorizationHeader(axios, user.userTokens.accessToken);
+    const result: AxiosResponse<UserTokens> = await axios.post(
+      "user/refreshAccessToken",
+      {
+        username: user.user.username,
+        refreshToken: user.userTokens.refreshToken,
+      },
     );
+    return result.data;
+  } catch (error) {
+    return Promise.reject(parseAxiosError(error));
   }
 };
