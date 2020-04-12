@@ -11,6 +11,7 @@ import {
   SET_ACCESS_TOKEN,
   SET_REFRESH_TOKEN,
   JwtDecodeData,
+  CLEAR_USER,
   UserThunkDispatch,
 } from "./types";
 
@@ -32,6 +33,12 @@ export const setRefreshToken = (refreshToken: string) => {
   return {
     type: SET_REFRESH_TOKEN,
     payload: refreshToken,
+  };
+};
+
+export const clearUser = () => {
+  return {
+    type: CLEAR_USER,
   };
 };
 
@@ -94,4 +101,13 @@ export const getNewUserTokens = (): ThunkResult<Promise<UserTokens>> => async (
   } catch (error) {
     return Promise.reject(parseAxiosError(error));
   }
+};
+
+export const logout = (): ThunkResult<Promise<void>> => async (
+  dispatch: GeneralThunkDispatch,
+) => {
+  dispatch(clearUser());
+  localStorage.removeItem("accessToken");
+  localStorage.removeItem("refreshToken");
+  return Promise.resolve();
 };

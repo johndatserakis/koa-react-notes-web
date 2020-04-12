@@ -1,58 +1,40 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Redirect,
+  // Redirect,
 } from "react-router-dom";
 import "@/assets/css/app.scss";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { UserThunkDispatch } from "@/store/user/types";
 import { setUserAndTokens } from "@/store/user/actions";
 import { runAxiosAuthInterceptor } from "@/common/program/axiosAuthInterceptor";
+import { useToasts } from "react-toast-notifications";
+import { RootState } from "@/store";
 import { getNotes } from "@/store/note/actions";
-
-// Partials
 import { Nav } from "@/components/Partials/Main/Nav";
 import { Footer } from "@/components/Partials/Main/Footer";
-
-// Layouts
 import { Home } from "@/components/Layouts/Pages/Home";
-
-// // User
 import { Login } from "@/components/User/Login";
 import { Signup } from "@/components/User/Signup";
 import { Forgot } from "@/components/User/Forgot";
 import { Reset } from "@/components/User/Reset";
-
-// // Program
 import { Dashboard } from "@/components/Layouts/Program/Dashboard";
 import { CreateNote } from "@/components/Layouts/Program/CreateNote";
 import { EditNote } from "@/components/Layouts/Program/EditNote";
-import { useToasts } from "react-toast-notifications";
-import { RootState } from "@/store";
 
 export const App = () => {
   const user = useSelector((state: RootState) => state.user.user);
+  // const isLoggedIn = !!user.id;
   const dispatch = useDispatch<UserThunkDispatch>();
   const { addToast } = useToasts();
+  const [isLoadingInitialAppState, setIsLoadingInitialAppState] = useState(
+    false,
+  );
 
-  const attachAxiosInterceptor = async () => {
-    try {
-      await dispatch(runAxiosAuthInterceptor());
-    } catch (error) {
-      console.log(error);
-      addToast(
-        "Hmm, there was an error retrieving your data. Please refresh the page and try again.",
-        {
-          appearance: "error",
-        },
-      );
-    }
-  };
-
-  const checkUserStatus = async () => {
-    console.log("checkUserStatus");
+  async function checkUserStatus() {
+    console.log("checkUserStatus init");
     try {
       const accessToken = localStorage.getItem("accessToken");
       const refreshToken = localStorage.getItem("refreshToken");
@@ -64,7 +46,7 @@ export const App = () => {
         );
       }
     } catch (error) {
-      console.log(error);
+      console.log("checkUserStatus error", error.message);
       addToast(
         "Hmm, there was an error retrieving your data. Please refresh the page and try again.",
         {
@@ -72,17 +54,23 @@ export const App = () => {
         },
       );
     }
-  };
+  }
 
   // Grab state on app load if possible
   useEffect(() => {
-    attachAxiosInterceptor();
+    setIsLoadingInitialAppState(true);
+    runAxiosAuthInterceptor();
     checkUserStatus();
-    console.log("end of useEff");
+    setIsLoadingInitialAppState(false);
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  return (
+  // return <div>Loading..1</div>;
+
+  return isLoadingInitialAppState ? (
+    <div>Loading...</div>
+  ) : (
     <Router>
       <div className="page-wrapper">
         <Nav />
@@ -96,13 +84,16 @@ export const App = () => {
             <Route path="/user/reset" component={Reset} />
 
             <Route path="/dashboard">
-              {user ? <Dashboard /> : <Redirect to="/" />}
+              <Dashboard />
+              {/* {isLoggedIn ? <Dashboard /> : <Redirect to="/123" />} */}
             </Route>
             <Route path="/create-note">
-              {user ? <CreateNote /> : <Redirect to="/" />}
+              <CreateNote />
+              {/* {isLoggedIn ? <CreateNote /> : <Redirect to="/" />} */}
             </Route>
             <Route path="/edit-note/:id">
-              {user ? <EditNote /> : <Redirect to="/" />}
+              <EditNote />
+              {/* {isLoggedIn ? <EditNote /> : <Redirect to="/" />} */}
             </Route>
           </Switch>
         </div>

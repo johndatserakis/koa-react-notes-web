@@ -4,6 +4,7 @@ import {
   SET_ACCESS_TOKEN,
   SET_REFRESH_TOKEN,
   UserActionTypes,
+  CLEAR_USER,
 } from "./types";
 
 const initialState: UserState = {
@@ -45,6 +46,8 @@ export const userReducer = (
           refreshToken: action.payload,
         },
       };
+    case CLEAR_USER:
+      return initialState;
     default:
       return state;
   }

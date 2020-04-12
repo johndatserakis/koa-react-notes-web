@@ -20,7 +20,7 @@
     "noEmit": true,
     "jsx": "react",
     "noImplicitReturns": true,
-    "noUnusedLocals": true,
+    "noUnusedLocals": false
   },
   "include": [
     "src"

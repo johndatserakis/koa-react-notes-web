@@ -102,10 +102,10 @@ export const LoginForm = () => {
         </Formik>
       </Container>
       <Container className="py-4">
-        <Row>
-          <Col>
-            <Link to="/forgot">Forgot Password</Link>
-            <Link to="/reset">Reset Password</Link>
+        <Row className="justify-content-center">
+          <Col lg={6}>
+            <Link to="/user/forgot">Forgot Password</Link> {" | "}
+            <Link to="/user/reset">Reset Password</Link>
           </Col>
         </Row>
       </Container>

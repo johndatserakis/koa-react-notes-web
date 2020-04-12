@@ -22,6 +22,7 @@ export const SET_USER_AND_TOKENS = "SET_USER_AND_TOKENS";
 export const SET_USER = "SET_USER";
 export const SET_ACCESS_TOKEN = "SET_ACCESS_TOKEN";
 export const SET_REFRESH_TOKEN = "SET_REFRESH_TOKEN";
+export const CLEAR_USER = "CLEAR_USER";
 
 interface SetUserAction {
   type: typeof SET_USER;
@@ -38,10 +39,15 @@ interface SetRefreshTokenAction {
   payload: UserTokens["refreshToken"];
 }
 
+interface ClearUser {
+  type: typeof CLEAR_USER;
+}
+
 export type UserActionTypes =
   | SetUserAction
   | SetAccessTokenAction
-  | SetRefreshTokenAction;
+  | SetRefreshTokenAction
+  | ClearUser;
 
 export interface JwtDecodeData {
   data: UserShort;

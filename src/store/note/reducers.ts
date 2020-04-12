@@ -61,10 +61,7 @@ export const noteReducer = (
       };
     }
     case CLEAR_NOTES:
-      return {
-        ...state,
-        notes: [],
-      };
+      return initialState;
     default:
       return state;
   }

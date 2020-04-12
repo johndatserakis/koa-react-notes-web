@@ -12,6 +12,7 @@ import { RootState } from "@/store";
 
 export const Home = () => {
   const user = useSelector((state: RootState) => state.user.user);
+  const isLoggedIn = !!user.id;
 
   return (
     <section className="pt-3">
@@ -22,7 +23,7 @@ export const Home = () => {
               <strong>Home</strong>
             </h1>
 
-            {user && (
+            {isLoggedIn && (
               <div>
                 <p>Here's your user...</p>
                 <p>

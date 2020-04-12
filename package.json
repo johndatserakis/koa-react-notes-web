@@ -27,6 +27,7 @@
     "@types/yup": "^0.26.34",
     "antd": "^4.0.4",
     "axios": "^0.19.2",
+    "axios-auth-refresh": "^2.2.4",
     "bootstrap": "^4.4.1",
     "classnames": "^2.2.6",
     "craco-antd": "^1.14.1",

@@ -109,6 +109,7 @@ export const createNote = (
     // dispatch(addNoteToStack(result.data));
     // return result.data;
 
+    // Instead, we need to manually get the note with the new id and use that
     interface PostApiResponse {
       message: string;
       id: number[];
