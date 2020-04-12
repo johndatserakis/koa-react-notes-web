@@ -31,7 +31,7 @@ export const noteReducer = (
     case ADD_NOTE_TO_STACK:
       return {
         ...state,
-        notes: [...state.notes, action.payload],
+        notes: [action.payload, ...state.notes],
       };
     case DELETE_NOTE_FROM_STACK: {
       const index = state.notes
@@ -49,10 +49,6 @@ export const noteReducer = (
       const index = state.notes
         .map((note) => note.id)
         .indexOf(action.payload.id);
-      // return {
-      //   ...state,
-      //   notes: [...state.notes.splice(index, 1)],
-      // };
       return {
         ...state,
         notes: [

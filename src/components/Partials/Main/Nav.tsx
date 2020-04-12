@@ -1,7 +1,7 @@
 import React from "react";
 import { Nav as BoostrapNav, Navbar } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
-import logo from "@/assets/images/main/lockup-color.png";
+import logo from "@/assets/images/main/lockup.png";
 
 export const Nav = () => (
   <Navbar bg="light" expand="lg">
@@ -13,6 +13,7 @@ export const Nav = () => (
           height="21"
           className="d-inline-block align-middle"
           alt="React Bootstrap logo"
+          style={{ marginBottom: "2px" }}
         />
       </Navbar.Brand>
     </LinkContainer>

@@ -48,6 +48,11 @@ export const runAxiosAuthInterceptor = (): ThunkResult<Promise<void>> => async (
         // @ts-ignore
         // eslint-disable-next-line no-underscore-dangle
         error.config.__isRetryRequest = true;
+
+        // error.config.baseURL needs to be zeroed out to prevent tripping over
+        // the baseURL we set in our main axios instance
+        // error.config.baseURL = "";
+
         return axios(error.config);
       } catch (error1) {
         // TODO: Logout of program here...

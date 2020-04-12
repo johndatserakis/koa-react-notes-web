@@ -38,11 +38,11 @@ export const LoginForm = () => {
         getNotes({ sort: "", order: "desc", page: 0, limit: 1000 }),
       );
 
-      // Push to dashboard
-      history.push("/dashboard");
-
       // Clear inputs
       actions.resetForm();
+
+      // Push to dashboard
+      history.push("/dashboard");
     } catch (error) {
       const e = error as ServerError;
       if (e && (e.error || e.errors)) {

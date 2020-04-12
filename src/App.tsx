@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 import "@/assets/css/app.scss";
 import { useSelector, useDispatch } from "react-redux";
-import { UserShort, UserThunkDispatch } from "@/store/user/types";
+import { UserThunkDispatch } from "@/store/user/types";
 import { setUserAndTokens } from "@/store/user/actions";
 import { runAxiosAuthInterceptor } from "@/common/program/axiosAuthInterceptor";
 import { getNotes } from "@/store/note/actions";
@@ -30,9 +30,10 @@ import { Dashboard } from "@/components/Layouts/Program/Dashboard";
 import { CreateNote } from "@/components/Layouts/Program/CreateNote";
 import { EditNote } from "@/components/Layouts/Program/EditNote";
 import { useToasts } from "react-toast-notifications";
+import { RootState } from "@/store";
 
 export const App = () => {
-  const user = useSelector((state: { user: UserShort }) => state.user);
+  const user = useSelector((state: RootState) => state.user.user);
   const dispatch = useDispatch<UserThunkDispatch>();
   const { addToast } = useToasts();
 
@@ -51,6 +52,7 @@ export const App = () => {
   };
 
   const checkUserStatus = async () => {
+    console.log("checkUserStatus");
     try {
       const accessToken = localStorage.getItem("accessToken");
       const refreshToken = localStorage.getItem("refreshToken");
@@ -76,6 +78,7 @@ export const App = () => {
   useEffect(() => {
     attachAxiosInterceptor();
     checkUserStatus();
+    console.log("end of useEff");
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -92,18 +95,15 @@ export const App = () => {
             <Route path="/user/forgot" component={Forgot} />
             <Route path="/user/reset" component={Reset} />
 
-            <Route
-              path="/dashboard"
-              render={() => (user ? <Dashboard /> : <Redirect to="/" />)}
-            />
-            <Route
-              path="/create-note"
-              render={() => (user ? <CreateNote /> : <Redirect to="/" />)}
-            />
-            <Route
-              path="/edit-note"
-              render={() => (user ? <EditNote /> : <Redirect to="/" />)}
-            />
+            <Route path="/dashboard">
+              {user ? <Dashboard /> : <Redirect to="/" />}
+            </Route>
+            <Route path="/create-note">
+              {user ? <CreateNote /> : <Redirect to="/" />}
+            </Route>
+            <Route path="/edit-note/:id">
+              {user ? <EditNote /> : <Redirect to="/" />}
+            </Route>
           </Switch>
         </div>
         <Footer />

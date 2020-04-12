@@ -35,13 +35,45 @@ interface CustomInputProps {
   placeholder?: string;
 }
 
-// eslint-disable-next-line react/prop-types
+type CustomTextAreaProps = Omit<CustomInputProps, "type">;
+
 export const TextInput: FunctionComponent<CustomInputProps> = (
   props: CustomInputProps,
 ) => {
   const [field, { error, touched }] = useField({
     name: props.name,
     type: props.type,
+  });
+
+  const [id] = useState(() => uuidv4());
+
+  return (
+    <div className="input-wrapper">
+      {props.label !== undefined && (
+        <label htmlFor="contactFormData-name" className="input-wrapper__label">
+          {props.label}
+        </label>
+      )}
+      <input
+        type="text"
+        className="form-control"
+        id={`${props.name}-${id}`}
+        name={`${props.name}-${id}`}
+        {...field}
+        {...props}
+      />
+      {touched && error ? (
+        <div className="input-wrapper__error-message">{error}</div>
+      ) : null}
+    </div>
+  );
+};
+
+export const TextArea: FunctionComponent<CustomTextAreaProps> = (
+  props: CustomTextAreaProps,
+) => {
+  const [field, { error, touched }] = useField({
+    name: props.name,
   });
 
   const [id] = useState(() => uuidv4());
@@ -57,8 +89,7 @@ export const TextInput: FunctionComponent<CustomInputProps> = (
             {props.label}
           </label>
         )}
-        <input
-          type="text"
+        <textarea
           className="form-control"
           id={`${props.name}-${id}`}
           name={`${props.name}-${id}`}
