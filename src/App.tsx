@@ -12,7 +12,6 @@ import { setUser } from "@/store/user/actions";
 import { runAxiosAuthInterceptor } from "@/common/program/axiosAuthInterceptor";
 import { useToasts } from "react-toast-notifications";
 import { RootState, GeneralThunkDispatch } from "@/store";
-import { getNotes } from "@/store/note/actions";
 import { Nav } from "@/components/Partials/Main/Nav";
 import { Footer } from "@/components/Partials/Main/Footer";
 import { Home } from "@/components/Layouts/Pages/Home";
@@ -29,22 +28,12 @@ export const App = () => {
   const user = useSelector((state: RootState) => state.user.user);
   const dispatch = useDispatch<GeneralThunkDispatch>();
   const { addToast } = useToasts();
-  const [isLoadingInitialAppState, setIsLoadingInitialAppState] = useState(
-    true,
-  ); // Init true
+  const [isLoadingAppState, setIsLoadingAppState] = useState(true);
   const [ranInitialUserCheck, setRanInitialUserCheck] = useState(false);
 
-  // Sometimes your app with need to run some actions on page refresh. In this
-  // app, we want any possible Notes for the user added on load.
-  const loadProgramData = async () => {
-    try {
-      await dispatch(
-        getNotes({ sort: "", order: "desc", page: 0, limit: 1000 }),
-      );
-    } catch (error) {
-      Promise.reject(error);
-    }
-  };
+  // Sometimes your app with need to run some actions on page refresh.
+  // Right now we're going to load the base notes in the dashboard instead
+  // const loadProgramData = async () => {};
 
   // Check for a possible user...
   const checkUserStatus = async () => {
@@ -65,7 +54,7 @@ export const App = () => {
         },
       );
     } finally {
-      setIsLoadingInitialAppState(false);
+      setIsLoadingAppState(false);
     }
   };
 
@@ -76,13 +65,11 @@ export const App = () => {
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
-    // If we haven't checked for the user yet and the app is done loading,
-    // then check for the user and load their program data if needed.
-    if (!ranInitialUserCheck && !isLoadingInitialAppState) {
-      if (user.id) {
-        loadProgramData();
-        setRanInitialUserCheck(true);
-      }
+    // If we haven't checked for the user yet, and the app is done loading,
+    // then check for the user and run loadProgramData if needed.
+    if (!ranInitialUserCheck && !isLoadingAppState && user.id) {
+      // loadProgramData();
+      setRanInitialUserCheck(true);
     }
   }, [user]); // eslint-disable-line react-hooks/exhaustive-deps
 
@@ -90,7 +77,7 @@ export const App = () => {
   // haven't checked for a user yet, let's just show a blank page. Otherwise,
   // show the home page, but take care to only allow traveling to user links
   // when a user is logged in.
-  return isLoadingInitialAppState && !ranInitialUserCheck ? (
+  return isLoadingAppState && !ranInitialUserCheck ? (
     <div />
   ) : (
     <Router>
@@ -98,21 +85,31 @@ export const App = () => {
         <Nav />
         <div className="main-content-wrapper" role="main" aria-label="Main">
           <Switch>
-            <Route exact path="/" component={Home} />
-
-            <Route path="/user/login" component={Login} />
-            <Route path="/user/signup" component={Signup} />
-            <Route path="/user/forgot" component={Forgot} />
-            <Route path="/user/reset" component={Reset} />
+            <Route path="/user/login">
+              <Login />
+            </Route>
+            <Route path="/user/signup">
+              <Signup />
+            </Route>
+            <Route path="/user/forgot">
+              <Forgot />
+            </Route>
+            <Route path="/user/reset">
+              <Reset />
+            </Route>
 
             <Route path="/dashboard">
-              {user.id ? <Dashboard /> : <Redirect to="/123" />}
+              {user.id ? <Dashboard /> : <Redirect to="/" />}
             </Route>
             <Route path="/create-note">
               {user.id ? <CreateNote /> : <Redirect to="/" />}
             </Route>
             <Route path="/edit-note/:id">
               {user.id ? <EditNote /> : <Redirect to="/" />}
+            </Route>
+
+            <Route exact path="/">
+              <Home />
             </Route>
           </Switch>
         </div>

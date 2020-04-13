@@ -116,3 +116,41 @@ export const createNote = (
     return Promise.reject(parseAxiosError(error));
   }
 };
+
+export const updateNote = (data: Note): ThunkResult<Promise<Note>> => async (
+  dispatch: GeneralThunkDispatch,
+) => {
+  try {
+    interface NotePutRequest {
+      title: string;
+      content: string;
+    }
+
+    const putRequest: NotePutRequest = {
+      title: data.title,
+      content: data.content,
+    };
+
+    setAuthorizationHeader(axios);
+    await axios.put<NotePutRequest, Note>(`notes/${data.id}`, putRequest);
+    dispatch(editNoteInStack(data));
+    return data;
+
+    // // Instead, we need to manually get the note with the new id and use that
+    // interface PostApiResponse {
+    //   message: string;
+    //   id: number[];
+    // }
+    // setAuthorizationHeader(axios);
+    // const result: AxiosResponse<PostApiResponse> = await axios.post(
+    //   "notes",
+    //   data,
+    // );
+    // const insertId = result.data.id[0];
+    // const singleNoteResult: Note = await dispatch(getNote(insertId));
+    // dispatch(addNoteToStack(singleNoteResult));
+    // return singleNoteResult;
+  } catch (error) {
+    return Promise.reject(parseAxiosError(error));
+  }
+};

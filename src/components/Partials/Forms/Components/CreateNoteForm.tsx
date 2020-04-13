@@ -11,8 +11,9 @@ import { NoteCreatePost, NoteCreatePostValidation } from "@/store/note/api";
 import { createNote } from "@/store/note/actions";
 import { ServerError } from "@/common/api";
 import { useHistory } from "react-router-dom";
-import { Row, Col, Container } from "react-bootstrap";
+import { Row, Col, Container, Button } from "react-bootstrap";
 import { NoteThunkDispatch } from "@/store/note/types";
+import { LinkContainer } from "react-router-bootstrap";
 
 const defaultValues: NoteCreatePost = {
   title: "",
@@ -57,6 +58,16 @@ export const CreateNoteForm = () => {
       >
         <Form>
           <Row className="justify-content-center">
+            <Col lg={6}>
+              <LinkContainer to="/dashboard">
+                <Button variant="primary" size="sm" className="mb-3">
+                  Back
+                </Button>
+              </LinkContainer>
+            </Col>
+
+            <div className="w-100" />
+
             <Col lg={6}>
               <h1>Create Note</h1>
             </Col>
