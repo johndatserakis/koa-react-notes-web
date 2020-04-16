@@ -4,7 +4,7 @@ import {
   TextInput,
   TextArea,
   SubmitButton,
-} from "@/components/Partials/Forms/Inputs/Inputs";
+} from "@/components/partials/forms/inputs/Inputs";
 import { useToasts } from "react-toast-notifications";
 import { useDispatch } from "react-redux";
 import { NoteCreatePost, NoteCreatePostValidation } from "@/store/note/api";

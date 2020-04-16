@@ -1,13 +1,12 @@
 import React from "react";
+import { LoginForm } from "@/components/user/forms/LoginForm";
 import { Container, Row, Col } from "react-bootstrap";
-// import { ResetForm } from "@/components/Partials/Forms/Components/ResetForm";
 
-export const Reset = () => (
+export const Login = () => (
   <Container className="py-4">
     <Row>
       <Col>
-        Reset
-        {/* <LoginForm /> */}
+        <LoginForm />
       </Col>
     </Row>
   </Container>

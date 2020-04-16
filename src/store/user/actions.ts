@@ -3,7 +3,12 @@ import axios from "@/common/axios";
 import { AxiosResponse } from "axios";
 import { ThunkResult, GeneralThunkDispatch } from "@/store";
 import { parseAxiosError } from "@/common/api";
-import { UserLoginPost } from "./api";
+import {
+  UserLoginPost,
+  UserSignupPost,
+  UserForgotPost,
+  UserResetPost,
+} from "./api";
 import {
   UserShort,
   SET_USER,
@@ -45,6 +50,48 @@ export const login = (
     localStorage.setItem("accessToken", result.data.accessToken);
     localStorage.setItem("refreshToken", result.data.refreshToken);
 
+    return result.data;
+  } catch (error) {
+    return Promise.reject(parseAxiosError(error));
+  }
+};
+
+export const signup = (
+  data: UserSignupPost,
+): ThunkResult<Promise<void>> => async (
+  // eslint-disable-next-line no-unused-vars
+  dispatch: GeneralThunkDispatch,
+) => {
+  try {
+    const result: AxiosResponse = await axios.post("user/signup", data);
+    return result.data;
+  } catch (error) {
+    return Promise.reject(parseAxiosError(error));
+  }
+};
+
+export const forgot = (
+  data: UserForgotPost,
+): ThunkResult<Promise<void>> => async (
+  // eslint-disable-next-line no-unused-vars
+  dispatch: GeneralThunkDispatch,
+) => {
+  try {
+    const result: AxiosResponse = await axios.post("user/forgot", data);
+    return result.data;
+  } catch (error) {
+    return Promise.reject(parseAxiosError(error));
+  }
+};
+
+export const reset = (
+  data: UserResetPost,
+): ThunkResult<Promise<void>> => async (
+  // eslint-disable-next-line no-unused-vars
+  dispatch: GeneralThunkDispatch,
+) => {
+  try {
+    const result: AxiosResponse = await axios.post("user/resetPassword", data);
     return result.data;
   } catch (error) {
     return Promise.reject(parseAxiosError(error));

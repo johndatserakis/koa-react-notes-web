@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import { CreateNoteForm } from "@/components/Partials/Forms/Components/CreateNoteForm";
+import { CreateNoteForm } from "@/components/partials/forms/components/CreateNoteForm";
 
 export const CreateNote = () => {
   return (

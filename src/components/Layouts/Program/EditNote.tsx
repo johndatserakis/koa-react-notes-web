@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import { EditNoteForm } from "@/components/Partials/Forms/Components/EditNoteForm";
+import { EditNoteForm } from "@/components/partials/forms/components/EditNoteForm";
 import { useParams } from "react-router-dom";
 import { getNote } from "@/store/note/actions";
 import { useDispatch } from "react-redux";
