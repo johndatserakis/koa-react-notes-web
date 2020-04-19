@@ -9,6 +9,47 @@ interface SubmitButtonProps {
   loadingText: string;
 }
 
+interface InputProps {
+  name: string;
+  type: string;
+  label?: string;
+  placeholder?: string;
+  disabled?: boolean;
+}
+
+type TextAreaProps = Omit<InputProps, "type">;
+
+interface CheckboxProps {
+  name: string;
+  label?: string;
+  disabled?: boolean;
+}
+
+interface SelectOption {
+  value: string | number;
+  label: string;
+}
+
+interface SelectProps {
+  name: string;
+  label?: string;
+  placeholder?: string;
+  options: SelectOption[];
+  disabled?: boolean;
+}
+
+interface RadioOption {
+  value: string | number;
+  label: string;
+}
+
+interface RadioProps {
+  name: string;
+  label?: string;
+  options: RadioOption[];
+  disabled?: boolean;
+}
+
 export const SubmitButton = (props: SubmitButtonProps) => {
   const [id] = useState(() => uuidv4());
 
@@ -28,18 +69,7 @@ export const SubmitButton = (props: SubmitButtonProps) => {
   );
 };
 
-interface CustomInputProps {
-  name: string;
-  type: string;
-  label?: string;
-  placeholder?: string;
-}
-
-type CustomTextAreaProps = Omit<CustomInputProps, "type">;
-
-export const TextInput: FunctionComponent<CustomInputProps> = (
-  props: CustomInputProps,
-) => {
+export const TextInput: FunctionComponent<InputProps> = (props: InputProps) => {
   const [field, { error, touched }] = useField({
     name: props.name,
     type: props.type,
@@ -69,8 +99,8 @@ export const TextInput: FunctionComponent<CustomInputProps> = (
   );
 };
 
-export const TextArea: FunctionComponent<CustomTextAreaProps> = (
-  props: CustomTextAreaProps,
+export const TextArea: FunctionComponent<TextAreaProps> = (
+  props: TextAreaProps,
 ) => {
   const [field, { error, touched }] = useField({
     name: props.name,
@@ -83,7 +113,7 @@ export const TextArea: FunctionComponent<CustomTextAreaProps> = (
       <div className="input-wrapper">
         {props.label !== undefined && (
           <label
-            htmlFor="contactFormData-name"
+            htmlFor={`${props.name}-${id}`}
             className="input-wrapper__label"
           >
             {props.label}
@@ -104,69 +134,124 @@ export const TextArea: FunctionComponent<CustomTextAreaProps> = (
   );
 };
 
-// const MyCheckbox = ({ children, ...props }) => {
-//   // We need to tell useField what type of input this is
-//   // since React treats radios and checkboxes differently
-//   // than inputs/select/textarea.
-//   const [field, meta] = useField({ ...props, type: "checkbox" });
-//   return (
-//     <>
-//       <label className="checkbox">
-//         <input type="checkbox" {...field} {...props} />
-//         {children}
-//       </label>
-//       {meta.touched && meta.error ? (
-//         <div className="error">{meta.error}</div>
-//       ) : null}
-//     </>
-//   );
-// };
+export const Checkbox: FunctionComponent<CheckboxProps> = (
+  props: CheckboxProps,
+) => {
+  const [field, { error, touched }] = useField({
+    name: props.name,
+  });
 
-// // Styled components ....
-// const StyledSelect = styled.select`
-//   /** ... * /
-// `;
+  const [id] = useState(() => uuidv4());
 
-// const StyledErrorMessage = styled.div`
-//   /** ... * /
-// `;
+  return (
+    <div className="input-wrapper">
+      <div className="form-check">
+        <input
+          className="form-check-input"
+          type="checkbox"
+          id={`${props.name}-${id}`}
+          checked={field.value}
+          {...field}
+          {...props}
+        />
+        <label className="form-check-label" htmlFor={`${props.name}-${id}`}>
+          {props.label}
+        </label>
+      </div>
 
-// const StyledLabel = styled.label`
-//  /** ...* /
-// `;
+      {touched && error ? (
+        <div className="input-wrapper__error-message">{error}</div>
+      ) : null}
+    </div>
+  );
+};
 
-// const MySelect = ({ label, ...props }) => {
-//   const [field, meta] = useField(props);
-//   return (
-//     <>
-//       <StyledLabel htmlFor={props.id || props.name}>{label}</StyledLabel>
-//       <StyledSelect {...field} {...props} />
-//       {meta.touched && meta.error ? (
-//         <StyledErrorMessage>{meta.error}</StyledErrorMessage>
-//       ) : null}
-//     </>
-//   );
-// };
+export const Select: FunctionComponent<SelectProps> = (props: SelectProps) => {
+  const [field, { error, touched }] = useField({
+    name: props.name,
+  });
 
-// { /* <MyTextInput
-//   label="Last Name"
-//   name="lastName"
-//   type="text"
-//   placeholder="Doe"
-// />
-// <MyTextInput
-//   label="Email Address"
-//   name="email"
-//   type="email"
-//   placeholder="jane@formik.com"
-// />
-// <MySelect label="Job Type" name="jobType">
-//   <option value="">Select a job type</option>
-//   <option value="designer">Designer</option>
-//   <option value="development">Developer</option>
-//   <option value="product">Product Manager</option>
-//   <option value="other">Other</option>
-// </MySelect>
-// <MyCheckbox name="acceptedTerms">
-//   I accept the terms and conditions
-// </MyCheckbox> */ }
+  const [id] = useState(() => uuidv4());
+
+  return (
+    <div className="input-wrapper">
+      {props.label !== undefined && (
+        <label htmlFor={`${props.name}-${id}`} className="input-wrapper__label">
+          {props.label}
+        </label>
+      )}
+      <select
+        className="form-control"
+        id={`${props.name}-${id}`}
+        name={`${props.name}-${id}`}
+        {...field}
+        {...props}
+      >
+        {props.options.map((o) => {
+          return (
+            <option key={o.value} value={o.value}>
+              {o.label}
+            </option>
+          );
+        })}
+      </select>
+      {touched && error ? (
+        <div className="input-wrapper__error-message">{error}</div>
+      ) : null}
+    </div>
+  );
+};
+
+export const Radio: FunctionComponent<RadioProps> = (props: RadioProps) => {
+  const [field, { error, touched }] = useField({
+    name: props.name,
+  });
+
+  const [id] = useState(() => uuidv4());
+
+  const createEvent = (value: string) => {
+    return {
+      persist: () => {},
+      target: {
+        type: "change",
+        name: props.name,
+        value,
+      },
+    };
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    field.onChange(createEvent(e.target.value));
+  };
+
+  return (
+    <div className="input-wrapper">
+      {props.label !== undefined && (
+        <label htmlFor={`${props.name}-${id}`} className="input-wrapper__label">
+          {props.label}
+        </label>
+      )}
+      {props.options.map((o) => {
+        return (
+          <div key={o.value} className="form-check">
+            <input
+              className="form-check-input"
+              type="radio"
+              id={`${o.label.replace(" ", "-")}-${id}`}
+              name={`${props.name}-${id}`}
+              defaultChecked={field.value === o.label}
+              value={o.value}
+              onChange={handleChange}
+            />
+            <label className="form-check-label" htmlFor={`${o.label}-${id}`}>
+              {o.label}
+            </label>
+          </div>
+        );
+      })}
+      {touched && error ? (
+        <div className="input-wrapper__error-message">{error}</div>
+      ) : null}
+    </div>
+  );
+};

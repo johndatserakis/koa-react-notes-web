@@ -13,41 +13,6 @@
     }
   }
 
-  input:not([type="radio"]):not([type="checkbox"]),
-  select {
-    height: auto;
-    font-size: 16px;
-    line-height: normal;
-    padding: 18px 12px;
-  }
-
-  select {
-    height: 58px;
-  }
-
-  // select height needs to be auto for FF
-  @-moz-document url-prefix() {
-    select {
-      height: auto;
-    }
-  }
-
-  textarea {
-    min-height: 100px;
-    width: 100%;
-  }
-
-  input,
-  select,
-  textarea {
-    box-shadow: $inset-shadow;
-  }
-
-  input::placeholder,
-  textarea::placeholder {
-    color: $gray-700;
-  }
-
   &__label {
     color: $black;
     font-weight: 500;
@@ -69,15 +34,13 @@
 
 .form-control {
   border: $border;
+
+  &:disabled,
+  &[readonly] {
+    background-color: $gray-300;
+  }
 }
 
-.form-control:disabled,
-.form-control[readonly] {
-  background-color: $gray-300;
-}
-
-// Repeating these for now for
-// non input-wrapper inputs
 input:not([type="radio"]):not([type="checkbox"]),
 select {
   height: auto;
@@ -86,7 +49,8 @@ select {
   padding: 18px 12px;
 }
 
-select {
+select,
+select.form-control {
   height: 58px;
 }
 
@@ -104,8 +68,12 @@ textarea {
 
 input,
 select,
-textarea {
+textarea, {
   box-shadow: $inset-shadow;
+}
+
+input[type="radio"] {
+  box-shadow: none;
 }
 
 input::placeholder,

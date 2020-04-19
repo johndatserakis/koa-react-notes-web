@@ -6,8 +6,8 @@ export interface NoteCreatePost {
 }
 
 export const NoteCreatePostValidation = Yup.object({
-  title: Yup.string().required("Required"),
-  content: Yup.string().required("Required"),
+  title: Yup.string().required("Title is required"),
+  content: Yup.string().required("Content is required"),
 });
 
 export interface NotesQuery {

@@ -46,7 +46,7 @@
   },
   "scripts": {
     "watch": "craco start",
-    "build": "rm -rf ./dist && craco build && mv build dist",
+    "build": "rm -rf ./dist && craco test && craco build && mv build dist",
     "test": "craco test --watchAll=false",
     "lint": "tsc --noEmit && eslint '*/**/*.{js,ts,tsx}' --quiet --fix"
   },

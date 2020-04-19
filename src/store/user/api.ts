@@ -36,19 +36,19 @@ export interface UserResetPostWithPasswordConfirm extends UserResetPost {
 //
 
 export const UserLoginPostValidation = Yup.object({
-  username: Yup.string().required("Required"),
+  username: Yup.string().required("Username is required"),
   password: Yup.string()
-    .required("Required")
+    .required("Password is required")
     .min(8, "Password must be at least 6 characters"),
 });
 
 export const UserSignupPostWithPasswordConfirmValidation = Yup.object({
-  firstName: Yup.string().required("Required"),
-  lastName: Yup.string().required("Required"),
-  username: Yup.string().required("Required"),
-  email: Yup.string().required("Required").email(),
+  firstName: Yup.string().required("First Name is required"),
+  lastName: Yup.string().required("Last Name is required"),
+  username: Yup.string().required("Username is required"),
+  email: Yup.string().required("Email is required").email(),
   password: Yup.string()
-    .required("Required")
+    .required("Password is required")
     .min(8, "Password must be at least 6 characters"),
   passwordConfirm: Yup.string()
     .oneOf([Yup.ref("password"), null], "Passwords must match")
@@ -56,14 +56,14 @@ export const UserSignupPostWithPasswordConfirmValidation = Yup.object({
 });
 
 export const UserForgotPostValidation = Yup.object({
-  email: Yup.string().required("Required").email(),
+  email: Yup.string().required("Email is required").email(),
 });
 
 export const UserResetPostWithPasswordConfirmValidation = Yup.object({
   passwordResetToken: Yup.string().required("Required"),
-  email: Yup.string().required("Required").email(),
+  email: Yup.string().required("Email is required").email(),
   password: Yup.string()
-    .required("Required")
+    .required("Password is required")
     .min(8, "Password must be at least 6 characters"),
   passwordConfirm: Yup.string()
     .oneOf([Yup.ref("password"), null], "Passwords must match")
