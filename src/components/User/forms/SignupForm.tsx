@@ -18,12 +18,12 @@ import { useHistory, Link } from "react-router-dom";
 import { Row, Col, Container } from "react-bootstrap";
 
 const defaultValues: UserSignupPostWithPasswordConfirm = {
-  firstName: "test",
-  lastName: "string",
-  username: "string",
-  email: "johndatserakis+001@gmail.com",
-  password: "123123123",
-  passwordConfirm: "123123123",
+  firstName: "",
+  lastName: "",
+  username: "",
+  email: "",
+  password: "",
+  passwordConfirm: "",
 };
 
 export const SignupForm = () => {
@@ -45,8 +45,10 @@ export const SignupForm = () => {
       // Clear inputs
       actions.resetForm();
 
-      // Push to dashboard
+      // Push home
       history.push("/");
+
+      addToast("Account created. Please login.", { appearance: "success" });
     } catch (error) {
       const e = error as ServerError;
       if (e && (e.error || e.errors)) {

@@ -34,7 +34,6 @@ export const CreateNoteForm = () => {
       setIsLoading(true);
       await dispatch(createNote(values));
       actions.resetForm();
-      addToast("Note Created", { appearance: "success" });
       history.push("/dashboard");
     } catch (error) {
       const e = error as ServerError;

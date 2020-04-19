@@ -41,7 +41,8 @@ module.exports = {
     "consistent-return": 0,
     "indent": "off",
     "operator-linebreak": "off",
-    "eqeqeq": ["error", "always", {"null": "ignore"}]
+    "eqeqeq": ["error", "always", {"null": "ignore"}],
+    "no-alert": "off",
   },
   settings: {
     "import/resolver": {

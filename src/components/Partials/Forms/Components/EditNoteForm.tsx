@@ -12,7 +12,7 @@ import { Row, Col, Container, Button } from "react-bootstrap";
 import { Note } from "@/store/note/types";
 import { LinkContainer } from "react-router-bootstrap";
 import { useHistory } from "react-router-dom";
-import { updateNote } from "@/store/note/actions";
+import { updateNote, deleteNote } from "@/store/note/actions";
 import { useDispatch } from "react-redux";
 import { GeneralThunkDispatch } from "@/store";
 
@@ -52,7 +52,6 @@ export const EditNoteForm = (props: EditNoteFormProps) => {
       setIsLoading(true);
       await dispatch(updateNote(editedNote));
       actions.resetForm();
-      addToast("Note Edited", { appearance: "success" });
       history.push("/dashboard");
     } catch (error) {
       const e = error as ServerError;
@@ -64,6 +63,20 @@ export const EditNoteForm = (props: EditNoteFormProps) => {
       });
     } finally {
       setIsLoading(false);
+    }
+  };
+
+  const del = async () => {
+    const result = window.confirm("Are you sure you want to delete this note?");
+    if (!result) {
+      return;
+    }
+
+    try {
+      await dispatch(deleteNote(props.note));
+      history.push("/dashboard");
+    } catch (error) {
+      console.log(error);
     }
   };
 
@@ -104,13 +117,27 @@ export const EditNoteForm = (props: EditNoteFormProps) => {
 
             <div className="w-100" />
 
-            <Col lg={6}>
+            <Col lg={6} className="mb-3">
               <SubmitButton
                 name="update-note-submit-button"
                 text="Update"
                 loading={isLoading}
                 loadingText="Updating ..."
               />
+            </Col>
+
+            <div className="w-100" />
+
+            <Col lg={6}>
+              <Button
+                variant="danger"
+                className="mb-3"
+                block
+                type="button"
+                onClick={del}
+              >
+                Delete
+              </Button>
             </Col>
           </Row>
         </Form>

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   ListGroup,
@@ -15,6 +15,7 @@ import { useHistory } from "react-router-dom";
 import { Note } from "@/store/note/types";
 import { getNotes } from "@/store/note/actions";
 import { useToasts } from "react-toast-notifications";
+import { NotesQuery } from "@/store/note/api";
 
 export const Dashboard = () => {
   const dispatch = useDispatch<GeneralThunkDispatch>();
@@ -22,16 +23,26 @@ export const Dashboard = () => {
   const history = useHistory();
   const { addToast } = useToasts();
 
+  const [completedFirstPass, setCompletedFirstPass] = useState(false);
+  const [okToLoadMore, setOkToLoadMore] = useState(false);
+  const [query, setQuery] = useState<NotesQuery>({
+    sort: "",
+    order: "desc" as const,
+    page: 0,
+    limit: 20,
+  });
+
   const loadProgramData = async () => {
     try {
-      await dispatch(
-        getNotes({
-          sort: "",
-          order: "desc",
-          page: 0,
-          limit: 1000,
-        }),
-      );
+      const result = await dispatch(getNotes(query));
+
+      // Sort out the new query data now...
+      if (result.length === query.limit) {
+        setOkToLoadMore(true);
+        setQuery({ ...query, page: query.page + 1 });
+      } else {
+        setOkToLoadMore(false);
+      }
     } catch (error) {
       addToast(
         "Hmm, there was an error retrieving your data. Please refresh the page and try again.",
@@ -39,6 +50,10 @@ export const Dashboard = () => {
           appearance: "error",
         },
       );
+    } finally {
+      if (!completedFirstPass) {
+        setCompletedFirstPass(true);
+      }
     }
   };
 
@@ -60,9 +75,13 @@ export const Dashboard = () => {
     </ListGroupItem>
   ));
 
+  const loadMore = () => {
+    loadProgramData();
+  };
+
   return (
     <Container className="py-4">
-      <Row className="justify-content-center">
+      <Row className="justify-content-center mb-3">
         <Col lg={6}>
           <LinkContainer to="/create-note">
             <Button variant="primary" className="mb-4" block>
@@ -71,6 +90,15 @@ export const Dashboard = () => {
           </LinkContainer>
 
           {notes.length > 0 && <ListGroup>{noteList}</ListGroup>}
+        </Col>
+      </Row>
+      <Row className="justify-content-center">
+        <Col lg={6}>
+          {okToLoadMore && (
+            <Button className="mb-4 btn-orange" block onClick={loadMore}>
+              Load more...
+            </Button>
+          )}
         </Col>
       </Row>
     </Container>

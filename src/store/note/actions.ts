@@ -1,4 +1,3 @@
-// import jwtDecode from "jwt-decode";
 import axios, { setAuthorizationHeader } from "@/common/axios";
 import { AxiosResponse } from "axios";
 import { ThunkResult, GeneralThunkDispatch } from "@/store";
@@ -62,11 +61,14 @@ export const getNotes = (
 ): ThunkResult<Promise<Note[]>> => async (dispatch: GeneralThunkDispatch) => {
   try {
     setAuthorizationHeader(axios);
-    const result: AxiosResponse<Note[]> = await axios.get("notes", {
-      params: data,
-    });
-    dispatch(setNotes(result.data));
-    return result.data;
+    const result: AxiosResponse<{ data: { notes: Note[] } }> = await axios.get(
+      "notes",
+      {
+        params: data,
+      },
+    );
+    dispatch(addNotes(result.data.data.notes));
+    return result.data.data.notes;
   } catch (error) {
     return Promise.reject(parseAxiosError(error));
   }
@@ -77,8 +79,10 @@ export const getNote = (
 ): ThunkResult<Promise<Note>> => async () => {
   try {
     setAuthorizationHeader(axios);
-    const result: AxiosResponse<Note> = await axios.get(`notes/${data}`);
-    return result.data;
+    const result: AxiosResponse<{ data: { note: Note } }> = await axios.get(
+      `notes/${data}`,
+    );
+    return result.data.data.note;
   } catch (error) {
     return Promise.reject(parseAxiosError(error));
   }
@@ -88,30 +92,13 @@ export const createNote = (
   data: NoteCreatePost,
 ): ThunkResult<Promise<Note>> => async (dispatch: GeneralThunkDispatch) => {
   try {
-    // The commented out block is what I usually do, but when I set up this
-    // api, I am basically returning the created id. What I like to do now
-    // is return the posted object back to the client so they can use it.
-    // We're going to emulate that below.
-
-    // setAuthorizationHeader(axios);
-    // const result: AxiosResponse<Note> = await axios.post("notes", data);
-    // dispatch(addNoteToStack(result.data));
-    // return result.data;
-
-    // Instead, we need to manually get the note with the new id and use that
-    interface PostApiResponse {
-      message: string;
-      id: number[];
-    }
     setAuthorizationHeader(axios);
-    const result: AxiosResponse<PostApiResponse> = await axios.post(
+    const result: AxiosResponse<{ data: { note: Note } }> = await axios.post(
       "notes",
       data,
     );
-    const insertId = result.data.id[0];
-    const singleNoteResult: Note = await dispatch(getNote(insertId));
-    dispatch(addNoteToStack(singleNoteResult));
-    return singleNoteResult;
+    dispatch(addNoteToStack(result.data.data.note));
+    return result.data.data.note;
   } catch (error) {
     return Promise.reject(parseAxiosError(error));
   }
@@ -132,24 +119,25 @@ export const updateNote = (data: Note): ThunkResult<Promise<Note>> => async (
     };
 
     setAuthorizationHeader(axios);
-    await axios.put<NotePutRequest, Note>(`notes/${data.id}`, putRequest);
-    dispatch(editNoteInStack(data));
-    return data;
+    const result: AxiosResponse<{ data: { note: Note } }> = await axios.put(
+      `notes/${data.id}`,
+      putRequest,
+    );
+    dispatch(editNoteInStack(result.data.data.note));
+    return result.data.data.note;
+  } catch (error) {
+    return Promise.reject(parseAxiosError(error));
+  }
+};
 
-    // // Instead, we need to manually get the note with the new id and use that
-    // interface PostApiResponse {
-    //   message: string;
-    //   id: number[];
-    // }
-    // setAuthorizationHeader(axios);
-    // const result: AxiosResponse<PostApiResponse> = await axios.post(
-    //   "notes",
-    //   data,
-    // );
-    // const insertId = result.data.id[0];
-    // const singleNoteResult: Note = await dispatch(getNote(insertId));
-    // dispatch(addNoteToStack(singleNoteResult));
-    // return singleNoteResult;
+export const deleteNote = (data: Note): ThunkResult<Promise<Note>> => async (
+  dispatch: GeneralThunkDispatch,
+) => {
+  try {
+    setAuthorizationHeader(axios);
+    await axios.delete(`notes/${data.id}`);
+    dispatch(deleteNoteFromStack(data));
+    return data;
   } catch (error) {
     return Promise.reject(parseAxiosError(error));
   }

@@ -15,8 +15,8 @@ import { useHistory, Link } from "react-router-dom";
 import { Row, Col, Container } from "react-bootstrap";
 
 const defaultValues: UserLoginPost = {
-  username: "demousername",
-  password: "demopassword",
+  username: "",
+  password: "",
 };
 
 export const LoginForm = () => {

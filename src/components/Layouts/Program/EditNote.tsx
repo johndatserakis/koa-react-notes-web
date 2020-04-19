@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { EditNoteForm } from "@/components/partials/forms/components/EditNoteForm";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import { getNote } from "@/store/note/actions";
 import { useDispatch } from "react-redux";
 import { NoteThunkDispatch, Note } from "@/store/note/types";
@@ -12,10 +12,22 @@ export const EditNote = () => {
   const { addToast } = useToasts();
   const dispatch = useDispatch<NoteThunkDispatch>();
   const [note, setNote] = useState<Note>();
+  const history = useHistory();
 
   const getNoteForEdit = async (noteId: number) => {
     try {
       const n: Note = await dispatch(getNote(noteId));
+
+      if (!n.id) {
+        addToast("No note found...", {
+          appearance: "error",
+        });
+
+        history.push("/dashboard");
+
+        return;
+      }
+
       setNote(n);
     } catch (error) {
       addToast("No note found...", {

@@ -37,20 +37,22 @@ export const login = (
 ) => {
   try {
     // Authenticate user using creds
-    const result: AxiosResponse<UserTokens> = await axios.post(
-      "user/authenticate",
-      data,
-    );
+    const result: AxiosResponse<{
+      data: {
+        accessToken: UserTokens["accessToken"];
+        refreshToken: UserTokens["refreshToken"];
+      };
+    }> = await axios.post("user/authenticate", data);
 
     // Take the accessToken and decode it, giving the user
-    const decoded: JwtDecodeData = jwtDecode(result.data.accessToken);
+    const decoded: JwtDecodeData = jwtDecode(result.data.data.accessToken);
     dispatch(setUser(decoded.data));
 
     // Store the accessTokena and refreshToken in localStorage
-    localStorage.setItem("accessToken", result.data.accessToken);
-    localStorage.setItem("refreshToken", result.data.refreshToken);
+    localStorage.setItem("accessToken", result.data.data.accessToken);
+    localStorage.setItem("refreshToken", result.data.data.refreshToken);
 
-    return result.data;
+    return result.data.data;
   } catch (error) {
     return Promise.reject(parseAxiosError(error));
   }
@@ -59,12 +61,11 @@ export const login = (
 export const signup = (
   data: UserSignupPost,
 ): ThunkResult<Promise<void>> => async (
-  // eslint-disable-next-line no-unused-vars
-  dispatch: GeneralThunkDispatch,
+  dispatch: GeneralThunkDispatch, // eslint-disable-line no-unused-vars
 ) => {
   try {
     const result: AxiosResponse = await axios.post("user/signup", data);
-    return result.data;
+    return result.data.data;
   } catch (error) {
     return Promise.reject(parseAxiosError(error));
   }
@@ -73,8 +74,7 @@ export const signup = (
 export const forgot = (
   data: UserForgotPost,
 ): ThunkResult<Promise<void>> => async (
-  // eslint-disable-next-line no-unused-vars
-  dispatch: GeneralThunkDispatch,
+  dispatch: GeneralThunkDispatch, // eslint-disable-line no-unused-vars
 ) => {
   try {
     const result: AxiosResponse = await axios.post("user/forgot", data);
@@ -87,8 +87,7 @@ export const forgot = (
 export const reset = (
   data: UserResetPost,
 ): ThunkResult<Promise<void>> => async (
-  // eslint-disable-next-line no-unused-vars
-  dispatch: GeneralThunkDispatch,
+  dispatch: GeneralThunkDispatch, // eslint-disable-line no-unused-vars
 ) => {
   try {
     const result: AxiosResponse = await axios.post("user/resetPassword", data);

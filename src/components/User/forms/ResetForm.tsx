@@ -33,18 +33,7 @@ export const ResetForm = () => {
   const history = useHistory();
   const { addToast } = useToasts();
   const dispatch = useDispatch<UserThunkDispatch>();
-  // const wow = useParams();
-  // console.log(wow);
-  // const { passwordResetToken, email } = useQuery();
-  // eslint-disable-next-line prefer-const
-  let query = useQuery();
-
-  // const initialDefaultValues: UserResetPost {
-  //   passwordResetToken: "",
-  //   email: "",
-  //   password: "123123123",
-  //   passwordConfirm: "123123123",
-  // }
+  const query = useQuery();
 
   const [defaultValues, setDefaultValues] = useState<
     UserResetPostWithPasswordConfirm

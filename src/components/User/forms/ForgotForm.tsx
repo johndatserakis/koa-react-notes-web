@@ -14,7 +14,7 @@ import { useHistory, Link } from "react-router-dom";
 import { Row, Col, Container } from "react-bootstrap";
 
 const defaultValues: UserForgotPost = {
-  email: "johndatserakis+001@gmail.com",
+  email: "",
   url: `${process.env.REACT_APP_URL}/user/reset`,
   type: "web",
 };

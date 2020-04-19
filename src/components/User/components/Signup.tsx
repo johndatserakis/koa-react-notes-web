@@ -6,7 +6,6 @@ export const Signup = () => (
   <Container className="py-4">
     <Row>
       <Col>
-        Signup
         <SignupForm />
       </Col>
     </Row>
