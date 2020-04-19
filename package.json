@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "dependencies": {
+    "@craco/craco": "^5.6.4",
     "@testing-library/jest-dom": "^5.1.1",
     "@testing-library/react": "^10.0.1",
     "@testing-library/user-event": "^10.0.0",
@@ -44,9 +45,9 @@
     "yup": "^0.28.3"
   },
   "scripts": {
-    "watch": "react-scripts start",
-    "build": "rm -rf ./dist && react-scripts build && mv build dist",
-    "test": "react-scripts test",
+    "watch": "craco start",
+    "build": "rm -rf ./dist && craco build && mv build dist",
+    "test": "craco test --watchAll=false",
     "lint": "tsc --noEmit && eslint '*/**/*.{js,ts,tsx}' --quiet --fix"
   },
   "browserslist": {

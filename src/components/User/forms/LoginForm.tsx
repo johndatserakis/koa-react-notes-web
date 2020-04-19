@@ -74,11 +74,7 @@ export const LoginForm = () => {
               <div className="w-100" />
 
               <Col lg={6}>
-                <TextInput
-                  name="username"
-                  type="text"
-                  label="Username (Email)"
-                />
+                <TextInput name="username" type="text" label="Username" />
               </Col>
 
               <div className="w-100" />
@@ -105,7 +101,7 @@ export const LoginForm = () => {
         <Row className="justify-content-center">
           <Col lg={6}>
             <Link to="/user/forgot">Forgot Password</Link> {" | "}
-            <Link to="/user/reset">Reset Password</Link>
+            <Link to="/user/signup">Signup</Link>
           </Col>
         </Row>
       </Container>

@@ -89,9 +89,8 @@ export const ForgotForm = () => {
       <Container className="py-4">
         <Row className="justify-content-center">
           <Col lg={6}>
-            <Link to="/user/forgot">Login</Link> {" | "}
-            <Link to="/user/forgot">Forgot Password</Link> {" | "}
-            <Link to="/user/reset">Reset Password</Link>
+            <Link to="/user/login">Login</Link> {" | "}
+            <Link to="/user/signup">Signup</Link>
           </Col>
         </Row>
       </Container>

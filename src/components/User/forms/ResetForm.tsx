@@ -14,7 +14,7 @@ import {
 } from "@/store/user/api";
 import { UserThunkDispatch } from "@/store/user/types";
 import { ServerError } from "@/common/api";
-import { useHistory, Link, useLocation } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import { Row, Col, Container } from "react-bootstrap";
 
 function useQuery() {
@@ -131,15 +131,6 @@ export const ResetForm = () => {
             </Row>
           </Form>
         </Formik>
-      </Container>
-      <Container className="py-4">
-        <Row className="justify-content-center">
-          <Col lg={6}>
-            <Link to="/user/forgot">Login</Link> {" | "}
-            <Link to="/user/forgot">Forgot Password</Link> {" | "}
-            <Link to="/user/reset">Reset Password</Link>
-          </Col>
-        </Row>
       </Container>
     </>
   );

@@ -4,7 +4,7 @@ module.exports = {
     "airbnb",
     "prettier/@typescript-eslint",
     "plugin:prettier/recommended",
-    ],
+  ],
   "rules": {
     "indent": ["error", 2],
     "prefer-const": ["error"],

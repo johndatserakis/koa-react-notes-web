@@ -135,8 +135,7 @@ export const SignupForm = () => {
         <Row className="justify-content-center">
           <Col lg={6}>
             <Link to="/user/forgot">Login</Link> {" | "}
-            <Link to="/user/forgot">Forgot Password</Link> {" | "}
-            <Link to="/user/reset">Reset Password</Link>
+            <Link to="/user/forgot">Forgot Password</Link>
           </Col>
         </Row>
       </Container>

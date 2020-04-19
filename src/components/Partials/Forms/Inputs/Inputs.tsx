@@ -50,7 +50,7 @@ export const TextInput: FunctionComponent<CustomInputProps> = (
   return (
     <div className="input-wrapper">
       {props.label !== undefined && (
-        <label htmlFor="contactFormData-name" className="input-wrapper__label">
+        <label htmlFor={`${props.name}-${id}`} className="input-wrapper__label">
           {props.label}
         </label>
       )}
