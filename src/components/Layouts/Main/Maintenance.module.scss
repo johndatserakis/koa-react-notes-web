@@ -1,0 +1,14 @@
+@import '~@/assets/css/components/variables.scss';
+
+.section {
+  padding: 1rem 0;
+  text-align: left;
+
+  @media(min-width: 992px) {
+    text-align: center;
+  }
+}
+
+.image-callout {
+  max-height: 350px;
+}

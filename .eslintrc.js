@@ -43,6 +43,8 @@ module.exports = {
     "operator-linebreak": "off",
     "eqeqeq": ["error", "always", {"null": "ignore"}],
     "no-alert": "off",
+    "import/no-extraneous-dependencies": ["error", {"devDependencies": ["**/*.test.ts", "**/*.test.tsx", "craco.config.js"]}]
+
   },
   settings: {
     "import/resolver": {

@@ -31,6 +31,7 @@
     "react": "^16.13.1",
     "react-bootstrap": "^1.0.0",
     "react-dom": "^16.13.1",
+    "react-error-boundary": "^1.2.5",
     "react-redux": "^7.2.0",
     "react-router-bootstrap": "^0.25.0",
     "react-router-dom": "^5.1.2",
@@ -69,6 +70,11 @@
     "eslint-import-resolver-alias": "^1.1.2",
     "eslint-plugin-import": "^2.20.2",
     "eslint-plugin-prettier": "^3.1.2",
-    "prettier": "^2.0.4"
+    "prettier": "^2.0.4",
+    "stylelint": "^13.3.3",
+    "stylelint-order": "^4.0.0",
+    "stylelint-scss": "^3.17.1",
+    "stylelint-webpack-plugin": "^1.2.3",
+    "webpack-bundle-analyzer": "^3.7.0"
   }
 }

@@ -209,6 +209,7 @@ export const Radio: FunctionComponent<RadioProps> = (props: RadioProps) => {
 
   const [id] = useState(() => uuidv4());
 
+  // https://github.com/jaredpalmer/formik/issues/1243
   const createEvent = (value: string) => {
     return {
       persist: () => {},
