@@ -35,12 +35,12 @@
   transition: transform 0.2s ease, opacity 0.2s ease;
 }
 .slide-fade-enter {
-  transform: translateY(-5px);
   opacity: 0;
+  transform: translateY(-5px);
 }
 .slide-fade-leave-to {
-  transform: translateY(5px);
   opacity: 0;
+  transform: translateY(5px);
 }
 
 .quick-fade-enter-active,

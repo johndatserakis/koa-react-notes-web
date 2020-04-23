@@ -1,12 +1,12 @@
 .btn,
 button {
+  font-weight: 500;
   // text-transform: uppercase;
   letter-spacing: 1px;
-  font-weight: 500;
-  // box-shadow: $box-shadow;
-  text-shadow: 0 1px 4px rgba($black, 0.15);
   letter-spacing: 1px;
   line-height: $line-height;
+  // box-shadow: $box-shadow;
+  text-shadow: 0 1px 4px rgba($black, 0.15);
 
   &:hover {
     cursor: pointer;
@@ -26,17 +26,17 @@ button {
 
 // Adjust global dropdown
 .dropdown-menu li a {
-  font-size: 18px;
   color: $font-color;
+  font-size: 18px;
 }
 
 // Adjust global list-group buttons
 .list-group {
   .btn,
   button {
+    box-shadow: none;
     font-weight: normal;
     text-shadow: none;
-    box-shadow: none;
 
     &:hover {
       box-shadow: none;
@@ -45,9 +45,9 @@ button {
 }
 
 .btn-link {
-  text-shadow: none;
-  color: lighten($black, 30%);
   box-shadow: none;
+  color: lighten($black, 30%);
+  text-shadow: none;
 
   &:hover,
   &:active,

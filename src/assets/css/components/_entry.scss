@@ -23,8 +23,8 @@
   }
 
   &__error-message {
-    margin-top: 10px;
     color: $red-700;
+    margin-top: 10px;
 
     &--white {
       color: $white;
@@ -43,8 +43,8 @@
 
 input:not([type="radio"]):not([type="checkbox"]),
 select {
-  height: auto;
   font-size: 16px;
+  height: auto;
   line-height: normal;
   padding: 18px 12px;
 }
@@ -88,13 +88,13 @@ label {
 }
 
 .form-check {
-  position: relative;
   display: block;
   padding-left: 1.25rem;
+  position: relative;
 
   .form-check-input {
-    margin-top: 0.4rem;
     margin-right: 20px;
+    margin-top: 0.4rem;
   }
 
   .form-check-label {

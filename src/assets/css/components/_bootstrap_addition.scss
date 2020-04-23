@@ -30,15 +30,15 @@ $display5-size: 2.5rem !default;
   $active-background: darken($background, 10%),
   $active-border: darken($border, 10%)
 ) {
-  color: $color;
   background-color: $background;
   border-color: $border;
+  color: $color;
   @include box-shadow($btn-box-shadow);
 
   &:hover {
-    color: $hover-color;
     background-color: $hover-background;
     border-color: $hover-border;
+    color: $hover-color;
   }
 
   &:focus,
@@ -61,10 +61,10 @@ $display5-size: 2.5rem !default;
   &:active,
   &.active,
   .show > &.dropdown-toggle {
-    color: $active-color;
     background-color: $active-background;
     background-image: none; // Remove the gradient for the pressed/active state
     border-color: $active-border;
+    color: $active-color;
     @include box-shadow($btn-active-box-shadow);
   }
 }
@@ -221,12 +221,12 @@ $display5-size: 2.5rem !default;
 
 // Badges
 .badge {
-  font-family: $font-family-base;
   border-radius: $border-radius;
+  font-family: $font-family-base;
   font-size: 80%;
-  padding: 6px 6px;
   font-weight: normal;
   letter-spacing: 0.75px;
+  padding: 6px 6px;
 
   @media (min-width: 992px) {
     font-size: 90%;
@@ -235,15 +235,15 @@ $display5-size: 2.5rem !default;
 }
 
 .badge-block {
-  text-align: left;
   display: block;
-  white-space: normal;
   line-height: 1.6;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+  text-align: left;
+  white-space: normal;
 
   &::-webkit-scrollbar {
     display: none;
   }
-  -ms-overflow-style: -ms-autohiding-scrollbar;
 }
 
 .badge-blue {

@@ -8,14 +8,14 @@
 }
 
 .modal-header {
+  align-items: center;
   background: $white;
   border-bottom: 1px solid rgba($black, 0.1);
-  padding: 0.75rem 1rem;
 
   // So we can have the close button on the left
   flex-direction: row-reverse;
   justify-content: space-between;
-  align-items: center;
+  padding: 0.75rem 1rem;
 
   .close {
     margin-left: -1rem;
