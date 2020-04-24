@@ -10,7 +10,7 @@ button {
   letter-spacing: 1px;
   line-height: $line-height;
   // box-shadow: $box-shadow;
-  text-shadow: 0 1px 4px rgba($black, 0.15);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
 
   &:hover {
     cursor: pointer;
@@ -25,7 +25,7 @@ button {
 
 // Adjust global dropdown
 .dropdown-menu li a {
-  color: $font-color;
+  color: color(font-color);
   font-size: 18px;
 }
 
@@ -45,14 +45,14 @@ button {
 
 .btn-link {
   box-shadow: none;
-  color: lighten($black, 30%);
+  color: color(grey-700);
   text-shadow: none;
 
   &:hover,
   &:active,
   &:focus {
     box-shadow: none;
-    color: lighten($black, 15%);
+    color: color(grey-600);
     text-decoration: none;
   }
 }

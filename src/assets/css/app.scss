@@ -1,26 +1,29 @@
 // Sanitize
 @import "~sanitize.css";
-@import "~sanitize.css/forms.css";
-@import "~sanitize.css/typography.css";
+@import "~sanitize.css/forms";
+@import "~sanitize.css/typography";
+
+// Functions
+@import "functions/color";
 
 // Variables - Has to be early
-@import "components/variables.scss";
+@import "components/variables";
 
 // Bootstrap
-@import "~bootstrap/scss/bootstrap.scss";
+@import "~bootstrap/scss/bootstrap";
 
 // Components
-@import "components/bootstrap_addition.scss";
-@import "components/pattern_backgrounds.scss";
-@import "components/modal.scss";
-@import "components/fonts.scss";
-@import "components/entry.scss";
-@import "components/buttons.scss";
-@import "components/hr.scss";
-@import "components/animations.scss";
-@import "components/blockquote.scss";
-@import "components/scrollbox.scss";
-@import "components/user.scss";
-@import "components/main.scss";
-@import "components/vendor.scss";
-@import "components/program.scss";
+@import "components/bootstrap_addition";
+@import "components/pattern_backgrounds";
+@import "components/modal";
+@import "components/fonts";
+@import "components/form";
+@import "components/buttons";
+@import "components/hr";
+@import "components/animations";
+@import "components/blockquote";
+@import "components/scrollbox";
+@import "components/user";
+@import "components/main";
+@import "components/vendor";
+@import "components/program";

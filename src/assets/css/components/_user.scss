@@ -3,7 +3,7 @@ section.user-action {
 }
 
 .user-block {
-  background: $blue;
+  background: color(blue);
   border-radius: 8px;
   margin: 0 auto;
   max-width: 100%;
@@ -14,23 +14,23 @@ section.user-action {
   }
 
   &__header {
-    color: $white;
+    color: color(white);
   }
 
   &__content {
-    color: $white;
+    color: color(white);
 
     label {
-      color: $white;
+      color: color(white);
     }
   }
 
   a {
-    color: $white;
+    color: color(white);
     text-decoration: underline;
 
     &:hover {
-      color: darken($white, 10%);
+      color: color(grey-200);
     }
   }
 }

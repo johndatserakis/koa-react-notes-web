@@ -16,9 +16,9 @@ $display5-size: 2.5rem !default;
   }
 }
 
-//Button mixin - have to hold this here because bootstrap has
-//changed the way to set the button text color of your choice.
-//It's been changed to automatically detect button text color
+// Button mixin - have to hold this here because bootstrap has
+// changed the way to set the button text color of your choice.
+// It's been changed to automatically detect button text color
 // by contrast - but it is actually getting in the way
 // https://github.com/twbs/bootstrap/blame/v4-dev/scss/mixins/_buttons.scss.
 @mixin button-variant-custom(
@@ -73,151 +73,151 @@ $display5-size: 2.5rem !default;
 
 // Buttons
 .btn-white {
-  @include button-variant-custom($font-color, $white, $white);
+  @include button-variant-custom(color(font-color), color(white), color(white));
 }
 
 .btn-grey {
-  @include button-variant-custom($font-color, $gray-500, darken($gray-500, 5%));
+  @include button-variant-custom(color(font-color), color(gray-500), color(gray-500));
 }
 
 .btn-white-black-text {
-  @include button-variant-custom(lighten($black, 14%), $white, $white);
+  @include button-variant-custom(color(grey-900), color(white), color(white));
 }
 
 .btn-white-blue-text {
-  @include button-variant-custom($blue, $white, $white);
+  @include button-variant-custom(color(blue), color(white), color(white));
 }
 
 .btn-white-text {
-  @include button-variant-custom($white, transparent, transparent, rgba(0, 0, 0, 0.1));
+  @include button-variant-custom(color(white), transparent, transparent, rgba(0, 0, 0, 0.1));
 }
 
 .btn-red {
-  @include button-variant-custom($white, $red, $red);
+  @include button-variant-custom(color(white), color(red), color(red));
 }
 
 .btn-dark-red {
-  @include button-variant-custom($white, darken($red, 20%), darken($red, 20%));
+  @include button-variant-custom(color(white), color(red-700), color(red-700));
 }
 
 .btn-orange {
-  @include button-variant-custom($white, $orange, $orange);
+  @include button-variant-custom(color(white), color(orange), color(orange));
 }
 
 .btn-dark-orange {
-  @include button-variant-custom($white, darken($orange, 20%), darken($orange, 20%));
+  @include button-variant-custom(color(white), color(orange-700), color(orange-700));
 }
 
 .btn-purple {
-  @include button-variant-custom($white, $purple, $purple);
+  @include button-variant-custom(color(white), color(purple), color(purple));
 }
 
 .btn-yellow {
-  @include button-variant-custom($black, $yellow, $yellow);
+  @include button-variant-custom(color(black), color(yellow), color(yellow));
 }
 
 .btn-green {
-  @include button-variant-custom($white, $green, $green);
+  @include button-variant-custom(color(white), color(green), color(green));
 }
 
 .btn-dark-green {
-  @include button-variant-custom($white, darken($green, 20%), darken($green, 20%));
+  @include button-variant-custom(color(white), color(green-700), color(green-700));
 }
 
 .btn-blue {
-  @include button-variant-custom($white, $blue, $blue);
+  @include button-variant-custom(color(white), color(blue), color(blue));
 }
 
 .btn-dark-blue {
-  @include button-variant-custom($white, darken($blue, 20%), darken($blue, 20%));
+  @include button-variant-custom(color(white), color(blue-700), color(blue-700));
 }
 
 .btn-custom-navbar-dropdown-white {
-  @include button-variant-custom($white, transparent, transparent);
+  @include button-variant-custom(color(white), transparent, transparent);
 }
 
 // Button outlines - btn-outline
 .btn-outline-blue {
   @include button-variant-custom(
-    $blue,
-    rgba($blue, 0.1),
-    rgba($blue, 0.4),
-    $blue,
-    rgba($blue, 0.1),
-    $blue,
-    $blue,
-    rgba($blue, 0.2),
-    $blue-700
+    color(blue),
+    color(blue-100),
+    color(blue-400),
+    color(blue),
+    color(blue-100),
+    color(blue),
+    color(blue),
+    color(blue-200),
+    color(blue)-700
   );
 }
 
 .btn-outline-red {
   @include button-variant-custom(
-    $red,
-    rgba($red, 0.1),
-    rgba($red, 0.4),
-    $red,
-    rgba($red, 0.1),
-    $red,
-    $red,
-    rgba($red, 0.2),
-    $red-700
+    color(red),
+    color(red-100),
+    color(red-400),
+    color(red),
+    color(red-100),
+    color(red),
+    color(red),
+    color(red-400),
+    color(red)-700
   );
 }
 
 .btn-outline-green {
   @include button-variant-custom(
-    $green,
-    rgba($green, 0.1),
-    rgba($green, 0.4),
-    $green,
-    rgba($green, 0.1),
-    $green,
-    $green,
-    rgba($green, 0.2),
-    $green-700
+    color(green),
+    color(green-100),
+    color(green-400),
+    color(green),
+    color(green-100),
+    color(green),
+    color(green),
+    color(green-200),
+    color(green)-700
   );
 }
 
 .btn-outline-orange {
   @include button-variant-custom(
-    $orange,
-    rgba($orange, 0.1),
-    rgba($orange, 0.4),
-    $orange,
-    rgba($orange, 0.1),
-    $orange,
-    $orange,
-    rgba($orange, 0.2),
-    $orange-700
+    color(orange),
+    rgba(color(orange), 0.1),
+    rgba(color(orange), 0.4),
+    color(orange),
+    rgba(color(orange), 0.1),
+    color(orange),
+    color(orange),
+    rgba(color(orange), 0.2),
+    color(orange)-700
   );
 }
 
 .btn-outline-yellow {
   @include button-variant-custom(
-    $yellow,
-    rgba($yellow, 0.1),
-    rgba($yellow, 0.4),
-    $yellow,
-    rgba($yellow, 0.1),
-    $yellow,
-    $yellow,
-    rgba($yellow, 0.2),
-    $yellow-700
+    color(yellow),
+    rgba(color(yellow), 0.1),
+    rgba(color(yellow), 0.4),
+    color(yellow),
+    rgba(color(yellow), 0.1),
+    color(yellow),
+    color(yellow),
+    rgba(color(yellow), 0.2),
+    color(yellow)-700
   );
 }
 
 .btn-outline-grey {
   @include button-variant-custom(
-    rgba($black, 0.8),
-    rgba($black, 0.06),
-    rgba($black, 0.4),
-    rgba($black, 0.8),
-    rgba($black, 0.06),
-    rgba($black, 0.8),
-    rgba($black, 0.8),
-    rgba($black, 0.1),
-    $black
+    rgba(color(black), 0.8),
+    rgba(color(black), 0.06),
+    rgba(color(black), 0.4),
+    rgba(color(black), 0.8),
+    rgba(color(black), 0.06),
+    rgba(color(black), 0.8),
+    rgba(color(black), 0.8),
+    rgba(color(black), 0.1),
+    color(black)
   );
 }
 
@@ -250,43 +250,43 @@ $display5-size: 2.5rem !default;
 
 .badge-blue {
   @include badge-variant(rgba($blue, 0.1));
-  border: 1px solid rgba($blue, 0.4);
-  color: $blue !important;
+  border: 1px solid color(blue-400);
+  color: color(blue) !important;
 }
 
 .badge-red {
   @include badge-variant(rgba($red, 0.1));
-  border: 1px solid rgba($red, 0.4);
-  color: $red !important;
+  border: 1px solid color(red-400);
+  color: color(red) !important;
 }
 
 .badge-green {
   @include badge-variant(rgba($green, 0.1));
-  border: 1px solid rgba($green, 0.4);
-  color: $green !important;
+  border: 1px solid color(green-400);
+  color: color(green) !important;
 }
 
 .badge-orange {
-  @include badge-variant(rgba($orange, 0.1));
-  border: 1px solid rgba($orange, 0.4);
-  color: $orange !important;
+  @include badge-variant(rgba($green, 0.1));
+  border: 1px solid color(orange-400);
+  color: color(orange) !important;
 }
 
 .badge-light-grey {
-  @include badge-variant(rgba($gray-300, 0.5));
-  border: 1px solid $gray-700;
-  color: lighten($black, 25%);
+  @include badge-variant($gray-300);
+  border: 1px solid color(gray-700);
+  color: color(gray-500);
 }
 
 .badge-grey {
-  @include badge-variant(rgba($gray-500, 0.5));
-  border: 1px solid $gray-700;
-  color: lighten($black, 25%);
+  @include badge-variant($gray-500);
+  border: 1px solid color(gray-700);
+  color: color(gray-500);
 }
 
 .badge-yellow {
-  @include badge-variant(rgba($yellow, 0.3));
-  border: 1px solid darken($yellow, 16%);
+  @include badge-variant(rgba($yellow, 0.1));
+  border: 1px solid color(yellow-500);
   color: $muted !important;
 }
 
@@ -295,43 +295,43 @@ a {
   &.badge {
     &.badge-blue {
       &:hover {
-        border-color: $blue;
+        border-color: color(blue);
       }
     }
 
     &.badge-red {
       &:hover {
-        border-color: $red;
+        border-color: color(red);
       }
     }
 
     &.badge-green {
       &:hover {
-        border-color: $green;
+        border-color: color(green);
       }
     }
 
     &.badge-orange {
       &:hover {
-        border-color: $orange;
+        border-color: color(orange);
       }
     }
 
     &.badge-light-grey {
       &:hover {
-        border-color: $gray-300;
+        border-color: color(gray-300)
       }
     }
 
     &.badge-grey {
       &:hover {
-        border-color: $gray-500;
+        border-color: color(gray-500);
       }
     }
 
     &.badge-yellow {
       &:hover {
-        border-color: $yellow;
+        border-color: color(yellow);
       }
     }
   }
@@ -340,21 +340,21 @@ a {
 //Font size
 .text-large {
   font-size: 1.2rem;
-  font-weight: $font-weight-normal;
+  font-weight: 400;
 }
 
 .text-extra-large {
   font-size: 1.4rem;
-  font-weight: $font-weight-normal;
+  font-weight: 400;
 }
 
 // Text
 .text-black {
-  color: $black !important;
+  color: color(black) !important;
 }
 
 .text-white {
-  color: $white !important;
+  color: color(white) !important;
 }
 
 // Button size
@@ -498,33 +498,33 @@ a {
 
 // Text helpers
 .text-blue {
-  color: $blue !important;
+  color: color(blue) !important;
 }
 
 .text-red {
-  color: $red !important;
+  color: color(red) !important;
 }
 
 .text-green {
-  color: $green !important;
+  color: color(green) !important;
 }
 
 .text-orange {
-  color: $orange !important;
+  color: color(orange) !important;
 }
 
 .text-purple {
-  color: $purple !important;
+  color: color(purple) !important;
 }
 
 .text-yellow {
-  color: $yellow !important;
+  color: color(yellow) !important;
 }
 
 .text-grey {
-  color: $gray-500 !important;
+  color: color(gray-500) !important;
 }
 
 .list-group-item-off-white {
-  background: $off-white;
+  background: color(off-white);
 }

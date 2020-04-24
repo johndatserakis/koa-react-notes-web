@@ -3,7 +3,7 @@ $blockquote-grey: #555;
 
 blockquote {
   background: $blockquote-background;
-  border-left: 8px solid $blue;
+  border-left: 8px solid color(blue);
   color: $blockquote-grey;
   font-family: $font-family-base;
   font-size: 1.1rem;

@@ -1,5 +1,5 @@
 .modal-content {
-  background: $white;
+  background: color(white);
 
   .btn,
   button {
@@ -9,8 +9,8 @@
 
 .modal-header {
   align-items: center;
-  background: $white;
-  border-bottom: 1px solid rgba($black, 0.1);
+  background: color(white);
+  border-bottom: 1px solid color(gray-900);
 
   // So we can have the close button on the left
   flex-direction: row-reverse;
@@ -36,7 +36,7 @@
 }
 
 .modal-body {
-  background: $gray-300;
+  background: color(gray-300);
 }
 
 .modal-footer {

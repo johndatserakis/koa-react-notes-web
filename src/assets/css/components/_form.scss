@@ -14,20 +14,20 @@
   }
 
   &__label {
-    color: $black;
+    color: color(black);
     font-weight: 500;
 
     &--white {
-      color: $white;
+      color: color(white);
     }
   }
 
   &__error-message {
-    color: $red-700;
+    color: color(red-700);
     margin-top: 10px;
 
     &--white {
-      color: $white;
+      color: color(white);
     }
   }
 }
@@ -37,7 +37,7 @@
 
   &:disabled,
   &[readonly] {
-    background-color: $gray-300;
+    background-color: color(gray-300);
   }
 }
 
@@ -78,12 +78,12 @@ input[type="radio"] {
 
 input::placeholder,
 textarea::placeholder {
-  color: $gray-700;
+  color: color(gray-700);
 }
 
 .label,
 label {
-  color: $black;
+  color: color(black);
   font-weight: 500;
 }
 
