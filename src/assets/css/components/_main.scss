@@ -1,15 +1,15 @@
 html {
   // Need to set the main font-size here to override bootstrap
-  font-size: $font-size;
+  font-size: var(--font-size);
 }
 
 body {
   background: color(white);
-  color: color(font-color);
-  font-family: $font-family-base;
-  font-size: $font-size;
+  color: color(--font-color);
+  font-family: var(--font-family-base);
+  font-size: var(font-size);
   font-weight: 400;
-  line-height: $line-height;
+  line-height: var(--line-height);
   min-height: 100%;
   min-height: 100vh;
   text-rendering: optimizeLegibility;
@@ -50,7 +50,7 @@ h4,
 h5,
 h6 {
   color: color(font-color-header);
-  font-family: $font-family-base;
+  font-family: var(--font-family-base);
   font-weight: 600;
   margin-bottom: 1.2rem;
   text-transform: none;

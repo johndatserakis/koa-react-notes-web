@@ -33,7 +33,7 @@
 }
 
 .form-control {
-  border: $border;
+  border: var(--border);
 
   &:disabled,
   &[readonly] {
@@ -44,7 +44,7 @@
 input,
 select,
 textarea {
-  box-shadow: $inset-shadow;
+  box-shadow: var(--inset-shadow);
 }
 
 input:not([type="radio"]):not([type="checkbox"]),
