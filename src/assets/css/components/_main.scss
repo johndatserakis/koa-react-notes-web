@@ -127,8 +127,8 @@ strong {
 
 // Make sure disabled is not clickable
 [disabled] {
-  cursor: not-allowed !important;
-  opacity: 0.35 !important;
+  cursor: not-allowed !important; /* stylelint-disable-line declaration-no-important */
+  opacity: 0.35 !important; /* stylelint-disable-line declaration-no-important */
   pointer-events: none;
 }
 

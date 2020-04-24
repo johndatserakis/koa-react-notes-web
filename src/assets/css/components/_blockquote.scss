@@ -1,7 +1,10 @@
+$blockquote-background: #ededed;
+$blockquote-grey: #555;
+
 blockquote {
-  background: #ededed;
+  background: $blockquote-background;
   border-left: 8px solid $blue;
-  color: #555555;
+  color: $blockquote-grey;
   font-family: $font-family-base;
   font-size: 1.1rem;
   font-style: italic;

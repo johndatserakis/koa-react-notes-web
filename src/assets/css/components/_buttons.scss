@@ -1,8 +1,12 @@
+// Just .btn
+.btn {
+  border-radius: $border-radius;
+}
+
 .btn,
 button {
   font-weight: 500;
   // text-transform: uppercase;
-  letter-spacing: 1px;
   letter-spacing: 1px;
   line-height: $line-height;
   // box-shadow: $box-shadow;
@@ -14,14 +18,9 @@ button {
   }
 
   &:focus {
-    outline: 1px dotted !important;
-    outline: 5px auto -webkit-focus-ring-color !important;
+    outline: 1px dotted !important; /* stylelint-disable-line declaration-no-important */
+    outline: 5px auto -webkit-focus-ring-color !important; /* stylelint-disable-line declaration-no-important */
   }
-}
-
-// Just .btn
-.btn {
-  border-radius: $border-radius;
 }
 
 // Adjust global dropdown
@@ -35,7 +34,7 @@ button {
   .btn,
   button {
     box-shadow: none;
-    font-weight: normal;
+    font-weight: 400;
     text-shadow: none;
 
     &:hover {

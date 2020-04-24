@@ -1,11 +1,13 @@
+/* stylelint-disable color-no-hex */
+
 // Colors
 
 $blue: #135edb;
-$indigo: #3F00FF;
+$indigo: #3f00ff;
 $purple: #800080;
 $pink: #ffc0cb;
 $red: #fb1505;
-$orange: #FF7F00;
+$orange: #ff7f00;
 $yellow: #fdff00;
 $green: #16ca43;
 
@@ -19,8 +21,8 @@ $gray-700: #495057;
 $gray-800: #343a40;
 $gray-900: #212529;
 
-$black: #000000;
-$white: #ffffff;
+$black: #000;
+$white: #fff;
 $off-white: darken($white, 1%);
 $muted: rgba(15, 53, 86, 0.6);
 
@@ -40,7 +42,7 @@ $indigo-100: #e8e0ff;
 $indigo-200: #bea8ff;
 $indigo-300: #9370ff;
 $indigo-400: #6938ff;
-$indigo-500: #3F00FF; // indigo
+$indigo-500: #3f00ff; // indigo
 $indigo-600: #3100c7;
 $indigo-700: #23008f;
 $indigo-800: #150057;
@@ -80,7 +82,7 @@ $orange-100: #fff0e0;
 $orange-200: #ffd3a8;
 $orange-300: #ffb770;
 $orange-400: #ff9b38;
-$orange-500: #FF7F00; // orange
+$orange-500: #ff7f00; // orange
 $orange-600: #c76300;
 $orange-700: #8f4700;
 $orange-800: #572b00;
@@ -90,7 +92,7 @@ $yellow-100: #ffffe0;
 $yellow-200: #ffffa8;
 $yellow-300: #ffff70;
 $yellow-400: #ffff38;
-$yellow-500: #FFFF00; // yellow
+$yellow-500: #ff0; // yellow
 $yellow-600: #c7c700;
 $yellow-700: #8f8f00;
 $yellow-800: #575700;

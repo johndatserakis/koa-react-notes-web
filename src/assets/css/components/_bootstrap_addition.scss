@@ -1,3 +1,5 @@
+/* stylelint-disable color-no-hex, declaration-no-important */
+
 //For additional heading display
 $display5-weight: 300 !default;
 $display5-size: 2.5rem !default;
@@ -224,7 +226,7 @@ $display5-size: 2.5rem !default;
   border-radius: $border-radius;
   font-family: $font-family-base;
   font-size: 80%;
-  font-weight: normal;
+  font-weight: 400;
   letter-spacing: 0.75px;
   padding: 6px 6px;
 
@@ -517,14 +519,6 @@ a {
 
 .text-yellow {
   color: $yellow !important;
-}
-
-.text-white {
-  color: $white !important;
-}
-
-.text-black {
-  color: $black !important;
 }
 
 .text-grey {

@@ -41,6 +41,12 @@
   }
 }
 
+input,
+select,
+textarea {
+  box-shadow: $inset-shadow;
+}
+
 input:not([type="radio"]):not([type="checkbox"]),
 select {
   font-size: 16px;
@@ -55,7 +61,7 @@ select.form-control {
 }
 
 // select height needs to be auto for FF
-@-moz-document url-prefix() {
+@-moz-document url-prefix("") {
   select {
     height: auto;
   }
@@ -64,12 +70,6 @@ select.form-control {
 textarea {
   min-height: 100px;
   width: 100%;
-}
-
-input,
-select,
-textarea, {
-  box-shadow: $inset-shadow;
 }
 
 input[type="radio"] {
