@@ -25,6 +25,7 @@ import { Dashboard } from "@/components/layouts/program/Dashboard";
 import { CreateNote } from "@/components/layouts/program/CreateNote";
 import { EditNote } from "@/components/layouts/program/EditNote";
 import jwtDecode from "jwt-decode";
+import GAListener from "@/common/ga-listener";
 
 export const App = () => {
   const user = useSelector((state: RootState) => state.user.user);
@@ -86,48 +87,50 @@ export const App = () => {
     <div />
   ) : (
     <Router>
-      <div className="page-wrapper">
-        {!metaPaths.includes(window.location.pathname) && <Nav />}
-        <div className="main-content-wrapper" role="main" aria-label="Main">
-          <Switch>
-            <Route path="/user/login">
-              <Login />
-            </Route>
-            <Route path="/user/signup">
-              <Signup />
-            </Route>
-            <Route path="/user/forgot">
-              <Forgot />
-            </Route>
-            <Route path="/user/reset">
-              <Reset />
-            </Route>
+      <GAListener trackingId={process.env.REACT_APP_GA_TRACKING_ID}>
+        <div className="page-wrapper">
+          {!metaPaths.includes(window.location.pathname) && <Nav />}
+          <div className="main-content-wrapper" role="main" aria-label="Main">
+            <Switch>
+              <Route path="/user/login">
+                <Login />
+              </Route>
+              <Route path="/user/signup">
+                <Signup />
+              </Route>
+              <Route path="/user/forgot">
+                <Forgot />
+              </Route>
+              <Route path="/user/reset">
+                <Reset />
+              </Route>
 
-            <Route path="/dashboard">
-              {user.id ? <Dashboard /> : <Redirect to="/" />}
-            </Route>
-            <Route path="/create-note">
-              {user.id ? <CreateNote /> : <Redirect to="/" />}
-            </Route>
-            <Route path="/edit-note/:id">
-              {user.id ? <EditNote /> : <Redirect to="/" />}
-            </Route>
+              <Route path="/dashboard">
+                {user.id ? <Dashboard /> : <Redirect to="/" />}
+              </Route>
+              <Route path="/create-note">
+                {user.id ? <CreateNote /> : <Redirect to="/" />}
+              </Route>
+              <Route path="/edit-note/:id">
+                {user.id ? <EditNote /> : <Redirect to="/" />}
+              </Route>
 
-            <Route exact path="/maintenance">
-              <Maintenance />
-            </Route>
+              <Route exact path="/maintenance">
+                <Maintenance />
+              </Route>
 
-            <Route exact path="/">
-              <Home />
-            </Route>
+              <Route exact path="/">
+                <Home />
+              </Route>
 
-            <Route>
-              <NotFound />
-            </Route>
-          </Switch>
+              <Route>
+                <NotFound />
+              </Route>
+            </Switch>
+          </div>
+          {!metaPaths.includes(window.location.pathname) && <Footer />}
         </div>
-        {!metaPaths.includes(window.location.pathname) && <Footer />}
-      </div>
+      </GAListener>
     </Router>
   );
 };
