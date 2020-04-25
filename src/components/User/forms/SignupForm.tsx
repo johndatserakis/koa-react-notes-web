@@ -19,12 +19,12 @@ import { Row, Col, Container } from "react-bootstrap";
 import { gaEvent } from "@/common/ga-event";
 
 const defaultValues: UserSignupPostWithPasswordConfirm = {
-  firstName: "123123123",
-  lastName: "123123123",
-  username: "123123123",
-  email: "johndatserakis@gmail.com",
-  password: "123123123",
-  passwordConfirm: "123123123",
+  firstName: "",
+  lastName: "",
+  username: "",
+  email: "",
+  password: "",
+  passwordConfirm: "",
 };
 
 export const SignupForm = () => {
