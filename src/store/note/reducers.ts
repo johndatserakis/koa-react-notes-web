@@ -49,6 +49,7 @@ export const noteReducer = (
       const index = state.notes
         .map((note) => note.id)
         .indexOf(action.payload.id);
+      if (index === -1) return { ...state }; // Only update if found
       return {
         ...state,
         notes: [
