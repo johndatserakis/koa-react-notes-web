@@ -16,14 +16,15 @@ import { UserThunkDispatch } from "@/store/user/types";
 import { ServerError } from "@/common/api";
 import { useHistory, Link } from "react-router-dom";
 import { Row, Col, Container } from "react-bootstrap";
+import { gaEvent } from "@/common/ga-event";
 
 const defaultValues: UserSignupPostWithPasswordConfirm = {
-  firstName: "",
-  lastName: "",
-  username: "",
-  email: "",
-  password: "",
-  passwordConfirm: "",
+  firstName: "123123123",
+  lastName: "123123123",
+  username: "123123123",
+  email: "johndatserakis@gmail.com",
+  password: "123123123",
+  passwordConfirm: "123123123",
 };
 
 export const SignupForm = () => {
@@ -45,6 +46,9 @@ export const SignupForm = () => {
       // Clear inputs
       actions.resetForm();
 
+      // Fire gaEvent
+      gaEvent("User Signup", "Submit", "Success");
+
       // Push home
       history.push("/");
 
@@ -52,12 +56,21 @@ export const SignupForm = () => {
     } catch (error) {
       const e = error as ServerError;
       if (e && (e.error || e.errors)) {
-        //
+        if (e.error.message === "DUPLICATE_USERNAME") {
+          addToast("That username is taken. Please try again.", {
+            appearance: "error",
+          });
+        }
+        if (e.error.message === "DUPLICATE_EMAIL") {
+          addToast("That email is taken. Please try again.", {
+            appearance: "error",
+          });
+        }
+      } else {
+        addToast("Hmm, those details don't seem right. Please try again.", {
+          appearance: "error",
+        });
       }
-
-      addToast("Hmm, those details don't seem right. Please try again.", {
-        appearance: "error",
-      });
     } finally {
       setIsLoading(false);
     }

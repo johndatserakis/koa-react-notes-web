@@ -40,7 +40,14 @@ export const Home = () => {
             >
               https://koa-vue-notes-web.innermonkdesign.com
             </a>
-            . It's the exact same app - but written in Vue!
+            . It's the exact same app - but written in Vue! It's also{" "}
+            <a
+              href="https://github.com/johndatserakis/koa-vue-notes-web"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              open-sourced.
+            </a>
           </p>
 
           {/* React */}

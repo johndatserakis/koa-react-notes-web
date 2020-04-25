@@ -15,8 +15,8 @@ export const parseAxiosError = (e: AxiosError): ServerError => {
   if (e.response) {
     return {
       error: {
-        code: e.response.status,
-        message: e.response.data.message,
+        code: e.response.data.error.code || e.response.status,
+        message: e.response.data.error.message,
       },
     };
   }
