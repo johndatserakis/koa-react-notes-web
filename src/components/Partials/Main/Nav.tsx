@@ -1,5 +1,10 @@
 import React from "react";
-import { Nav as BoostrapNav, Navbar, NavDropdown } from "react-bootstrap";
+import {
+  Nav as BoostrapNav,
+  Navbar,
+  NavDropdown,
+  Button,
+} from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import logo from "@/assets/images/main/lockup.png";
 import { logout } from "@/store/user/actions";
@@ -8,6 +13,9 @@ import { UserThunkDispatch } from "@/store/user/types";
 import { useHistory } from "react-router-dom";
 import { RootState, GeneralThunkDispatch } from "@/store";
 import { clearNotes } from "@/store/note/actions";
+import classNames from "classnames";
+import { GoLinkExternal } from "react-icons/go";
+import styles from "./Nav.module.scss";
 
 export const Nav = () => {
   const dispatchUser = useDispatch<UserThunkDispatch>();
@@ -32,18 +40,32 @@ export const Nav = () => {
             height="21"
             className="d-inline-block align-middle"
             alt="React Bootstrap logo"
-            style={{ marginBottom: "2px" }}
+            style={{
+              marginBottom: "2px",
+            }}
           />
         </Navbar.Brand>
       </LinkContainer>
-      <Navbar.Toggle aria-controls="basic-navbar-nav" />
-      <Navbar.Collapse id="basic-navbar-nav">
+      <Navbar.Toggle aria-controls="main-navbar-navigation" />
+      <Navbar.Collapse id="main-navbar-navigation">
         <BoostrapNav className="mr-auto">
+          <BoostrapNav.Link
+            className="mr-2"
+            href="https://github.com/johndatserakis/koa-vue-notes-api"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            View on GitHub <GoLinkExternal />
+          </BoostrapNav.Link>
+        </BoostrapNav>
+        <BoostrapNav className="ml-auto">
           <LinkContainer to="/user/login">
-            <BoostrapNav.Link>Login</BoostrapNav.Link>
+            <BoostrapNav.Link className="mr-2">Login</BoostrapNav.Link>
           </LinkContainer>
           <LinkContainer to="/user/signup">
-            <BoostrapNav.Link>Signup</BoostrapNav.Link>
+            <Button className={classNames("btn-blue", styles.navbarButton)}>
+              Signup
+            </Button>
           </LinkContainer>
         </BoostrapNav>
       </Navbar.Collapse>
@@ -62,8 +84,8 @@ export const Nav = () => {
           />
         </Navbar.Brand>
       </LinkContainer>
-      <Navbar.Toggle aria-controls="basic-navbar-nav" />
-      <Navbar.Collapse id="basic-navbar-nav">
+      <Navbar.Toggle aria-controls="main-navbar-navigation" />
+      <Navbar.Collapse id="main-navbar-navigation">
         <BoostrapNav className="ml-auto">
           <NavDropdown title={user.email} id="basic-nav-dropdown">
             <LinkContainer to="/dashboard" exact>

@@ -20,5 +20,13 @@ module.exports = {
     "string-quotes": "double",
     "declaration-colon-space-after": "always",
     "declaration-colon-space-before": "never",
+    "selector-pseudo-class-no-unknown": [ true, {
+      "ignorePseudoClasses": [
+        "export",
+        "import",
+        "global",
+        "local"
+      ]
+    }],
   }
 }
