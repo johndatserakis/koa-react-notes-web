@@ -4,10 +4,10 @@ html {
 }
 
 body {
-  background: color(white);
-  color: color(--font-color);
+  background: var(--background-color);
+  color: var(--font-color);
   font-family: var(--font-family-base);
-  font-size: var(font-size);
+  font-size: var(--font-size);
   font-weight: 400;
   line-height: var(--line-height);
   min-height: 100%;
@@ -49,7 +49,7 @@ h3,
 h4,
 h5,
 h6 {
-  color: color(font-color-header);
+  color: var(--font-color-header);
   font-family: var(--font-family-base);
   font-weight: 600;
   margin-bottom: 1.2rem;
@@ -89,17 +89,11 @@ p {
 
 //Main link styling
 a {
-  color: color(blue);
-  // transition: $transition; // turning off for brand style
+  color: var(--link-color);
 
   &:hover {
     color: color(blue-700);
   }
-
-  //Turning off for now because of buttons
-  // &:visited {
-  //     color: $blue-700;
-  // }
 }
 
 //At large width, container-fluid should have a bit
@@ -137,8 +131,4 @@ strong {
 img {
   flex-shrink: 0;
   max-width: 100%;
-}
-
-.muted {
-  color: color(muted);
 }

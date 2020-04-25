@@ -223,8 +223,8 @@ $display5-size: 2.5rem !default;
 
 // Badges
 .badge {
-  border-radius: $border-radius;
-  font-family: $font-family-base;
+  border-radius: var(--border-radius);
+  font-family: var(--font-family-base);
   font-size: 80%;
   font-weight: 400;
   letter-spacing: 0.75px;
@@ -348,7 +348,12 @@ a {
   font-weight: 400;
 }
 
-// Text
+// Button size
+.btn-xs {
+  @include button-size(5px, 5px, 0.8rem, 1, 4px);
+}
+
+// Text helpers
 .text-black {
   color: color(black) !important;
 }
@@ -357,9 +362,40 @@ a {
   color: color(white) !important;
 }
 
-// Button size
-.btn-xs {
-  @include button-size(5px, 5px, 0.8rem, 1, 4px);
+.text-blue {
+  color: color(blue) !important;
+}
+
+.text-red {
+  color: color(red) !important;
+}
+
+.text-green {
+  color: color(green) !important;
+}
+
+.text-orange {
+  color: color(orange) !important;
+}
+
+.text-purple {
+  color: color(purple) !important;
+}
+
+.text-yellow {
+  color: color(yellow) !important;
+}
+
+.text-grey {
+  color: color(gray-500) !important;
+}
+
+.muted {
+  color: color(muted) !important;
+}
+
+.list-group-item-off-white {
+  background: color(off-white);
 }
 
 // Add responsive sizing helpers
@@ -494,37 +530,4 @@ a {
   .h-xl-auto {
     height: auto !important;
   }
-}
-
-// Text helpers
-.text-blue {
-  color: color(blue) !important;
-}
-
-.text-red {
-  color: color(red) !important;
-}
-
-.text-green {
-  color: color(green) !important;
-}
-
-.text-orange {
-  color: color(orange) !important;
-}
-
-.text-purple {
-  color: color(purple) !important;
-}
-
-.text-yellow {
-  color: color(yellow) !important;
-}
-
-.text-grey {
-  color: color(gray-500) !important;
-}
-
-.list-group-item-off-white {
-  background: color(off-white);
 }

@@ -139,10 +139,6 @@ $colors: (
   green-700: #0c7126,
   green-800: #074517,
   green-900: #031808,
-
-  // Color specs
-  font-color: $muted,
-  font-color-header: $black
 );
 
 // Add the rest of our variables
@@ -184,7 +180,7 @@ $colors: (
   --gradient-grey: linear-gradient(90deg, var(--gray-200), var(--gray-300));
 
   // Navbar colors
-  --navbar-light-color: var(--font-color);
+  --navbar-light-color: var(--black);
   --navbar-dark-color: var(--white);
 
   // Fonts
@@ -199,6 +195,14 @@ $colors: (
 
   // Radius
   --border-radius: 4px;
+
+  // Theme
+  --background-color: var(--white);
+  --background-color-secondary: var(--gray-400);
+  --font-color: var(--muted);
+  --font-color-header: var(--black);
+  --link-color: var(--blue);
+  --hr-color: var(--gray)
 }
 
 // Using our CSS font variable to set our Bootstrap font base.

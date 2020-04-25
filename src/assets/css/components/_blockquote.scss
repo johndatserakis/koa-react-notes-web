@@ -5,7 +5,7 @@ blockquote {
   background: $blockquote-background;
   border-left: 8px solid color(blue);
   color: $blockquote-grey;
-  font-family: $font-family-base;
+  font-family: var(--font-family-base);
   font-size: 1.1rem;
   font-style: italic;
   line-height: 1.4;

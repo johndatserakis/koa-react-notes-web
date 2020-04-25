@@ -1,20 +1,20 @@
 // Just .btn
 .btn {
-  border-radius: $border-radius;
+  border-radius: var(--border-radius);
 }
 
 .btn,
 button {
+  box-shadow: var(--box-shadow-300);
   font-weight: 500;
-  // text-transform: uppercase;
   letter-spacing: 1px;
   line-height: var(--line-height);
-  // box-shadow: $box-shadow;
   text-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+  text-transform: none;
 
   &:hover {
+    box-shadow: var(--box-shadow-400);
     cursor: pointer;
-    // box-shadow: $heavy-box-shadow;
   }
 
   &:focus {
