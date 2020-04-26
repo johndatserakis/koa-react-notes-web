@@ -3,11 +3,13 @@ import axios, { setAuthorizationHeader } from "@/common/axios";
 import { AxiosResponse } from "axios";
 import { NotesQuery, NoteCreatePost, NotePutRequest } from "./api-types";
 
+const routeMain = "notes";
+
 export const all = async (data: NotesQuery): Promise<Note[]> => {
   setAuthorizationHeader(axios);
   const result: AxiosResponse<{
     data: { notes: Note[] };
-  }> = await axios.get("notes", { params: data });
+  }> = await axios.get(routeMain, { params: data });
 
   return result.data.data.notes;
 };
@@ -15,7 +17,7 @@ export const all = async (data: NotesQuery): Promise<Note[]> => {
 export const find = async (data: number): Promise<Note> => {
   setAuthorizationHeader(axios);
   const result: AxiosResponse<{ data: { note: Note } }> = await axios.get(
-    `notes/${data}`,
+    `${routeMain}/${data}`,
   );
 
   return result.data.data.note;
@@ -24,7 +26,7 @@ export const find = async (data: number): Promise<Note> => {
 export const create = async (data: NoteCreatePost): Promise<Note> => {
   setAuthorizationHeader(axios);
   const result: AxiosResponse<{ data: { note: Note } }> = await axios.post(
-    "notes",
+    routeMain,
     data,
   );
 
@@ -39,7 +41,7 @@ export const update = async (data: Note): Promise<Note> => {
 
   setAuthorizationHeader(axios);
   const result: AxiosResponse<{ data: { note: Note } }> = await axios.put(
-    `notes/${data.id}`,
+    `${routeMain}/${data.id}`,
     putRequest,
   );
 
@@ -48,6 +50,6 @@ export const update = async (data: Note): Promise<Note> => {
 
 export const del = async (data: Note): Promise<Note> => {
   setAuthorizationHeader(axios);
-  await axios.delete(`notes/${data.id}`);
+  await axios.delete(`${routeMain}/${data.id}`);
   return data;
 };

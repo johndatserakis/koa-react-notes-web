@@ -82,43 +82,43 @@
 }
 
 .btn-red {
-  @include button-variant-custom($white, $red, $red);
+  @include button-variant-custom($white, $red, darken($red, 2%));
 }
 
 .btn-dark-red {
-  @include button-variant-custom($white, darken($red, 20%), darken($red, 20%));
+  @include button-variant-custom($white, darken($red, 10%), darken($red, 10%));
 }
 
 .btn-orange {
-  @include button-variant-custom($white, $orange, $orange);
+  @include button-variant-custom($white, $orange, darken($orange, 2%));
 }
 
 .btn-dark-orange {
-  @include button-variant-custom($white, darken($orange, 20%), darken($orange, 20%));
+  @include button-variant-custom($white, darken($orange, 10%), darken($orange, 10%));
 }
 
 .btn-purple {
-  @include button-variant-custom($white, $purple, $purple);
+  @include button-variant-custom($white, $purple, darken($purple, 2%));
 }
 
 .btn-yellow {
-  @include button-variant-custom($black, $yellow, $yellow);
+  @include button-variant-custom($black, $yellow, darken($yellow, 2%));
 }
 
 .btn-green {
-  @include button-variant-custom($white, $green, $green);
+  @include button-variant-custom($white, $green, darken($green, 2%));
 }
 
 .btn-dark-green {
-  @include button-variant-custom($white, darken($green, 20%), darken($green, 20%));
+  @include button-variant-custom($white, darken($green, 10%), darken($green, 10%));
 }
 
 .btn-blue {
-  @include button-variant-custom($white, $blue, $blue);
+  @include button-variant-custom($white, $blue, darken($blue, 2%));
 }
 
 .btn-dark-blue {
-  @include button-variant-custom($white, darken($blue, 20%), darken($blue, 20%));
+  @include button-variant-custom($white, darken($blue, 10%), darken($blue, 10%));
 }
 
 .btn-custom-navbar-dropdown-white {

@@ -63,7 +63,7 @@ export const Nav = () => {
             <BoostrapNav.Link className="mr-2">Login</BoostrapNav.Link>
           </LinkContainer>
           <LinkContainer to="/user/signup">
-            <Button className={classNames("btn-orange", styles.navbarButton)}>
+            <Button className={classNames("btn-blue", styles.navbarButton)}>
               Signup
             </Button>
           </LinkContainer>
