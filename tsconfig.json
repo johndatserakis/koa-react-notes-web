@@ -20,7 +20,11 @@
     "noEmit": true,
     "jsx": "react",
     "noImplicitReturns": true,
-    "noUnusedLocals": false
+    "noUnusedLocals": false,
+    "typeRoots": [
+      "./node_modules/@types",
+      "./typings/**"
+    ]
   },
   "include": [
     "src"

@@ -7,12 +7,12 @@ import {
 } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import logo from "@/assets/images/main/lockup.png";
-import { logout } from "@/store/user/actions";
+import { logout } from "@/store/user/actions-api";
 import { useDispatch, useSelector } from "react-redux";
 import { UserThunkDispatch } from "@/store/user/types";
 import { useHistory } from "react-router-dom";
 import { RootState, GeneralThunkDispatch } from "@/store";
-import { clearNotes } from "@/store/note/actions";
+import { clearNotes } from "@/store/note/actions-store";
 import classNames from "classnames";
 import { GoLinkExternal } from "react-icons/go";
 import styles from "./Nav.module.scss";
@@ -63,7 +63,7 @@ export const Nav = () => {
             <BoostrapNav.Link className="mr-2">Login</BoostrapNav.Link>
           </LinkContainer>
           <LinkContainer to="/user/signup">
-            <Button className={classNames("btn-blue", styles.navbarButton)}>
+            <Button className={classNames("btn-orange", styles.navbarButton)}>
               Signup
             </Button>
           </LinkContainer>

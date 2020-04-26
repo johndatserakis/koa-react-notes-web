@@ -6,8 +6,11 @@ import {
 } from "@/components/partials/forms/inputs/Inputs";
 import { useToasts } from "react-toast-notifications";
 import { useDispatch } from "react-redux";
-import { forgot } from "@/store/user/actions";
-import { UserForgotPost, UserForgotPostValidation } from "@/store/user/api";
+import { forgot } from "@/store/user/actions-api";
+import {
+  UserForgotPost,
+  UserForgotPostValidation,
+} from "@/store/user/api-types";
 import { UserThunkDispatch } from "@/store/user/types";
 import { ServerError } from "@/common/api";
 import { useHistory, Link } from "react-router-dom";

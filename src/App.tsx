@@ -8,7 +8,7 @@ import {
 import "@/assets/css/app.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { JwtDecodeData } from "@/store/user/types";
-import { setUser } from "@/store/user/actions";
+import { setUser } from "@/store/user/actions-store";
 import { runAxiosAuthInterceptor } from "@/common/axios-auth-interceptor";
 import { useToasts } from "react-toast-notifications";
 import { RootState, GeneralThunkDispatch } from "@/store";

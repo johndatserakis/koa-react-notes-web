@@ -6,12 +6,12 @@ import {
 } from "@/components/partials/forms/inputs/Inputs";
 import { useToasts } from "react-toast-notifications";
 import { useDispatch } from "react-redux";
-import { signup } from "@/store/user/actions";
+import { signup } from "@/store/user/actions-api";
 import {
   UserSignupPost,
   UserSignupPostWithPasswordConfirm,
   UserSignupPostWithPasswordConfirmValidation,
-} from "@/store/user/api";
+} from "@/store/user/api-types";
 import { UserThunkDispatch } from "@/store/user/types";
 import { ServerError } from "@/common/api";
 import { useHistory, Link } from "react-router-dom";

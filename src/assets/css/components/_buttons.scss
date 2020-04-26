@@ -25,7 +25,7 @@ button {
 
 // Adjust global dropdown
 .dropdown-menu li a {
-  color: color(font-color);
+  color: colors(font-color);
   font-size: 18px;
 }
 
@@ -45,14 +45,14 @@ button {
 
 .btn-link {
   box-shadow: none;
-  color: color(grey-700);
+  color: colors(grey-700);
   text-shadow: none;
 
   &:hover,
   &:active,
   &:focus {
     box-shadow: none;
-    color: color(grey-600);
+    color: colors(grey-600);
     text-decoration: none;
   }
 }

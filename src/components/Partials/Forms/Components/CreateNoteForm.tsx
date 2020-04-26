@@ -7,8 +7,11 @@ import {
 } from "@/components/partials/forms/inputs/Inputs";
 import { useToasts } from "react-toast-notifications";
 import { useDispatch } from "react-redux";
-import { NoteCreatePost, NoteCreatePostValidation } from "@/store/note/api";
-import { createNote } from "@/store/note/actions";
+import {
+  NoteCreatePost,
+  NoteCreatePostValidation,
+} from "@/store/note/api-types";
+import { createNote } from "@/store/note/actions-api";
 import { ServerError } from "@/common/api";
 import { useHistory } from "react-router-dom";
 import { Row, Col, Container, Button } from "react-bootstrap";

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { EditNoteForm } from "@/components/partials/forms/components/EditNoteForm";
 import { useParams, useHistory } from "react-router-dom";
-import { getNote } from "@/store/note/actions";
+import { getNote } from "@/store/note/actions-api";
 import { useDispatch } from "react-redux";
 import { NoteThunkDispatch, Note } from "@/store/note/types";
 import { useToasts } from "react-toast-notifications";

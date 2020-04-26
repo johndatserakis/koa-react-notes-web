@@ -1,26 +1,15 @@
 /* stylelint-disable color-no-hex, declaration-no-important */
 
-//For additional heading display
-$display5-weight: 300 !default;
-$display5-size: 2.5rem !default;
-.display-5 {
-  font-size: $display5-size;
-  font-weight: $display5-weight;
-  line-height: $display-line-height;
-}
-
-// input-group button margin-bottom
-.input-group {
-  .btn {
-    margin-bottom: 0;
-  }
-}
-
-// Button mixin - have to hold this here because bootstrap has
-// changed the way to set the button text color of your choice.
-// It's been changed to automatically detect button text color
-// by contrast - but it is actually getting in the way
+// Button mixin - have to hold this here because bootstrap has changed the way
+// to set the button text color of your choice. It's been changed to
+// automatically detect button text color by contrast - but it is actually
+// getting in the way.
 // https://github.com/twbs/bootstrap/blame/v4-dev/scss/mixins/_buttons.scss.
+//
+// Also, I'm using important here because react-bootstrap is forcing me to
+// use a variant prop, which defaults to btn-primary. Will follow up on this
+// github issue in the future to see if we can avoid this:
+// https://github.com/react-bootstrap/react-bootstrap/issues/5047
 @mixin button-variant-custom(
   $color,
   $background,
@@ -32,15 +21,15 @@ $display5-size: 2.5rem !default;
   $active-background: darken($background, 10%),
   $active-border: darken($border, 10%)
 ) {
-  background-color: $background;
-  border-color: $border;
-  color: $color;
+  background-color: $background !important;
+  border-color: $border !important;
+  color: $color !important;
   @include box-shadow($btn-box-shadow);
 
   &:hover {
-    background-color: $hover-background;
-    border-color: $hover-border;
-    color: $hover-color;
+    background-color: $hover-background !important;
+    border-color: $hover-border !important;
+    color: $hover-color !important;
   }
 
   &:focus,
@@ -56,17 +45,17 @@ $display5-size: 2.5rem !default;
   // Disabled comes first so active can properly restyle
   &.disabled,
   &:disabled {
-    background-color: $background;
-    border-color: $border;
+    background-color: $background !important;
+    border-color: $border !important;
   }
 
   &:active,
   &.active,
   .show > &.dropdown-toggle {
-    background-color: $active-background;
-    background-image: none; // Remove the gradient for the pressed/active state
-    border-color: $active-border;
-    color: $active-color;
+    background-color: $active-background !important;
+    background-image: none !important; // Remove the gradient for the pressed/active state
+    border-color: $active-border !important;
+    color: $active-color !important;
     @include box-shadow($btn-active-box-shadow);
   }
 }
@@ -251,37 +240,37 @@ $display5-size: 2.5rem !default;
 .badge-blue {
   @include badge-variant(rgba($blue, 0.1));
   border: 1px solid color(blue-400);
-  color: color(blue) !important;
+  color: colors(blue) !important;
 }
 
 .badge-red {
   @include badge-variant(rgba($red, 0.1));
   border: 1px solid color(red-400);
-  color: color(red) !important;
+  color: colors(red) !important;
 }
 
 .badge-green {
   @include badge-variant(rgba($green, 0.1));
   border: 1px solid color(green-400);
-  color: color(green) !important;
+  color: colors(green) !important;
 }
 
 .badge-orange {
   @include badge-variant(rgba($green, 0.1));
   border: 1px solid color(orange-400);
-  color: color(orange) !important;
+  color: colors(orange) !important;
 }
 
 .badge-light-grey {
   @include badge-variant($gray-300);
   border: 1px solid color(gray-700);
-  color: color(gray-500);
+  color: colors(gray-500);
 }
 
 .badge-grey {
   @include badge-variant($gray-500);
   border: 1px solid color(gray-700);
-  color: color(gray-500);
+  color: colors(gray-500);
 }
 
 .badge-yellow {
@@ -355,47 +344,63 @@ a {
 
 // Text helpers
 .text-black {
-  color: color(black) !important;
+  color: colors(black) !important;
 }
 
 .text-white {
-  color: color(white) !important;
+  color: colors(white) !important;
 }
 
 .text-blue {
-  color: color(blue) !important;
+  color: colors(blue) !important;
 }
 
 .text-red {
-  color: color(red) !important;
+  color: colors(red) !important;
 }
 
 .text-green {
-  color: color(green) !important;
+  color: colors(green) !important;
 }
 
 .text-orange {
-  color: color(orange) !important;
+  color: colors(orange) !important;
 }
 
 .text-purple {
-  color: color(purple) !important;
+  color: colors(purple) !important;
 }
 
 .text-yellow {
-  color: color(yellow) !important;
+  color: colors(yellow) !important;
 }
 
 .text-grey {
-  color: color(gray-500) !important;
+  color: colors(gray-500) !important;
 }
 
 .muted {
-  color: color(muted) !important;
+  color: colors(muted) !important;
 }
 
 .list-group-item-off-white {
   background: color(off-white);
+}
+
+//For additional heading display
+$display5-weight: 300 !default;
+$display5-size: 2.5rem !default;
+.display-5 {
+  font-size: $display5-size;
+  font-weight: $display5-weight;
+  line-height: $display-line-height;
+}
+
+// input-group button margin-bottom
+.input-group {
+  .btn {
+    margin-bottom: 0;
+  }
 }
 
 // Add responsive sizing helpers

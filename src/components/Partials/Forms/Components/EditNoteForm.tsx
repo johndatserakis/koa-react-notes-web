@@ -6,13 +6,16 @@ import {
   SubmitButton,
 } from "@/components/partials/forms/inputs/Inputs";
 import { useToasts } from "react-toast-notifications";
-import { NoteCreatePost, NoteCreatePostValidation } from "@/store/note/api";
+import {
+  NoteCreatePost,
+  NoteCreatePostValidation,
+} from "@/store/note/api-types";
 import { ServerError } from "@/common/api";
 import { Row, Col, Container, Button } from "react-bootstrap";
 import { Note } from "@/store/note/types";
 import { LinkContainer } from "react-router-bootstrap";
 import { useHistory } from "react-router-dom";
-import { updateNote, deleteNote } from "@/store/note/actions";
+import { updateNote, deleteNote } from "@/store/note/actions-api";
 import { useDispatch } from "react-redux";
 import { GeneralThunkDispatch } from "@/store";
 
@@ -76,7 +79,7 @@ export const EditNoteForm = (props: EditNoteFormProps) => {
       await dispatch(deleteNote(props.note));
       history.push("/dashboard");
     } catch (error) {
-      console.log(error);
+      //
     }
   };
 

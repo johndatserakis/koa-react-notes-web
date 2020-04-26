@@ -23,7 +23,7 @@ export const NotFound = () => (
           <h2>Not Found</h2>
           <p>Hmm, we couldn't quite find what you were looking for.</p>
           <LinkContainer to="/">
-            <Button className="btn-primary">Go Home</Button>
+            <Button className="btn-blue">Go Home</Button>
           </LinkContainer>
         </Col>
       </Row>

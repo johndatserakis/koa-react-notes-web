@@ -14,23 +14,23 @@ section.user-action {
   }
 
   &__header {
-    color: color(white);
+    color: colors(white);
   }
 
   &__content {
-    color: color(white);
+    color: colors(white);
 
     label {
-      color: color(white);
+      color: colors(white);
     }
   }
 
   a {
-    color: color(white);
+    color: colors(white);
     text-decoration: underline;
 
     &:hover {
-      color: color(grey-200);
+      color: colors(grey-200);
     }
   }
 }

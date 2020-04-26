@@ -13,9 +13,9 @@ import { truncate } from "@/common/truncate";
 import { LinkContainer } from "react-router-bootstrap";
 import { useHistory } from "react-router-dom";
 import { Note } from "@/store/note/types";
-import { getNotes } from "@/store/note/actions";
+import { getNotes } from "@/store/note/actions-api";
 import { useToasts } from "react-toast-notifications";
-import { NotesQuery } from "@/store/note/api";
+import { NotesQuery } from "@/store/note/api-types";
 
 export const Dashboard = () => {
   const dispatch = useDispatch<GeneralThunkDispatch>();

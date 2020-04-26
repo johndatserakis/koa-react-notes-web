@@ -51,7 +51,7 @@
   },
   "scripts": {
     "watch": "craco start",
-    "build": "rm -rf ./dist && craco test && npm run lint && npm run lint-styles && craco build && mv build dist",
+    "build": "rm -rf ./dist && npm run test && npm run lint && npm run lint-styles && craco build && mv build dist",
     "test": "craco test --watchAll=false",
     "lint": "tsc --noEmit && eslint '*/**/*.{js,ts,tsx}' --quiet --fix",
     "lint-styles": "npx stylelint \"**/*.scss\" --config .stylelintrc.js --fix",

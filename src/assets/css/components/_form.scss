@@ -14,20 +14,20 @@
   }
 
   &__label {
-    color: color(black);
+    color: colors(black);
     font-weight: 500;
 
     &--white {
-      color: color(white);
+      color: colors(white);
     }
   }
 
   &__error-message {
-    color: color(red-700);
+    color: colors(red);
     margin-top: 10px;
 
     &--white {
-      color: color(white);
+      color: colors(white);
     }
   }
 }
@@ -78,12 +78,12 @@ input[type="radio"] {
 
 input::placeholder,
 textarea::placeholder {
-  color: color(gray-700);
+  color: colors(gray-700);
 }
 
 .label,
 label {
-  color: color(black);
+  color: colors(black);
   font-weight: 500;
 }
 
