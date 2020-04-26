@@ -19,7 +19,7 @@ export const Home = () => {
             <div>
               <p>Here's your user...</p>
               <p>
-                <code>{JSON.stringify(user)}</code>
+                <strong>{JSON.stringify(user)}</strong>
               </p>
             </div>
           )}
