@@ -7,7 +7,7 @@ import {
 import { useToasts } from "react-toast-notifications";
 import { useDispatch } from "react-redux";
 import { login } from "@/store/user/actions-api";
-import { getNotes } from "@/store/note/actions-api";
+import { all } from "@/store/note/actions-api";
 import { UserLoginPost, UserLoginPostValidation } from "@/store/user/api-types";
 import { UserThunkDispatch } from "@/store/user/types";
 import { ServerError } from "@/common/api";
@@ -34,9 +34,7 @@ export const LoginForm = () => {
       await dispatch(login(values));
 
       // Get user's notes
-      await dispatch(
-        getNotes({ sort: "", order: "desc", page: 0, limit: 1000 }),
-      );
+      await dispatch(all({ sort: "", order: "desc", page: 0, limit: 1000 }));
 
       // Clear inputs
       actions.resetForm();

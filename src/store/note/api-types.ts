@@ -5,13 +5,6 @@ export interface NoteCreatePost {
   content: string;
 }
 
-export interface NotesQuery {
-  sort: string;
-  order: "desc" | "asc";
-  page: number;
-  limit: number;
-}
-
 export interface NotePutRequest {
   title: string;
   content: string;

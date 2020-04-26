@@ -1,7 +1,7 @@
-import { Note } from "@/store/note/types";
+import { Note, NotesQuery } from "@/store/note/types";
 import axios, { setAuthorizationHeader } from "@/common/axios";
 import { AxiosResponse } from "axios";
-import { NotesQuery, NoteCreatePost, NotePutRequest } from "./api-types";
+import { NoteCreatePost, NotePutRequest } from "./api-types";
 
 const routeMain = "notes";
 

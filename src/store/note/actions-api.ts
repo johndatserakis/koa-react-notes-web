@@ -5,16 +5,22 @@ import {
   editNoteInStack,
   deleteNoteFromStack,
 } from "@/store/note/actions-store";
-import { NotesQuery, NoteCreatePost } from "@/store/note/api-types";
-import { Note } from "@/store/note/types";
-import { all, create, find, update, del } from "@/store/note/api-requests";
+import { NoteCreatePost } from "@/store/note/api-types";
+import { Note, NotesQuery } from "@/store/note/types";
+import {
+  all as apiAll,
+  create as apiCreate,
+  find as apiFind,
+  update as apiUpdate,
+  del as apiDel,
+} from "@/store/note/api-requests";
 import { ThunkResult, GeneralThunkDispatch } from "@/store";
 
-export const getNotes = (
-  data: NotesQuery,
-): ThunkResult<Promise<Note[]>> => async (dispatch: GeneralThunkDispatch) => {
+export const all = (data: NotesQuery): ThunkResult<Promise<Note[]>> => async (
+  dispatch: GeneralThunkDispatch,
+) => {
   try {
-    const result = await all(data);
+    const result = await apiAll(data);
     dispatch(addNotes(result));
     return result;
   } catch (error) {
@@ -22,22 +28,11 @@ export const getNotes = (
   }
 };
 
-export const getNote = (
-  data: number,
-): ThunkResult<Promise<Note>> => async () => {
-  try {
-    const result = await find(data);
-    return result;
-  } catch (error) {
-    return Promise.reject(parseAxiosError(error));
-  }
-};
-
-export const createNote = (
+export const create = (
   data: NoteCreatePost,
 ): ThunkResult<Promise<Note>> => async (dispatch: GeneralThunkDispatch) => {
   try {
-    const result = await create(data);
+    const result = await apiCreate(data);
     dispatch(addNoteToStack(result));
     return result;
   } catch (error) {
@@ -45,11 +40,20 @@ export const createNote = (
   }
 };
 
-export const updateNote = (data: Note): ThunkResult<Promise<Note>> => async (
+export const find = (data: number): ThunkResult<Promise<Note>> => async () => {
+  try {
+    const result = await apiFind(data);
+    return result;
+  } catch (error) {
+    return Promise.reject(parseAxiosError(error));
+  }
+};
+
+export const update = (data: Note): ThunkResult<Promise<Note>> => async (
   dispatch: GeneralThunkDispatch,
 ) => {
   try {
-    const result = await update(data);
+    const result = await apiUpdate(data);
     dispatch(editNoteInStack(result));
     return result;
   } catch (error) {
@@ -57,11 +61,11 @@ export const updateNote = (data: Note): ThunkResult<Promise<Note>> => async (
   }
 };
 
-export const deleteNote = (data: Note): ThunkResult<Promise<Note>> => async (
+export const del = (data: Note): ThunkResult<Promise<Note>> => async (
   dispatch: GeneralThunkDispatch,
 ) => {
   try {
-    const result = await del(data);
+    const result = await apiDel(data);
     dispatch(deleteNoteFromStack(result));
     return result;
   } catch (error) {

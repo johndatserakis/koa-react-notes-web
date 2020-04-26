@@ -13,11 +13,12 @@ import {
 import { ServerError } from "@/common/api";
 import { Row, Col, Container, Button } from "react-bootstrap";
 import { Note } from "@/store/note/types";
-import { LinkContainer } from "react-router-bootstrap";
 import { useHistory } from "react-router-dom";
-import { updateNote, deleteNote } from "@/store/note/actions-api";
+import { update, del as delActionApi } from "@/store/note/actions-api";
 import { useDispatch } from "react-redux";
 import { GeneralThunkDispatch } from "@/store";
+import { GoChevronLeft } from "react-icons/go";
+import { LinkContainer } from "react-router-bootstrap";
 
 let defaultValues: NoteCreatePost = {
   title: "",
@@ -53,7 +54,7 @@ export const EditNoteForm = (props: EditNoteFormProps) => {
       };
 
       setIsLoading(true);
-      await dispatch(updateNote(editedNote));
+      await dispatch(update(editedNote));
       actions.resetForm();
       history.push("/dashboard");
     } catch (error) {
@@ -76,7 +77,7 @@ export const EditNoteForm = (props: EditNoteFormProps) => {
     }
 
     try {
-      await dispatch(deleteNote(props.note));
+      await dispatch(delActionApi(props.note));
       history.push("/dashboard");
     } catch (error) {
       //
@@ -95,7 +96,7 @@ export const EditNoteForm = (props: EditNoteFormProps) => {
             <Col lg={6}>
               <LinkContainer to="/dashboard">
                 <Button variant="primary" size="sm" className="mb-3">
-                  Back
+                  <GoChevronLeft /> Back
                 </Button>
               </LinkContainer>
             </Col>

@@ -11,11 +11,12 @@ import {
   NoteCreatePost,
   NoteCreatePostValidation,
 } from "@/store/note/api-types";
-import { createNote } from "@/store/note/actions-api";
+import { create } from "@/store/note/actions-api";
 import { ServerError } from "@/common/api";
 import { useHistory } from "react-router-dom";
 import { Row, Col, Container, Button } from "react-bootstrap";
 import { NoteThunkDispatch } from "@/store/note/types";
+import { GoChevronLeft } from "react-icons/go";
 import { LinkContainer } from "react-router-bootstrap";
 
 const defaultValues: NoteCreatePost = {
@@ -35,7 +36,7 @@ export const CreateNoteForm = () => {
   ) => {
     try {
       setIsLoading(true);
-      await dispatch(createNote(values));
+      await dispatch(create(values));
       actions.resetForm();
       history.push("/dashboard");
     } catch (error) {
@@ -63,7 +64,7 @@ export const CreateNoteForm = () => {
             <Col lg={6}>
               <LinkContainer to="/dashboard">
                 <Button variant="primary" size="sm" className="mb-3">
-                  Back
+                  <GoChevronLeft /> Back
                 </Button>
               </LinkContainer>
             </Col>

@@ -3,13 +3,8 @@ import createAuthRefreshInterceptor from "axios-auth-refresh";
 import { UserTokens } from "@/store/user/types";
 import { AxiosResponse } from "axios";
 
-function getAccessToken() {
-  return localStorage.getItem("accessToken");
-}
-
-function getRefreshToken() {
-  return localStorage.getItem("refreshToken");
-}
+const getToken = (type: "accessToken" | "refreshToken") =>
+  localStorage.getItem(type);
 
 const refreshAuthLogic = async (failedRequest: any) => {
   try {
@@ -22,13 +17,15 @@ const refreshAuthLogic = async (failedRequest: any) => {
       `${process.env.REACT_APP_API_URL}/api/v1/user/refreshAccessToken`,
       {
         username: "demousername",
-        refreshToken: getRefreshToken(),
+        refreshToken: getToken("refreshToken"),
       },
     );
 
     localStorage.setItem("accessToken", tokens.data.data.accessToken);
     localStorage.setItem("refreshToken", tokens.data.data.refreshToken);
-    failedRequest.response.config.headers.Authorization = `Bearer ${getAccessToken()}`;
+    failedRequest.response.config.headers.Authorization = `Bearer ${getToken(
+      "accessToken",
+    )}`;
     return Promise.resolve();
   } catch (error) {
     Promise.reject();

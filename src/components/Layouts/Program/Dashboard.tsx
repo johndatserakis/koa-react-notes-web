@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   ListGroup,
@@ -13,35 +13,30 @@ import { truncate } from "@/common/truncate";
 import { LinkContainer } from "react-router-bootstrap";
 import { useHistory } from "react-router-dom";
 import { Note } from "@/store/note/types";
-import { getNotes } from "@/store/note/actions-api";
+import { all } from "@/store/note/actions-api";
 import { useToasts } from "react-toast-notifications";
-import { NotesQuery } from "@/store/note/api-types";
+import { setOkToLoadMore, setQuery } from "@/store/note/actions-store";
 
 export const Dashboard = () => {
   const dispatch = useDispatch<GeneralThunkDispatch>();
   const notes = useSelector((state: RootState) => state.note.notes);
+  const okToLoadMore = useSelector(
+    (state: RootState) => state.note.okToLoadMore,
+  );
+  const query = useSelector((state: RootState) => state.note.query);
   const history = useHistory();
   const { addToast } = useToasts();
 
-  const [completedFirstPass, setCompletedFirstPass] = useState(false);
-  const [okToLoadMore, setOkToLoadMore] = useState(false);
-  const [query, setQuery] = useState<NotesQuery>({
-    sort: "",
-    order: "desc" as const,
-    page: 0,
-    limit: 20,
-  });
-
   const loadProgramData = async () => {
     try {
-      const result = await dispatch(getNotes(query));
+      const result = await dispatch(all(query));
 
       // Sort out the new query data now...
       if (result.length === query.limit) {
-        setOkToLoadMore(true);
-        setQuery({ ...query, page: query.page + 1 });
+        dispatch(setOkToLoadMore(true));
+        dispatch(setQuery({ ...query, page: query.page + 1 }));
       } else {
-        setOkToLoadMore(false);
+        dispatch(setOkToLoadMore(false));
       }
     } catch (error) {
       addToast(
@@ -50,10 +45,6 @@ export const Dashboard = () => {
           appearance: "error",
         },
       );
-    } finally {
-      if (!completedFirstPass) {
-        setCompletedFirstPass(true);
-      }
     }
   };
 

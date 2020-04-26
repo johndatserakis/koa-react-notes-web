@@ -6,11 +6,20 @@ import {
   DELETE_NOTE_FROM_STACK,
   EDIT_NOTE_IN_STACK,
   CLEAR_NOTES,
+  SET_OK_TO_LOAD_MORE,
+  SET_QUERY,
   NoteActionTypes,
 } from "./types";
 
 const initialState: NoteState = {
   notes: [],
+  okToLoadMore: false,
+  query: {
+    sort: "",
+    order: "desc" as const,
+    page: 0,
+    limit: 20,
+  },
 };
 
 export const noteReducer = (
@@ -63,6 +72,16 @@ export const noteReducer = (
     }
     case CLEAR_NOTES:
       return initialState;
+    case SET_OK_TO_LOAD_MORE:
+      return {
+        ...state,
+        okToLoadMore: action.payload,
+      };
+    case SET_QUERY:
+      return {
+        ...state,
+        query: action.payload,
+      };
     default:
       return state;
   }
