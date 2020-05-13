@@ -8,6 +8,8 @@
 
 # Koa-React-Notes-Web
 
+# Please note, this project has been completely rewritten so the README is out of date in most place. I will update this soon. Thank you. - John 05-12-20
+
 This is a simple SPA built using [Koa](http://koajs.com/) (2.5.1) as the backend and [React](https://reactjs.org/) (16.8.3) as the frontend. Click [here](https://github.com/johndatserakis/koa-vue-notes-api) to see the backend Koa code. Click [here](https://koa-vue-notes-web.innermonkdesign.com/) to view the app live. Also, you can check out [koa-vue-notes-web](https://koa-vue-notes-web.innermonkdesign.com) for the Vue implementation of this exact project! You can also check out the [koa-vue-notes-project](https://github.com/johndatserakis/koa-vue-notes-project) repo if you like to have both your frontend and backend living within the same folder (that one's using the Vue version).
 
 ### Features

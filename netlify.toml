@@ -1,8 +1,8 @@
 # Global build settings
 [build]
    base    = ""
-   publish = "dist/"
-   command = "sed -i s/API_URL_PLACEHOLDER/$API_URL/g netlify.toml && NODE_PATH=src REACT_APP_API_URL='' npm run build"
+   publish = "dist"
+   command = "sed -i s/API_URL_PLACEHOLDER/$API_URL/g netlify.toml && npm run build"
 
 # Redirects
 [[redirects]]
