@@ -51,7 +51,7 @@ export const Nav = () => {
         <BoostrapNav className="mr-auto">
           <BoostrapNav.Link
             className="mr-2"
-            href="https://github.com/johndatserakis/koa-vue-notes-api"
+            href="https://github.com/johndatserakis/koa-react-notes-web"
             target="_blank"
             rel="noopener noreferrer"
           >

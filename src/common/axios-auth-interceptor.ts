@@ -13,13 +13,10 @@ const refreshAuthLogic = async (failedRequest: any) => {
         accessToken: UserTokens["accessToken"];
         refreshToken: UserTokens["refreshToken"];
       };
-    }> = await axios.post(
-      `${process.env.REACT_APP_API_URL}/api/v1/user/refreshAccessToken`,
-      {
-        username: "demousername",
-        refreshToken: getToken("refreshToken"),
-      },
-    );
+    }> = await axios.post("user/refreshAccessToken", {
+      username: "demousername",
+      refreshToken: getToken("refreshToken"),
+    });
 
     localStorage.setItem("accessToken", tokens.data.data.accessToken);
     localStorage.setItem("refreshToken", tokens.data.data.refreshToken);
