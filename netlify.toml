@@ -1,6 +1,6 @@
 # Global build settings
 [build]
-   base    = ""
+   base    = "."
    publish = "dist"
    command = "sed -i s/API_URL_PLACEHOLDER/$API_URL/g netlify.toml && npm run build"
 
