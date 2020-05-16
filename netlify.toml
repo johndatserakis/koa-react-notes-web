@@ -2,4 +2,4 @@
 [build]
    base    = "."
    publish = "dist"
-   command = "sed -i s/API_URL_PLACEHOLDER/$API_URL/g _redirects && npm run build"
+   command = "sed -i s/API_URL_PLACEHOLDER/$API_URL/g public/_redirects && npm run build"
