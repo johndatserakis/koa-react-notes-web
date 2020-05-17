@@ -28,8 +28,8 @@ export const Home = () => {
             <i className="fa fa-info-circle fa-fw" /> This is a simple SPA built
             using Koa (2.5.1) as the backend and React (16.8.3) as the frontend.
             If you don't want to create an account you can just use{" "}
-            <strong>demousername</strong>
-            and <strong>demopassword</strong> to login to the app.
+            <strong>demousername</strong> and <strong>demopassword</strong> to
+            login to the app.
           </p>
 
           <p>

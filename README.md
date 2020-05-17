@@ -59,11 +59,15 @@ For more information on this project you can check out [koa-vue-notes-api](https
 
 This project changes that up a bit - it's the same `koa-vue-notes-web` app, but written in React. This is perfect for someone who wants to take a good look at both frameworks a little bit more in depth than the usually tutoral blog posts.
 
+# TypeScript
+
+This frontend is fully built in `TypeScript` which hopefully helps others who are looking for a working example of some different components. Even though I've been using `JavaScript` for about 10 years now, I only recently started using `TypeScript` over the past year or so. In the most recent revamp of this project I decided to rewrite it completely in `TypeScript` due to how much safety it brings - it really make me feel better about the foundation of the app. I really like `TypeScript` and will definitely be using it in all my `JavaScript` projects going forward - the only tough part is integrating third-party libraries (event those written in `TypeScript`), although after a few you get used to it.
+
 # Redux
 
 After using `Vuex` for about 2 years now, `Redux` wasn't really to hard to wrap my head around. `Users` and `Notes` each have their own `action` and `reducer` files. I'm utilizing `redux-thunk` in the project to allow action creators to return functions.
 
-## User Authentication Process
+# User Authentication Process
 
 As mentioned in the vue/koa code, the user authentication process is this:
 
@@ -78,18 +82,18 @@ As mentioned in the vue/koa code, the user authentication process is this:
 
 # App.js
 
-Here's where a chunk of the app takes place. The routes are declared in the render function. You'll also notice a few routes only allow entry if the user is logged in. That can be useful if you're trying to protect some routes - like we are here with `Dashboard`, `CreateNote`, and `EditNote`.
+Here's where a chunk of the app takes place. The routes are declared in the render function. You'll also notice a few routes only allow entry if the user is logged in. That can be useful if you're trying to protect some routes - like we are here with `Dashboard`, `CreateNote`, and `EditNote`. Also you'll find some code that handles the initial page load. In some cases, you'll want to load data there, but in this case, I only want to load the user's notes if the load happens on the `Dashboard` page.
 
 # More
 
 There's a bunch more in the app:
 
 - `Storybook` support because a lot of times I like to create my components independently from the actual app.
-- Fully built in `TypeScript` which hopefully helps others who are looking for a working example of some things.
 - `Craco` integration so we can stretch our legs a bit without having to eject from `create-react-app`.
-- `netlify.toml` support - you can take a look at how I serve the site on `Netlify`.
+- `netlify.toml` support - you can take a look at how I serve the site on `Netlify` - very simple, and includes a rewrite for the `API` call.
 - `Formik` integration, plus lots of input components that work directly with `Formik` - of course fully written in `TypeScript` and `Functional Components`.
 - Plus more, as I set this up like a real app I'd use in production.
+- `Google Analytics` integration with helper functions for triggering events - I set those triggers to run on actions like signup, login, creating a note, stuff like that.
 
 Let me know if there's anything you'd like me to expand on as far as why I chose to use it in the app, glad to explain further.
 
