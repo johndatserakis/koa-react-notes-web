@@ -17,7 +17,7 @@ interface Props extends RouteComponentProps {
 }
 const GAListener = ({ children, trackingId, history }: Props): JSX.Element => {
   useEffect((): UnregisterCallback | void => {
-    if (trackingId && !isDev) {
+    if (trackingId && !isDev()) {
       ReactGA.initialize(trackingId);
       sendPageView(history.location, "REPLACE");
       return history.listen(sendPageView);
