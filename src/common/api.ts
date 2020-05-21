@@ -1,5 +1,5 @@
 import { AxiosError } from "axios";
-import { isDev } from "./is-dev";
+import { isDev } from "./get-env";
 
 interface E {
   code: number;

@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import ReactGA from "react-ga";
 import { withRouter, RouteComponentProps } from "react-router";
 import { Location, LocationListener, UnregisterCallback } from "history";
-import { isDev } from "./is-dev";
+import { isProd } from "./get-env";
 
 const sendPageView: LocationListener = (location: Location): void => {
   ReactGA.set({ page: location.pathname });
@@ -17,7 +17,7 @@ interface Props extends RouteComponentProps {
 }
 const GAListener = ({ children, trackingId, history }: Props): JSX.Element => {
   useEffect((): UnregisterCallback | void => {
-    if (trackingId && !isDev()) {
+    if (trackingId && isProd()) {
       ReactGA.initialize(trackingId);
       sendPageView(history.location, "REPLACE");
       return history.listen(sendPageView);
