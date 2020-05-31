@@ -15,9 +15,9 @@ const routerReset = "user/reset";
 
 export const login = async (data: UserLoginPost): Promise<UserTokens> => {
   const result: AxiosResponse<{
-    data: {
-      accessToken: UserTokens["accessToken"];
-      refreshToken: UserTokens["refreshToken"];
+    readonly data: {
+      readonly accessToken: UserTokens["accessToken"];
+      readonly refreshToken: UserTokens["refreshToken"];
     };
   }> = await axios.post(routeLogin, data);
 
@@ -25,16 +25,15 @@ export const login = async (data: UserLoginPost): Promise<UserTokens> => {
 };
 
 export const signup = async (data: UserSignupPost): Promise<number> => {
-  const result: AxiosResponse<{ data: { id: number } }> = await axios.post(
-    routeSignup,
-    data,
-  );
+  const result: AxiosResponse<{
+    readonly data: { readonly id: number };
+  }> = await axios.post(routeSignup, data);
   return result.data.data.id;
 };
 
 export const forgot = async (data: UserForgotPost): Promise<string> => {
   const result: AxiosResponse<{
-    data: { passwordResetToken: string };
+    readonly data: { readonly passwordResetToken: string };
   }> = await axios.post(routeForgot, data);
   return result.data.data.passwordResetToken;
 };

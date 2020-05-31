@@ -1,14 +1,14 @@
 import * as Yup from "yup";
 
-export interface NoteCreatePost {
-  title: string;
-  content: string;
-}
+export type NoteCreatePost = {
+  readonly title: string;
+  readonly content: string;
+};
 
-export interface NotePutRequest {
-  title: string;
-  content: string;
-}
+export type NotePutRequest = {
+  readonly title: string;
+  readonly content: string;
+};
 
 export const NoteCreatePostValidation = Yup.object({
   title: Yup.string().required("Title is required"),

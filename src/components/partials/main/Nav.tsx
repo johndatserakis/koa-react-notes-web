@@ -26,7 +26,7 @@ export const Nav = () => {
 
   const navLogout = async () => {
     await dispatchUser(logout());
-    await dispatchNote(clearNotes());
+    dispatchNote(clearNotes());
     history.push("/");
   };
 

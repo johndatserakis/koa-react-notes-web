@@ -5,10 +5,10 @@ import { NoteCreatePost, NotePutRequest } from "./api-types";
 
 const routeMain = "notes";
 
-export const all = async (data: NotesQuery): Promise<Note[]> => {
+export const all = async (data: NotesQuery): Promise<readonly Note[]> => {
   setAuthorizationHeader(axios);
   const result: AxiosResponse<{
-    data: { notes: Note[] };
+    readonly data: { readonly notes: readonly Note[] };
   }> = await axios.get(routeMain, { params: data });
 
   return result.data.data.notes;
@@ -16,19 +16,18 @@ export const all = async (data: NotesQuery): Promise<Note[]> => {
 
 export const find = async (data: number): Promise<Note> => {
   setAuthorizationHeader(axios);
-  const result: AxiosResponse<{ data: { note: Note } }> = await axios.get(
-    `${routeMain}/${data}`,
-  );
+  const result: AxiosResponse<{
+    readonly data: { readonly note: Note };
+  }> = await axios.get(`${routeMain}/${data}`);
 
   return result.data.data.note;
 };
 
 export const create = async (data: NoteCreatePost): Promise<Note> => {
   setAuthorizationHeader(axios);
-  const result: AxiosResponse<{ data: { note: Note } }> = await axios.post(
-    routeMain,
-    data,
-  );
+  const result: AxiosResponse<{
+    readonly data: { readonly note: Note };
+  }> = await axios.post(routeMain, data);
 
   return result.data.data.note;
 };
@@ -40,10 +39,9 @@ export const update = async (data: Note): Promise<Note> => {
   };
 
   setAuthorizationHeader(axios);
-  const result: AxiosResponse<{ data: { note: Note } }> = await axios.put(
-    `${routeMain}/${data.id}`,
-    putRequest,
-  );
+  const result: AxiosResponse<{
+    readonly data: { readonly note: Note };
+  }> = await axios.put(`${routeMain}/${data.id}`, putRequest);
 
   return result.data.data.note;
 };

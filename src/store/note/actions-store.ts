@@ -11,14 +11,14 @@ import {
   SET_QUERY,
 } from "@/store/note/types";
 
-export const setNotes = (notes: Note[]) => {
+export const setNotes = (notes: readonly Note[]) => {
   return {
     type: SET_NOTES,
     payload: notes,
   };
 };
 
-export const addNotes = (notes: Note[]) => {
+export const addNotes = (notes: readonly Note[]) => {
   return {
     type: ADD_NOTES,
     payload: notes,

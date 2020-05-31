@@ -1,41 +1,41 @@
 import { ThunkDispatch, ThunkAction } from "redux-thunk";
 import { RootState } from "@/store";
 
-export interface UserTokens {
-  accessToken: string;
-  refreshToken: string;
-}
+export type UserTokens = {
+  readonly accessToken: string;
+  readonly refreshToken: string;
+};
 
-export interface UserShort {
-  id: number;
-  token: string;
-  username: string;
-  email: string;
-}
+export type UserShort = {
+  readonly id: number;
+  readonly token: string;
+  readonly username: string;
+  readonly email: string;
+};
 
 export type UserState = {
-  user: UserShort;
+  readonly user: UserShort;
 };
 
 export const SET_USER = "SET_USER";
 export const CLEAR_USER = "CLEAR_USER";
 
-interface SetUserAction {
-  type: typeof SET_USER;
-  payload: UserShort;
-}
+type SetUserAction = {
+  readonly type: typeof SET_USER;
+  readonly payload: UserShort;
+};
 
-interface ClearUser {
-  type: typeof CLEAR_USER;
-}
+type ClearUser = {
+  readonly type: typeof CLEAR_USER;
+};
 
 export type UserActionTypes = SetUserAction | ClearUser;
 
-export interface JwtDecodeData {
-  data: UserShort;
-  iat: number;
-  exp: number;
-}
+export type JwtDecodeData = {
+  readonly data: UserShort;
+  readonly iat: number;
+  readonly exp: number;
+};
 
 export type UserThunkDispatch = ThunkDispatch<
   RootState,

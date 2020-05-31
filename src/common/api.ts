@@ -1,15 +1,15 @@
 import { AxiosError } from "axios";
 import { isDev } from "./get-env";
 
-interface E {
-  code: number;
-  message: string;
-}
+type E = {
+  readonly code: number;
+  readonly message: string;
+};
 
-export interface ServerError {
-  error: E;
-  errors?: E[];
-}
+export type ServerError = {
+  readonly error: E;
+  readonly errors?: readonly E[];
+};
 
 export const parseAxiosError = (e: AxiosError): ServerError => {
   if (e.response) {
@@ -49,6 +49,6 @@ export const parseGeneralError = (e: Error): ServerError => {
   };
 };
 
-export interface ApiResponse<T> {
-  data: T;
-}
+export type ApiResponse<T> = {
+  readonly data: T;
+};

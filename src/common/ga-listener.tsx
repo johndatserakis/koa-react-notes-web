@@ -11,10 +11,10 @@ const sendPageView: LocationListener = (location: Location): void => {
   ReactGA.pageview(location.pathname);
 };
 
-interface Props extends RouteComponentProps {
-  children: JSX.Element;
-  trackingId?: string;
-}
+type Props = RouteComponentProps & {
+  readonly children: JSX.Element;
+  readonly trackingId?: string;
+};
 const GAListener = ({ children, trackingId, history }: Props): JSX.Element => {
   useEffect((): UnregisterCallback | void => {
     if (trackingId && isProd()) {

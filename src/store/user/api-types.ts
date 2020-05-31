@@ -1,37 +1,37 @@
 import * as Yup from "yup";
 
-export interface UserLoginPost {
-  username: string;
-  password: string;
-}
+export type UserLoginPost = {
+  readonly username: string;
+  readonly password: string;
+};
 
-export interface UserSignupPost {
-  firstName: string;
-  lastName: string;
-  username: string;
-  email: string;
-  password: string;
-}
+export type UserSignupPost = {
+  readonly firstName: string;
+  readonly lastName: string;
+  readonly username: string;
+  readonly email: string;
+  readonly password: string;
+};
 
-export interface UserSignupPostWithPasswordConfirm extends UserSignupPost {
-  passwordConfirm: string;
-}
+export type UserSignupPostWithPasswordConfirm = UserSignupPost & {
+  readonly passwordConfirm: string;
+};
 
-export interface UserForgotPost {
-  email: string;
-  url: string;
-  type: "web";
-}
+export type UserForgotPost = {
+  readonly email: string;
+  readonly url: string;
+  readonly type: "web";
+};
 
-export interface UserResetPost {
-  passwordResetToken: string;
-  email: string;
-  password: string;
-}
+export type UserResetPost = {
+  readonly passwordResetToken: string;
+  readonly email: string;
+  readonly password: string;
+};
 
-export interface UserResetPostWithPasswordConfirm extends UserResetPost {
-  passwordConfirm: string;
-}
+export type UserResetPostWithPasswordConfirm = UserResetPost & {
+  readonly passwordConfirm: string;
+};
 
 //
 

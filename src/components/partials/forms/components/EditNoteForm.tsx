@@ -20,16 +20,16 @@ import { GeneralThunkDispatch } from "@/store";
 import { GoChevronLeft } from "react-icons/go";
 import { LinkContainer } from "react-router-bootstrap";
 
-let defaultValues: NoteCreatePost = {
-  title: "",
-  content: "",
+type EditNoteFormProps = {
+  readonly note: Note;
 };
 
-interface EditNoteFormProps {
-  note: Note;
-}
-
 export const EditNoteForm = (props: EditNoteFormProps) => {
+  let defaultValues: NoteCreatePost = {
+    title: "",
+    content: "",
+  };
+
   const [isLoading, setIsLoading] = useState(false);
   const history = useHistory();
   const { addToast } = useToasts();

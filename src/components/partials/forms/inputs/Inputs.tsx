@@ -2,53 +2,53 @@ import React, { FunctionComponent, useState } from "react";
 import { useField } from "formik";
 import { v4 as uuidv4 } from "uuid";
 
-interface SubmitButtonProps {
-  name: string;
-  text: string;
-  loading: boolean;
-  loadingText: string;
-}
+type SubmitButtonProps = {
+  readonly name: string;
+  readonly text: string;
+  readonly loading: boolean;
+  readonly loadingText: string;
+};
 
-interface InputProps {
-  name: string;
-  type: string;
-  label?: string;
-  placeholder?: string;
-  disabled?: boolean;
-}
+type InputProps = {
+  readonly name: string;
+  readonly type: string;
+  readonly label?: string;
+  readonly placeholder?: string;
+  readonly disabled?: boolean;
+};
 
 type TextAreaProps = Omit<InputProps, "type">;
 
-interface CheckboxProps {
-  name: string;
-  label?: string;
-  disabled?: boolean;
-}
+type CheckboxProps = {
+  readonly name: string;
+  readonly label?: string;
+  readonly disabled?: boolean;
+};
 
-interface SelectOption {
-  value: string | number;
-  label: string;
-}
+type SelectOption = {
+  readonly value: string | number;
+  readonly label: string;
+};
 
-interface SelectProps {
-  name: string;
-  label?: string;
-  placeholder?: string;
-  options: SelectOption[];
-  disabled?: boolean;
-}
+type SelectProps = {
+  readonly name: string;
+  readonly label?: string;
+  readonly placeholder?: string;
+  readonly options: readonly SelectOption[];
+  readonly disabled?: boolean;
+};
 
-interface RadioOption {
-  value: string | number;
-  label: string;
-}
+type RadioOption = {
+  readonly value: string | number;
+  readonly label: string;
+};
 
-interface RadioProps {
-  name: string;
-  label?: string;
-  options: RadioOption[];
-  disabled?: boolean;
-}
+type RadioProps = {
+  readonly name: string;
+  readonly label?: string;
+  readonly options: readonly RadioOption[];
+  readonly disabled?: boolean;
+};
 
 export const SubmitButton = (props: SubmitButtonProps) => {
   const [id] = useState(() => uuidv4());
@@ -212,7 +212,7 @@ export const Radio: FunctionComponent<RadioProps> = (props: RadioProps) => {
   // https://github.com/jaredpalmer/formik/issues/1243
   const createEvent = (value: string) => {
     return {
-      persist: () => {},
+      persist: () => {}, // eslint-disable-line @typescript-eslint/no-empty-function
       target: {
         type: "change",
         name: props.name,

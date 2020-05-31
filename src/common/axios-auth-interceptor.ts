@@ -6,12 +6,13 @@ import { AxiosResponse } from "axios";
 const getToken = (type: "accessToken" | "refreshToken") =>
   localStorage.getItem(type);
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const refreshAuthLogic = async (failedRequest: any) => {
   try {
     const tokens: AxiosResponse<{
-      data: {
-        accessToken: UserTokens["accessToken"];
-        refreshToken: UserTokens["refreshToken"];
+      readonly data: {
+        readonly accessToken: UserTokens["accessToken"];
+        readonly refreshToken: UserTokens["refreshToken"];
       };
     }> = await axios.post("user/refreshAccessToken", {
       username: "demousername",
@@ -20,6 +21,8 @@ const refreshAuthLogic = async (failedRequest: any) => {
 
     localStorage.setItem("accessToken", tokens.data.data.accessToken);
     localStorage.setItem("refreshToken", tokens.data.data.refreshToken);
+    // functional/immutable-data
+    // eslint-disable-next-line
     failedRequest.response.config.headers.Authorization = `Bearer ${getToken(
       "accessToken",
     )}`;

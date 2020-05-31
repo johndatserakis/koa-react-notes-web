@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 const path = require("path");
 const StyleLintPlugin = require("stylelint-webpack-plugin");
 // const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");

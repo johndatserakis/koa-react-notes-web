@@ -1,27 +1,27 @@
 import { ThunkDispatch, ThunkAction } from "redux-thunk";
 import { RootState } from "@/store";
 
-export interface Note {
-  id: number;
-  userId: number;
-  title: string;
-  content: string;
-  ipAddress?: string;
-  updatedAt?: string;
-  createdAt: string;
-}
+export type Note = {
+  readonly id: number;
+  readonly userId: number;
+  readonly title: string;
+  readonly content: string;
+  readonly ipAddress?: string;
+  readonly updatedAt?: string;
+  readonly createdAt: string;
+};
 
-export interface NotesQuery {
-  sort: string;
-  order: "desc" | "asc";
-  page: number;
-  limit: number;
-}
+export type NotesQuery = {
+  readonly sort: string;
+  readonly order: "desc" | "asc";
+  readonly page: number;
+  readonly limit: number;
+};
 
 export type NoteState = {
-  notes: Note[];
-  okToLoadMore: boolean;
-  query: NotesQuery;
+  readonly notes: readonly Note[];
+  readonly okToLoadMore: boolean;
+  readonly query: NotesQuery;
 };
 
 export const SET_NOTES = "SET_NOTES";
@@ -33,44 +33,44 @@ export const CLEAR_NOTES = "CLEAR_NOTES";
 export const SET_OK_TO_LOAD_MORE = "SET_OK_TO_LOAD_MORE";
 export const SET_QUERY = "SET_QUERY";
 
-interface SetNotesAction {
-  type: typeof SET_NOTES;
-  payload: Note[];
-}
+type SetNotesAction = {
+  readonly type: typeof SET_NOTES;
+  readonly payload: readonly Note[];
+};
 
-interface AddNotesAction {
-  type: typeof ADD_NOTES;
-  payload: Note[];
-}
+type AddNotesAction = {
+  readonly type: typeof ADD_NOTES;
+  readonly payload: readonly Note[];
+};
 
-interface AddNoteToStackAction {
-  type: typeof ADD_NOTE_TO_STACK;
-  payload: Note;
-}
+type AddNoteToStackAction = {
+  readonly type: typeof ADD_NOTE_TO_STACK;
+  readonly payload: Note;
+};
 
-interface DeleteNoteFromStackAction {
-  type: typeof DELETE_NOTE_FROM_STACK;
-  payload: Note;
-}
+type DeleteNoteFromStackAction = {
+  readonly type: typeof DELETE_NOTE_FROM_STACK;
+  readonly payload: Note;
+};
 
-interface EditNoteInStackAction {
-  type: typeof EDIT_NOTE_IN_STACK;
-  payload: Note;
-}
+type EditNoteInStackAction = {
+  readonly type: typeof EDIT_NOTE_IN_STACK;
+  readonly payload: Note;
+};
 
-interface ClearNotesAction {
-  type: typeof CLEAR_NOTES;
-}
+type ClearNotesAction = {
+  readonly type: typeof CLEAR_NOTES;
+};
 
-interface SetOkToLoadMore {
-  type: typeof SET_OK_TO_LOAD_MORE;
-  payload: boolean;
-}
+type SetOkToLoadMore = {
+  readonly type: typeof SET_OK_TO_LOAD_MORE;
+  readonly payload: boolean;
+};
 
-interface SetQuery {
-  type: typeof SET_QUERY;
-  payload: NotesQuery;
-}
+type SetQuery = {
+  readonly type: typeof SET_QUERY;
+  readonly payload: NotesQuery;
+};
 
 export type NoteActionTypes =
   | SetNotesAction

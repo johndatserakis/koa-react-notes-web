@@ -16,7 +16,9 @@ import {
 } from "@/store/note/api-requests";
 import { ThunkResult, GeneralThunkDispatch } from "@/store";
 
-export const all = (data: NotesQuery): ThunkResult<Promise<Note[]>> => async (
+export const all = (
+  data: NotesQuery,
+): ThunkResult<Promise<readonly Note[]>> => async (
   dispatch: GeneralThunkDispatch,
 ) => {
   try {
