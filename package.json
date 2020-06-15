@@ -60,9 +60,9 @@
     "test:build": "npm run test && npm run storybook:test",
     "lint": "tsc --noEmit && eslint './src/**/*.{js,ts,tsx}' --quiet --fix",
     "lint-styles": "npx stylelint \"**/*.scss\" --config .stylelintrc.js --fix",
-    "storybook": "start-storybook -p 9009 -s public",
+    "storybook:build": "build-storybook -s public",
     "storybook:test": "npm run storybook -- --smoke-test",
-    "build-storybook": "build-storybook -s public"
+    "storybook:watch": "start-storybook -p 9009 -s public"
   },
   "browserslist": {
     "production": [
