@@ -6,5 +6,3 @@ module.exports = {
     "@storybook/addon-links",
   ],
 };
-
-console.log("wow");
