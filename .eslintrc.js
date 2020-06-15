@@ -69,6 +69,7 @@ module.exports = {
     "react/jsx-filename-extension": [1, { extensions: [".tsx", ".ts"] }],
     "react/jsx-one-expression-per-line": "off",
     "react/jsx-props-no-spreading": "off",
+    "react/jsx-wrap-multilines": "off",
     "react/no-unescaped-entities": 0,
     eqeqeq: ["error", "always", { null: "ignore" }],
     indent: "off",

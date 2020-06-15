@@ -1,3 +1,10 @@
+:global {
+  .navbar {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
 // Keep navbar-buttons properly inline
 .navbar-button {
   line-height: 29px;
@@ -12,15 +19,3 @@
     opacity: 0.9;
   }
 }
-
-// :global {
-//   // .main-navbar-navigation {
-//   .navbar {
-//     .main-navbar-navigation {
-//       button {
-//         /* stylelint-disable-next-line declaration-no-important */
-//         display: none !important;
-//       }
-//     }
-//   }
-// }
