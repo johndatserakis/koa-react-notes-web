@@ -57,11 +57,11 @@
     "watch": "craco start",
     "build": "rm -rf ./dist && npm run test:build && npm run lint && npm run lint-styles && craco build && mv build dist",
     "test": "craco test --watchAll=false",
-    "test:build": "npm run test && npm run storybook:test",
+    "test:build": "npm run test",
     "lint": "tsc --noEmit && eslint './src/**/*.{js,ts,tsx}' --quiet --fix",
     "lint-styles": "npx stylelint \"**/*.scss\" --config .stylelintrc.js --fix",
     "storybook:build": "build-storybook -s public",
-    "storybook:test": "npm run storybook -- --smoke-test",
+    "storybook:test": "npm run storybook:build -- --smoke-test",
     "storybook:watch": "start-storybook -p 9009 -s public"
   },
   "browserslist": {
