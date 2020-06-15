@@ -1,36 +1,36 @@
 import * as Yup from "yup";
 
 export type UserLoginPost = {
-  readonly username: string;
-  readonly password: string;
+  username: string;
+  password: string;
 };
 
 export type UserSignupPost = {
-  readonly firstName: string;
-  readonly lastName: string;
-  readonly username: string;
-  readonly email: string;
-  readonly password: string;
+  firstName: string;
+  lastName: string;
+  username: string;
+  email: string;
+  password: string;
 };
 
 export type UserSignupPostWithPasswordConfirm = UserSignupPost & {
-  readonly passwordConfirm: string;
+  passwordConfirm: string;
 };
 
 export type UserForgotPost = {
-  readonly email: string;
-  readonly url: string;
-  readonly type: "web";
+  email: string;
+  url: string;
+  type: "web";
 };
 
 export type UserResetPost = {
-  readonly passwordResetToken: string;
-  readonly email: string;
-  readonly password: string;
+  passwordResetToken: string;
+  email: string;
+  password: string;
 };
 
 export type UserResetPostWithPasswordConfirm = UserResetPost & {
-  readonly passwordConfirm: string;
+  passwordConfirm: string;
 };
 
 //

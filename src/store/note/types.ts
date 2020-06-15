@@ -2,26 +2,26 @@ import { ThunkDispatch, ThunkAction } from "redux-thunk";
 import { RootState } from "@/store";
 
 export type Note = {
-  readonly id: number;
-  readonly userId: number;
-  readonly title: string;
-  readonly content: string;
-  readonly ipAddress?: string;
-  readonly updatedAt?: string;
-  readonly createdAt: string;
+  id: number;
+  userId: number;
+  title: string;
+  content: string;
+  ipAddress?: string;
+  updatedAt?: string;
+  createdAt: string;
 };
 
 export type NotesQuery = {
-  readonly sort: string;
-  readonly order: "desc" | "asc";
-  readonly page: number;
-  readonly limit: number;
+  sort: string;
+  order: "desc" | "asc";
+  page: number;
+  limit: number;
 };
 
 export type NoteState = {
-  readonly notes: readonly Note[];
-  readonly okToLoadMore: boolean;
-  readonly query: NotesQuery;
+  notes: Note[];
+  okToLoadMore: boolean;
+  query: NotesQuery;
 };
 
 export const SET_NOTES = "SET_NOTES";
@@ -34,42 +34,42 @@ export const SET_OK_TO_LOAD_MORE = "SET_OK_TO_LOAD_MORE";
 export const SET_QUERY = "SET_QUERY";
 
 type SetNotesAction = {
-  readonly type: typeof SET_NOTES;
-  readonly payload: readonly Note[];
+  type: typeof SET_NOTES;
+  payload: Note[];
 };
 
 type AddNotesAction = {
-  readonly type: typeof ADD_NOTES;
-  readonly payload: readonly Note[];
+  type: typeof ADD_NOTES;
+  payload: Note[];
 };
 
 type AddNoteToStackAction = {
-  readonly type: typeof ADD_NOTE_TO_STACK;
-  readonly payload: Note;
+  type: typeof ADD_NOTE_TO_STACK;
+  payload: Note;
 };
 
 type DeleteNoteFromStackAction = {
-  readonly type: typeof DELETE_NOTE_FROM_STACK;
-  readonly payload: Note;
+  type: typeof DELETE_NOTE_FROM_STACK;
+  payload: Note;
 };
 
 type EditNoteInStackAction = {
-  readonly type: typeof EDIT_NOTE_IN_STACK;
-  readonly payload: Note;
+  type: typeof EDIT_NOTE_IN_STACK;
+  payload: Note;
 };
 
 type ClearNotesAction = {
-  readonly type: typeof CLEAR_NOTES;
+  type: typeof CLEAR_NOTES;
 };
 
 type SetOkToLoadMore = {
-  readonly type: typeof SET_OK_TO_LOAD_MORE;
-  readonly payload: boolean;
+  type: typeof SET_OK_TO_LOAD_MORE;
+  payload: boolean;
 };
 
 type SetQuery = {
-  readonly type: typeof SET_QUERY;
-  readonly payload: NotesQuery;
+  type: typeof SET_QUERY;
+  payload: NotesQuery;
 };
 
 export type NoteActionTypes =

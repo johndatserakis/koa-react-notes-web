@@ -47,7 +47,7 @@ npm run build
 npm run lint
 
 # Run Storybook
-npm run storybook
+npm run storybook:watch
 
 # Run tests
 npm run test

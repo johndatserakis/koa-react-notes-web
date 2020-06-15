@@ -1,13 +1,13 @@
 import * as Yup from "yup";
 
 export type NoteCreatePost = {
-  readonly title: string;
-  readonly content: string;
+  title: string;
+  content: string;
 };
 
-export type NotePutRequest = {
-  readonly title: string;
-  readonly content: string;
+export type NoteEditPut = {
+  title: string;
+  content: string;
 };
 
 export const NoteCreatePostValidation = Yup.object({

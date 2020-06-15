@@ -22,6 +22,8 @@ module.exports = {
     "functional/no-conditional-statement": "off",
     "functional/no-expression-statement": "off",
     "functional/no-let": ["error", { allowLocalMutation: true }],
+    "functional/no-method-signature": "off",
+    "functional/prefer-readonly-type": "off",
     "functional/no-return-void": "off",
     "functional/no-try-statement": "off",
     "import/extensions": [

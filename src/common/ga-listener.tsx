@@ -12,8 +12,8 @@ const sendPageView: LocationListener = (location: Location): void => {
 };
 
 type Props = RouteComponentProps & {
-  readonly children: JSX.Element;
-  readonly trackingId?: string;
+  children: JSX.Element;
+  trackingId?: string;
 };
 const GAListener = ({ children, trackingId, history }: Props): JSX.Element => {
   useEffect((): UnregisterCallback | void => {

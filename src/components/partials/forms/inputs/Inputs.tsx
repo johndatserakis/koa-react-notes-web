@@ -3,51 +3,51 @@ import { useField } from "formik";
 import { v4 as uuidv4 } from "uuid";
 
 type SubmitButtonProps = {
-  readonly name: string;
-  readonly text: string;
-  readonly loading: boolean;
-  readonly loadingText: string;
+  name: string;
+  text: string;
+  loading: boolean;
+  loadingText: string;
 };
 
 type InputProps = {
-  readonly name: string;
-  readonly type: string;
-  readonly label?: string;
-  readonly placeholder?: string;
-  readonly disabled?: boolean;
+  name: string;
+  type: string;
+  label?: string;
+  placeholder?: string;
+  disabled?: boolean;
 };
 
 type TextAreaProps = Omit<InputProps, "type">;
 
 type CheckboxProps = {
-  readonly name: string;
-  readonly label?: string;
-  readonly disabled?: boolean;
+  name: string;
+  label?: string;
+  disabled?: boolean;
 };
 
 type SelectOption = {
-  readonly value: string | number;
-  readonly label: string;
+  value: string | number;
+  label: string;
 };
 
 type SelectProps = {
-  readonly name: string;
-  readonly label?: string;
-  readonly placeholder?: string;
-  readonly options: readonly SelectOption[];
-  readonly disabled?: boolean;
+  name: string;
+  label?: string;
+  placeholder?: string;
+  options: SelectOption[];
+  disabled?: boolean;
 };
 
 type RadioOption = {
-  readonly value: string | number;
-  readonly label: string;
+  value: string | number;
+  label: string;
 };
 
 type RadioProps = {
-  readonly name: string;
-  readonly label?: string;
-  readonly options: readonly RadioOption[];
-  readonly disabled?: boolean;
+  name: string;
+  label?: string;
+  options: RadioOption[];
+  disabled?: boolean;
 };
 
 export const SubmitButton = (props: SubmitButtonProps) => {

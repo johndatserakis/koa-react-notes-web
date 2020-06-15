@@ -21,7 +21,7 @@ import { GoChevronLeft } from "react-icons/go";
 import { LinkContainer } from "react-router-bootstrap";
 
 type EditNoteFormProps = {
-  readonly note: Note;
+  note: Note;
 };
 
 export const EditNoteForm = (props: EditNoteFormProps) => {
@@ -96,7 +96,7 @@ export const EditNoteForm = (props: EditNoteFormProps) => {
             <Col lg={6}>
               <LinkContainer to="/dashboard">
                 <Button variant="primary" size="sm" className="mb-3">
-                  <GoChevronLeft /> Back
+                  <GoChevronLeft /> Dashboard
                 </Button>
               </LinkContainer>
             </Col>

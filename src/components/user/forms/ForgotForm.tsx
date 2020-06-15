@@ -79,10 +79,10 @@ export const ForgotForm = () => {
 
               <Col lg={6}>
                 <SubmitButton
-                  name="signup-submit-button"
-                  text="Signup"
+                  name="forgot-submit-button"
+                  text="Submit"
                   loading={isLoading}
-                  loadingText="Signing in ..."
+                  loadingText="Submitting..."
                 />
               </Col>
             </Row>
